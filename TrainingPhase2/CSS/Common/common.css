@@ -1,0 +1,163 @@
+﻿.hover-pointer:hover{
+    cursor:pointer;
+}
+
+input{
+    outline: none;
+}
+
+thead {
+    background-color: #f0f0f0;
+}
+
+    thead th {
+        text-align: center;
+    }
+
+.blue-text {
+    color: #006189;
+}
+
+
+.arrow-down-line-img{
+    margin-left: 5px;
+}
+
+.common-icon{
+    background: url(/Contents/Icons/common-icon.png) no-repeat;
+    width: 16px;
+    height: 16px;
+}
+
+.fa-icon-arrow-down{
+    margin-left: 5px;
+}
+
+
+.main-toolbar {
+    height: 35px;
+    background-color: #026b97;
+    display: flex;
+}
+
+.toolbar-item {
+    background: #026b97;
+    height: 100%;
+    border: 1px solid #026b97;
+    color: white;
+    display: flex;
+    border-right: 1px solid #4d91b1;
+    padding: 7px 12px;
+    align-items: center;
+}
+
+    .toolbar-item:hover {
+        background-color: #0088c2;
+        color: white;
+        border: 1px solid #0088c2;
+    }
+
+.btn-add-icon {
+    background-position: -1px -128px;
+    color: white;
+}
+
+.btn-view-icon {
+    background-position: -1601px -127px;
+}
+
+.btn-edit-icon {
+    background-position: -77px -203px;
+}
+
+.btn-duplicate-icon {
+    background-position: -976px -127px;
+}
+
+.btn-delete-icon {
+    background-position: -1076px -128px;
+}
+
+.btn-print-icon {
+    background-position: -228px -129px;
+}
+
+.btn-filter-icon {
+    background-position: -605px -131px;
+    margin: 5px 0;
+}
+
+.calendar-icon {
+    background-position: -4px -178px;
+    margin: 5px;
+}
+
+.toolbar-btn-lbl {
+    margin: 0 5px;
+}
+
+.bts-dropdown {
+    display: flex;
+    padding: 7px 10px;
+}
+
+.dropdown-text {
+    flex-grow: 1;
+}
+
+.input-border {
+    height: 35px;
+    padding: 7px 10px;
+}
+
+.non-border-filter-input {
+    height: 35px;
+    padding: 10px;
+    border: none;
+}
+
+.div-wrap-input {
+    display: flex;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    align-items: center;
+    background-color: white;
+}
+
+    .div-wrap-input input {
+        width: 100%;
+    }
+
+.div-wrap-filter-input {
+    background-color: white;
+    align-items: center;
+    display: flex;
+    border-right: 1px solid #ddd;
+}
+
+.div-wrap-filter-input input{
+    width: 100%;
+}
+
+
+.input-form-1 {
+    width: 140px;
+}
+
+.custom-btn {
+    height: 35px;
+    padding: 7px 12px;
+    border-radius: 3px;
+    display: flex;
+}
+
+.blue-border-btn {
+    color: #026b97;
+    border: 1px solid #026b97;
+    margin-left: 20px;
+}
+
+.custom-disabled-btn {
+    pointer-events: none;
+    opacity: 0.5;
+}

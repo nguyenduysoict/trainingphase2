@@ -1,0 +1,64 @@
+﻿.menu-icon {
+    margin: auto;
+    height: 26px;
+    width: 26px;
+    background: url(/Contents/Images/sidebarmenu.png) no-repeat;
+}
+
+.item-menu {
+    display: block;
+    align-items: center;
+    text-align: center;
+    color: white;
+    padding: 14px 0;
+}
+
+    .item-menu:hover {
+        cursor: pointer;
+        background-color: #004765;
+        color: white;
+    }
+
+a.item-menu {
+    text-decoration: none;
+}
+
+.icon-dropdown {
+    background-position: -29px 0px;
+}
+
+.icon-overview {
+    background-position: -29px 0px;
+}
+
+.icon-buy {
+    background-position: -29px -41px;
+}
+
+.icon-treasury {
+    background-position: -29px -79px;
+}
+
+.icon-money {
+    background-position: -29px -120px;
+}
+
+.icon-cost {
+    background-position: -29px -162px;
+}
+
+.icon-promotional {
+    background-position: -29px -200px;
+}
+
+.icon-catalog {
+    background-position: -29px -239px;
+}
+
+.icon-report {
+    background-position: -29px -279px;
+}
+
+.icon-set {
+    background-position: -29px -320px;
+}

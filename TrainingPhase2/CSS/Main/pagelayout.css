@@ -1,0 +1,19 @@
+﻿.header{
+    height: 52px;
+}
+
+.page-body{
+   display: flex;
+}
+
+.main-left-menu {
+    min-width: 100px;
+    background-color: #026b97;
+
+}
+
+.main-content {
+    width: calc(100% - 100px);
+    padding: 8px;
+    background-color: #e5e6eb;
+}
