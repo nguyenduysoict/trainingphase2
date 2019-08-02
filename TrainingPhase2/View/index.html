@@ -4,6 +4,8 @@
     <meta charset="utf-8" />
     <link href="../CSS/Library/font-awesome/css/font-awesome.css" rel="stylesheet" />
     <link href="../CSS/Library/bootstrap.css" rel="stylesheet" />
+    <link href="../CSS/Library/jquery-ui.css" rel="stylesheet" />
+    <link href="../CSS/Custom/custom.css" rel="stylesheet" />
     <link href="../CSS/Common/common.css" rel="stylesheet" />
     <link href="../CSS/Common/fonts.css" rel="stylesheet" />
     <link href="../CSS/Main/pagelayout.css" rel="stylesheet" />
@@ -86,9 +88,9 @@
                 </a>
             </div>
             <div class="main-content">
-                <div class="">
+                <div class="upper-page">
                     <div class="main-toolbar">
-                        <button class="toolbar-item">
+                        <button id="btnAdd" class="toolbar-item">
                             <div class="common-icon btn-add-icon">
                             </div>
                             <span class="toolbar-btn-lbl">
@@ -133,8 +135,6 @@
                                 <i class="fa fa-caret-down"></i>
                             </div>
                         </button>
-
-
                     </div>
                     <div class="data-filter-by-date">
                         <div class="dropdown">
@@ -167,7 +167,7 @@
 
                     </div>
                     <div class="master-table">
-                        <div class="div-wrap-thead-filter" >
+                        <div class="div-wrap-thead-filter">
                             <div class="thead-table">
                                 <table class="table">
                                     <thead>
@@ -194,32 +194,55 @@
                                             </td>
                                             <td class="column-2-master-tbl">
                                                 <div class="div-wrap-filter-input">
+                                                    <div class="common-icon quick-search-icon"> </div>
                                                     <input type="text" class="non-border-filter-input" name="name" value="" />
-                                                    <div class="common-icon calendar-icon"> </div>
                                                 </div>
                                             </td>
-                                            <td class="column-3-master-tbl"> 
+                                            <td class="column-3-master-tbl">
                                                 <div class="div-wrap-filter-input">
+                                                    <div class="common-icon quick-search-icon"> </div>
                                                     <input type="text" class="non-border-filter-input" name="name" value="" />
-                                                    <div class="common-icon calendar-icon"> </div>
+
                                                 </div>
                                             </td>
                                             <td class="column-4-master-tbl">
                                                 <div class="div-wrap-filter-input">
+                                                    <div class="dropdown">
+                                                        <div class="operator-dropdown hover-pointer" type="button" data-toggle="dropdown">
+                                                            <div class="dropdown-text"> = </div>
+                                                        </div>
+                                                        <ul class="dropdown-menu">
+                                                            <li><a href="#"> <span> = </span> : Bằng </a></li>
+                                                            <li><a href="#"> <span> > </span>: Lớn hơn</a></li>
+                                                            <li><a href="#"> <span> >= </span> : Lớn hơn hoặc bằng </a></li>
+                                                            <li><a href="#"> <span> < </span> : Nhỏ hơn</a></li>
+                                                            <li><a href="#"> <span> <= </span> : Nhỏ hơn hoặc bằng</a></li>
+                                                        </ul>
+                                                    </div>
                                                     <input type="text" class="non-border-filter-input" name="name" value="" />
-                                                    <div class="common-icon calendar-icon"> </div>
                                                 </div>
                                             </td>
                                             <td class="column-5-master-tbl">
                                                 <div class="div-wrap-filter-input">
+                                                    <div class="common-icon quick-search-icon"> </div>
                                                     <input type="text" class="non-border-filter-input" name="name" value="" />
-                                                    <div class="common-icon calendar-icon"> </div>
                                                 </div>
                                             </td>
                                             <td class="column-6-master-tbl">
                                                 <div class="div-wrap-filter-input">
                                                     <input type="text" class="non-border-filter-input" name="name" value="" />
-                                                    <div class="common-icon calendar-icon"> </div>
+                                                    <div class="dropdown">
+                                                        <div class=" hover-pointer" type="button" data-toggle="dropdown">
+                                                            <div style="padding: 7px 11px"> <i class="fa fa-caret-down"></i></div>
+                                                        </div>
+                                                        <ul class="dropdown-menu">
+                                                            <li><a href="#"> <span> = </span> : Bằng </a></li>
+                                                            <li><a href="#"> <span> > </span>: Lớn hơn</a></li>
+                                                            <li><a href="#"> <span> >= </span> : Lớn hơn hoặc bằng </a></li>
+                                                            <li><a href="#"> <span> < </span> : Nhỏ hơn</a></li>
+                                                            <li><a href="#"> <span> <= </span> : Nhỏ hơn hoặc bằng</a></li>
+                                                        </ul>
+                                                    </div>
                                                 </div>
                                             </td>
                                         </tr>
@@ -228,7 +251,7 @@
                             </div>
                             <div class="div-on-thead-scroll"></div>
                         </div>
-                  
+
                         <div class="div-wrap-master-tbl">
                             <table class="table">
                                 <tbody>
@@ -249,24 +272,12 @@
                         <div class="master-table-footer">
                             <table class="table">
                                 <tr>
-                                    <td class="column-1-master-tbl">
-                                  
-                                    </td>
-                                    <td class="column-2-master-tbl">
-                                   
-                                    </td>
-                                    <td class="column-3-master-tbl">
-                                   
-                                    </td>
-                                    <td class="column-4-master-tbl">
-                                 
-                                    </td>
-                                    <td class="column-5-master-tbl">
-                                  
-                                    </td>
-                                    <td class="column-6-footer-master-tbl">
-                                  
-                                    </td>
+                                    <td class="column-1-master-tbl"></td>
+                                    <td class="column-2-master-tbl"></td>
+                                    <td class="column-3-master-tbl"></td>
+                                    <td class="column-4-master-tbl"></td>
+                                    <td class="column-5-master-tbl"></td>
+                                    <td class="column-6-footer-master-tbl"></td>
                                 </tr>
                             </table>
                         </div>
@@ -296,9 +307,9 @@
                         </div>
                     </div>
                 </div>
-
+                <div>
                     <div class="detail-tab-outer">
-                        <div class="detail-tab" >
+                        <div class="detail-tab">
                             Chi tiết
                         </div>
                     </div>
@@ -308,7 +319,7 @@
                                 <tr>
                                     <th>
                                         <span> Mã hàng hóa </span>
-                                       
+
                                     </th>
                                     <th>Tên hàng hóa</th>
                                     <th>Kho</th>
@@ -325,8 +336,142 @@
             </div>
         </div>
     </div>
+
+
+    <div class="dialogOutwardRef">
+        <div class="dialog-content">
+            <div class="main-toolbar">
+                <button class="toolbar-item">
+                    <div class="common-icon btn-icon-before">
+                    </div>
+                    <span class="toolbar-btn-lbl">
+                        Trước
+                    </span>
+                    <div class="fa-icon-arrow-down">
+                        <i class="fa fa-caret-down"></i>
+                    </div>
+                </button>
+                <button class="toolbar-item">
+                    <span class="toolbar-btn-lbl">
+                        Sau
+                    </span>
+                    <div class="common-icon btn-icon-after">
+                    </div>
+                    <div class="fa-icon-arrow-down">
+                        <i class="fa fa-caret-down"></i>
+                    </div>
+                </button>
+                <button class="toolbar-item">
+                    <div class="common-icon btn-add-icon">
+                    </div>
+                    <span class="toolbar-btn-lbl">
+                        Thêm mới
+                    </span>
+                </button>
+                <button class="toolbar-item">
+                    <div class="common-icon btn-edit-icon">
+                    </div>
+                    <span class="toolbar-btn-lbl">
+                        Sửa
+                    </span>
+                </button>
+                <button class="toolbar-item">
+                    <div class="common-icon btn-save-icon">
+                    </div>
+                    <span class="toolbar-btn-lbl">
+                        Lưu
+                    </span>
+                </button>
+                <button class="toolbar-item">
+                    <div class="common-icon btn-delete-icon">
+                    </div>
+                    <span class="toolbar-btn-lbl">
+                        Xóa
+                    </span>
+                </button>
+                <button class="toolbar-item">
+                    <div class="common-icon btn-return-icon">
+                    </div>
+                    <span class="toolbar-btn-lbl">
+                        Hoãn
+                    </span>
+                </button>
+                <button class="toolbar-item">
+                    <div class="common-icon btn-print-icon">
+                    </div>
+                    <span class="toolbar-btn-lbl">
+                        In
+                    </span>
+                    <div class="fa-icon-arrow-down">
+                        <i class="fa fa-caret-down"></i>
+                    </div>
+                </button>
+                <button class="toolbar-item">
+                    <div class="common-icon btn-help-icon">
+                    </div>
+                    <span class="toolbar-btn-lbl">
+                        Trợ giúp
+                    </span>
+                </button>
+                <button class="toolbar-item">
+                    <div class="common-icon btn-close-icon">
+                    </div>
+                    <span class="toolbar-btn-lbl">
+                        Đóng
+                    </span>
+                </button>
+            </div>
+            <div class="main-dialog-content">
+                <div class="outward-purpose">
+                    <div>Mục đích xuất kho:</div>
+                    <div class="common-icon radio-btn-true outward-purpose-radio-btn">  </div>
+                    <div class="radio-label"> Khác </div>
+                    <div class="common-icon radio-btn-false outward-purpose-radio-btn"> </div>
+                    <div class="radio-label"> Điều chuyển đến cửa hàng khác </div>
+                    <div class="dropdown">
+                        <div class="bts-dropdown hover-pointer branch-dropdown-dialog" type="button" data-toggle="dropdown">
+                            <div class="dropdown-text"> Chi nhánh Bưởi </div>
+                            <div> <i class="fa fa-caret-down"></i></div>
+                        </div>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">HTML</a></li>
+                            <li><a href="#">CSS</a></li>
+                            <li><a href="#">JavaScript</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="outward-form">
+                    <div class="general-infomation">
+                        <div class="form-label">
+                            THÔNG TIN CHUNG
+                        </div>
+                        <div class="general-info-form">
+                            <div class="row">
+                                <div class="label"> Đối tượng</div>
+                                <div class="form-control"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="outward-ref-info">
+                        <div class="form-label"> 
+                            CHỨNG TỪ
+                        </div>
+                        <div class="outward-ref-form">
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
     <script src="../Javascript/Library/jquery-3.3.1.min.js"></script>
+    <script src="../Javascript/Library/jquery-ui.min.js"></script>
     <script src="../Javascript/Library/popper.min.js"></script>
     <script src="../Javascript/Library/bootstrap.min.js"></script>
+    <script src="../Javascript/Resources/Resource.js"></script>
+    <script src="../Javascript/Common/dialog.js"></script>
+    <script src="../Javascript/Main/main.js"></script>
 </body>
 </html>

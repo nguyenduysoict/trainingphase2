@@ -163,7 +163,7 @@
     <Content Include="Contents\Images\sidebarmenu.png" />
     <Content Include="CSS\Common\common.css" />
     <Content Include="CSS\Common\fonts.css" />
-    <Content Include="CSS\Custom\bootstrapcustom.css" />
+    <Content Include="CSS\Custom\custom.css" />
     <Content Include="CSS\Library\font-awesome\.gitignore" />
     <Content Include="CSS\Library\font-awesome\css\font-awesome.css" />
     <Content Include="CSS\Library\font-awesome\css\font-awesome.min.css" />
@@ -177,12 +177,22 @@
     <Content Include="CSS\Library\jquery-ui.css" />
     <Content Include="CSS\Library\jquery.timepicker.css" />
     <Content Include="Global.asax" />
+    <Content Include="Javascript\Common\ajax.js" />
+    <Content Include="Javascript\Common\calendardisplay.js" />
+    <Content Include="Javascript\Common\common.js" />
+    <Content Include="Javascript\Common\databinding.js" />
+    <Content Include="Javascript\Common\dataformater.js" />
+    <Content Include="Javascript\Common\dialog.js" />
+    <Content Include="Javascript\Common\windowresizehandle.js" />
     <Content Include="Javascript\Library\bootstrap.min.js" />
     <Content Include="Javascript\Library\jquery-3.3.1.min.js" />
     <Content Include="Javascript\Library\jquery-ui.min.js" />
     <Content Include="Javascript\Library\jquery.maskedinput.js" />
     <Content Include="Javascript\Library\jquery.timepicker.min.js" />
     <Content Include="Javascript\Library\popper.min.js" />
+    <Content Include="Javascript\Common\main.js" />
+    <Content Include="Javascript\Main\main.js" />
+    <Content Include="Javascript\Resources\Resource.js" />
     <Content Include="obj\Debug\TrainingPhase2.csproj.FileListAbsolute.txt" />
     <Content Include="obj\Debug\TrainingPhase2.dll" />
     <Content Include="obj\Debug\TrainingPhase2.pdb" />
@@ -194,6 +204,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\OutwardRef.cs" />
     <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
     <Compile Include="obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
     <Compile Include="obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
@@ -263,8 +274,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Controllers\" />
-    <Folder Include="Javascript\Common\" />
-    <Folder Include="Models\" />
     <Folder Include="obj\Debug\TempPE\" />
   </ItemGroup>
   <PropertyGroup>

@@ -1,15 +1,28 @@
-﻿.header{
+﻿html{
+    height: 100%;
+}
+
+body{
+    height: 100%;
+}
+
+.header{
     height: 52px;
+}
+
+.wrapper{
+    height: 100%;
 }
 
 .page-body{
    display: flex;
+   height: calc(100% - 52px);
 }
 
 .main-left-menu {
     min-width: 100px;
     background-color: #026b97;
-
+    overflow: auto;
 }
 
 .main-content {
@@ -17,3 +30,9 @@
     padding: 8px;
     background-color: #e5e6eb;
 }
+
+.upper-page {
+    height: 79%;
+}
+
+

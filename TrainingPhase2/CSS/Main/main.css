@@ -1,5 +1,6 @@
 ﻿body {
     font-family: 'Roboto', sans-serif;
+    font-size: 13px;
 }
 
 .data-filter-by-date {
@@ -169,7 +170,8 @@
 }
 
     .div-wrap-master-tbl {
-        height: 200px;
+        height: 81%;
+        min-height: 100px;
         overflow-y: scroll;
         min-width: 1200px;
         overflow-x: hidden;
@@ -179,4 +181,43 @@
 
 .master-table{
     overflow-x: auto;
+    height: 80%;
+}
+
+.operator-dropdown {
+    font-size: 19px;
+    padding: 4px 13px;
+    border-right: 1px solid #ddd;
+}
+
+
+.main-dialog-content{
+    padding: 8px;
+}
+
+.outward-purpose {
+    display: flex;
+    align-items: center;
+}
+
+.outward-purpose-radio-btn {
+    margin-left: 15px;
+    margin-right: 7px;
+}
+
+.radio-label {
+    margin-right: 20px;
+}
+
+.branch-dropdown-dialog {
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    width: 200px;
+}
+
+.outward-form{
+    display: flex;
+}
+
+.form-label{
 }
