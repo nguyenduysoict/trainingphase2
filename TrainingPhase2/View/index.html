@@ -150,12 +150,12 @@
                         </div>
 
                         <div class="lbl-filter"> Từ ngày </div>
-                        <div class="div-wrap-input input-form-1">
+                        <div class="div-wrap-input form-input-4">
                             <input type="text" class="non-border-filter-input" name="name" value="" />
                             <div class="common-icon calendar-icon"> </div>
                         </div>
                         <div class="lbl-filter"> đến ngày </div>
-                        <div class="div-wrap-input input-form-1">
+                        <div class="div-wrap-input form-input-4">
                             <input type="text" class="non-border-filter-input" name="name" value="" />
                             <div class="common-icon calendar-icon"> </div>
                         </div>
@@ -180,7 +180,7 @@
                                             <th class="column-4-master-tbl">Tổng tiền</th>
                                             <th class="column-5-master-tbl">Diễn giải</th>
                                             <th class="column-6-master-tbl">Loại chứng từ</th>
-                                        </tr>
+                                        </tr> 
                                     </thead>
                                 </table>
                                 <div class="thead-filter-row">
@@ -194,13 +194,17 @@
                                             </td>
                                             <td class="column-2-master-tbl">
                                                 <div class="div-wrap-filter-input">
-                                                    <div class="common-icon quick-search-icon"> </div>
+                                                    <div class="div-wrap-icon">
+                                                        <div class="common-icon quick-search-icon"> </div>
+                                                    </div>
                                                     <input type="text" class="non-border-filter-input" name="name" value="" />
                                                 </div>
                                             </td>
                                             <td class="column-3-master-tbl">
                                                 <div class="div-wrap-filter-input">
-                                                    <div class="common-icon quick-search-icon"> </div>
+                                                    <div class="div-wrap-icon">
+                                                        <div class="common-icon quick-search-icon"> </div>
+                                                    </div>
                                                     <input type="text" class="non-border-filter-input" name="name" value="" />
 
                                                 </div>
@@ -224,7 +228,9 @@
                                             </td>
                                             <td class="column-5-master-tbl">
                                                 <div class="div-wrap-filter-input">
-                                                    <div class="common-icon quick-search-icon"> </div>
+c                                                    <div class="div-wrap-icon">
+                                                        <div class="common-icon quick-search-icon"> </div>
+                                                    </div>
                                                     <input type="text" class="non-border-filter-input" name="name" value="" />
                                                 </div>
                                             </td>
@@ -233,7 +239,7 @@
                                                     <input type="text" class="non-border-filter-input" name="name" value="" />
                                                     <div class="dropdown">
                                                         <div class=" hover-pointer" type="button" data-toggle="dropdown">
-                                                            <div style="padding: 7px 11px"> <i class="fa fa-caret-down"></i></div>
+                                                            <div class="icon-in-input"> <i class="fa fa-caret-down"></i></div>
                                                         </div>
                                                         <ul class="dropdown-menu">
                                                             <li><a href="#"> <span> = </span> : Bằng </a></li>
@@ -446,9 +452,35 @@
                             THÔNG TIN CHUNG
                         </div>
                         <div class="general-info-form">
-                            <div class="row">
-                                <div class="label"> Đối tượng</div>
-                                <div class="form-control"></div>
+                            <div class="left-side-form">
+                                <div class="custom-form-row">
+                                    <div class="form-input-label"> Đối tượng </div>
+                                    <div class="div-wrap-input form-input-1">
+                                        <input type="text" class="non-border-filter-input" name="name" value="" />
+                                        <div class="icon-in-input"> 
+                                            <img class="arrow-down-line-img" src="/Contents/Icons/arrow-down-line.png" />
+                                        </div>
+                                        <div class="icon-in-input">
+                                            <div class="common-icon quick-search-icon"> </div>
+                                        </div>
+                                    </div>
+                                    <div class="div-wrap-input form-input-2">
+                                        <input type="text" class="non-border-filter-input" name="name" value="" />
+                                    </div>
+                                </div>
+                                <div class="custom-form-row">
+                                    <div class="form-input-label"> Địa chỉ</div>
+                                    <div class="div-wrap-input form-input-3">
+                                        <input type="text" class="non-border-filter-input" name="name" value="" />
+                                    </div>
+                                </div>
+                                <div class="custom-form-row">
+                                    <div class="form-input-label"> Diễn giải</div>
+                                    <div class="div-wrap-input form-input-3">
+                                        <input type="text" class="non-border-filter-input" name="name" value="" />
+                                    </div>
+                                </div>
+                                
                             </div>
                         </div>
                     </div>
@@ -457,10 +489,76 @@
                             CHỨNG TỪ
                         </div>
                         <div class="outward-ref-form">
-
+                            <div class="right-side-form">
+                                <div class="custom-form-row">
+                                    <div class="form-input-label"> Số phiếu xuất </div>
+                                    <div class="div-wrap-input form-input-4">
+                                        <input type="text" class="non-border-filter-input" name="name" value="" />
+                                    </div>
+                                </div>
+                                <div class="custom-form-row">
+                                    <div class="form-input-label"> Ngày xuất </div>
+                                    <div class="div-wrap-input form-input-4">
+                                        <input type="text" class="non-border-filter-input" name="name" value="" />
+                                        <div class="common-icon calendar-icon"> </div>
+                                    </div>
+                                </div>
+                                <div class="custom-form-row">
+                                    <div class="form-input-label"> Giờ xuất </div>
+                                    <div class="div-wrap-input form-input-4">
+                                        <input type="text" class="non-border-filter-input" name="name" value="" />
+                                        <div class="common-icon hour-icon"> </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
+                </div>
 
+                <div class="outward-form-detail-table">
+                    <div class="form-label"> CHI TIẾT </div>
+                    <div class="div-wrap-form-detail-table">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th class="width-150">Mã SKU</th>
+                                    <th>Tên hàng hóa</th>
+                                    <th class="width-180">Kho</th>
+                                    <th class="width-90">Đơn vị tính</th>
+                                    <th class="width-100">Số lượng</th>
+                                    <th class="width-90">Đơn giá</th>
+                                    <th class="width-100">Thành tiền</th>
+                                    <th class="width-40"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="detail-table-form-footer">
+                            <table class="table">
+                                <tr>
+                                    <td class="width-150"></td>
+                                    <td class=""></td>
+                                    <td class="width-180"></td>
+                                    <td class="width-90"></td>
+                                    <td class="width-100"></td>
+                                    <td class="width-90"></td>
+                                    <td class="width-100"></td>
+                                    <td class="width-40"></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

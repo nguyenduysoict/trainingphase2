@@ -114,7 +114,7 @@
 
 .div-on-thead-scroll {
     width: 18px;
-    height: 72px;
+    height: 69px;
     border-top: 1px solid #ddd;
     background-color: #f0f0f0;
     border-right: 1px solid #ddd;
@@ -170,7 +170,7 @@
 }
 
     .div-wrap-master-tbl {
-        height: 81%;
+        height: 76%;
         min-height: 100px;
         overflow-y: scroll;
         min-width: 1200px;
@@ -180,8 +180,12 @@
     }
 
 .master-table{
-    overflow-x: auto;
-    height: 80%;
+    height: 75%;
+}
+
+.detail-table {
+    min-height: 100px;
+    background-color: white;
 }
 
 .operator-dropdown {
@@ -198,6 +202,7 @@
 .outward-purpose {
     display: flex;
     align-items: center;
+    padding: 5px;
 }
 
 .outward-purpose-radio-btn {
@@ -217,7 +222,21 @@
 
 .outward-form{
     display: flex;
+    margin-top: 10px;
 }
 
-.form-label{
+.form-label {
+    font-size: 16px;
+    font-weight: bold;
+    color: rgba(1,1,1, 0.4);
+}
+
+.general-infomation{
+    width: 700px;
+    margin-right: 10px;
+}
+
+.detail-table-form-footer {
+    background-color: #FFEEDA;
+    font-weight: bold;
 }

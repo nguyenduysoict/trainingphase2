@@ -7,7 +7,7 @@ class Dialog {
             width: width,
             height: height,
             fluid: true,
-            autoOpen: false,
+            autoOpen: true,
             title: title,
             modal: true,
             resizable: false
