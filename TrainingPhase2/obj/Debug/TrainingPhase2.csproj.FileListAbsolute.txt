@@ -106,11 +106,6 @@ D:\nmduy\trainingphase2\TrainingPhase2\bin\roslyn\vbc.exe.config
 D:\nmduy\trainingphase2\TrainingPhase2\bin\roslyn\vbc.rsp
 D:\nmduy\trainingphase2\TrainingPhase2\bin\roslyn\VBCSCompiler.exe
 D:\nmduy\trainingphase2\TrainingPhase2\bin\roslyn\VBCSCompiler.exe.config
-D:\nmduy\trainingphase2\TrainingPhase2\bin\Newtonsoft.Json.xml
-D:\nmduy\trainingphase2\TrainingPhase2\bin\System.Net.Http.Formatting.xml
-D:\nmduy\trainingphase2\TrainingPhase2\bin\System.Web.Http.xml
-D:\nmduy\trainingphase2\TrainingPhase2\bin\System.Web.Http.WebHost.xml
-D:\nmduy\trainingphase2\TrainingPhase2\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 D:\nmduy\trainingphase2\TrainingPhase2\obj\Debug\TrainingPhase2.csprojAssemblyReference.cache
 D:\nmduy\trainingphase2\TrainingPhase2\obj\Debug\TrainingPhase2.csproj.CoreCompileInputs.cache
 D:\nmduy\trainingphase2\TrainingPhase2\obj\Debug\TrainingPhase2.csproj.CopyComplete

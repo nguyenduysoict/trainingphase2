@@ -17,15 +17,12 @@ function idGenerate(){
  * Createby NMDuy 25/07/2019
  */
 
-function getInitialDate() {
+function getCurrentDate() {
     var toDay = new Date();
     return formatDate(toDay)
 }
 
-/**
- * Lấy giờ hiện tại
- * Createby NMDuy 25/07/2019
- */
+
 function getCurrentTime(){
     var now = new Date();
     var currentTime = now.getHours() + ":" + now.getMinutes();

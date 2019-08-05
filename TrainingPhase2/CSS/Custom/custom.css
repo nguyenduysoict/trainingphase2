@@ -1,3 +1,19 @@
 ﻿.ui-dialog-content.ui-widget-content{
     padding: 0;
 }
+
+.dropdown-menu{
+    font-size: 13px;
+}
+
+.table > thead > tr > th,
+.table > tbody > tr > th,
+.table > tfoot > tr > th,
+.table > thead > tr > td,
+.table > tbody > tr > td,
+.table > tfoot > tr > td {
+    padding-top: 7px;
+    padding-right: 7px;
+    padding-bottom: 7px;
+    padding-left: 7px;
+}

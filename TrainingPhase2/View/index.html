@@ -138,14 +138,14 @@
                     </div>
                     <div class="data-filter-by-date">
                         <div class="dropdown">
-                            <div class="time-range-filter bts-dropdown hover-pointer" type="button" data-toggle="dropdown">
+                            <div class="custom-dropdown bts-dropdown hover-pointer" type="button" data-toggle="dropdown">
                                 <div class="dropdown-text"> Hôm nay </div>
                                 <div> <i class="fa fa-caret-down"></i></div>
                             </div>
                             <ul class="dropdown-menu">
-                                <li><a href="#">HTML</a></li>
-                                <li><a href="#">CSS</a></li>
-                                <li><a href="#">JavaScript</a></li>
+                                <li><a href="#"> Hôm nay </a></li>
+                                <li><a href="#"> Hôm qua </a></li>
+                                <li><a href="#"> Tuần này </a></li>
                             </ul>
                         </div>
 
@@ -180,7 +180,7 @@
                                             <th class="column-4-master-tbl">Tổng tiền</th>
                                             <th class="column-5-master-tbl">Diễn giải</th>
                                             <th class="column-6-master-tbl">Loại chứng từ</th>
-                                        </tr> 
+                                        </tr>
                                     </thead>
                                 </table>
                                 <div class="thead-filter-row">
@@ -228,7 +228,7 @@
                                             </td>
                                             <td class="column-5-master-tbl">
                                                 <div class="div-wrap-filter-input">
-c                                                    <div class="div-wrap-icon">
+                                                    <div class="div-wrap-icon">
                                                         <div class="common-icon quick-search-icon"> </div>
                                                     </div>
                                                     <input type="text" class="non-border-filter-input" name="name" value="" />
@@ -236,17 +236,15 @@ c                                                    <div class="div-wrap-icon">
                                             </td>
                                             <td class="column-6-master-tbl">
                                                 <div class="div-wrap-filter-input">
-                                                    <input type="text" class="non-border-filter-input" name="name" value="" />
+                                                    <input type="text" class="non-border-filter-input" name="name" value="Tất cả" />
                                                     <div class="dropdown">
                                                         <div class=" hover-pointer" type="button" data-toggle="dropdown">
                                                             <div class="icon-in-input"> <i class="fa fa-caret-down"></i></div>
                                                         </div>
                                                         <ul class="dropdown-menu">
-                                                            <li><a href="#"> <span> = </span> : Bằng </a></li>
-                                                            <li><a href="#"> <span> > </span>: Lớn hơn</a></li>
-                                                            <li><a href="#"> <span> >= </span> : Lớn hơn hoặc bằng </a></li>
-                                                            <li><a href="#"> <span> < </span> : Nhỏ hơn</a></li>
-                                                            <li><a href="#"> <span> <= </span> : Nhỏ hơn hoặc bằng</a></li>
+                                                            <li><a href="#"> Tất cả </a></li>
+                                                            <li><a href="#"> Phiếu xuất kho khác </a></li>
+                                                            <li><a href="#"> Phiếu xuất kho điều chuyển</a></li>
                                                         </ul>
                                                     </div>
                                                 </div>
@@ -454,14 +452,38 @@ c                                                    <div class="div-wrap-icon">
                         <div class="general-info-form">
                             <div class="left-side-form">
                                 <div class="custom-form-row">
-                                    <div class="form-input-label"> Đối tượng </div>
-                                    <div class="div-wrap-input form-input-1">
-                                        <input type="text" class="non-border-filter-input" name="name" value="" />
-                                        <div class="icon-in-input"> 
-                                            <img class="arrow-down-line-img" src="/Contents/Icons/arrow-down-line.png" />
+                                    <div class="form-input-label"> Nhân viên </div>
+                                    <div class="dropdown-div">
+                                        <div class="div-wrap-input form-input-1">
+                                            <input type="text" class="non-border-filter-input input-combobox" name="name" value="" />
+                                            <div class="icon-in-input arrow-down-dropbox-icon" comboboxName="object">
+                                                <img class="arrow-down-line-img" src="/Contents/Icons/arrow-down-line.png" />
+                                            </div>
+                                            <div class="icon-in-input">
+                                                <div class="common-icon quick-search-icon btn-search-object"> </div>
+                                            </div>
                                         </div>
-                                        <div class="icon-in-input">
-                                            <div class="common-icon quick-search-icon"> </div>
+                                        <div class="dropdown-content object" comboboxName="object">
+                                            <div>
+                                                <div class="thead-dropdown">
+                                                    <div class="width-130 dropdown-column-name">
+                                                        Mã
+                                                    </div>
+                                                    <div class="width-250 dropdown-column-name">
+                                                        Tên
+                                                    </div>
+                                                    <div class="width-150 dropdown-column-name">
+                                                        Loại
+                                                    </div>
+                                                    <div class="div-on-combobox-tbl-scroll">
+                                                    </div>
+                                                </div>
+                                                <div class="tbody-dropdown">
+                                                    <table class="table">
+                                                        <tbody class="object-combobox-data"></tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="div-wrap-input form-input-2">
@@ -480,12 +502,12 @@ c                                                    <div class="div-wrap-icon">
                                         <input type="text" class="non-border-filter-input" name="name" value="" />
                                     </div>
                                 </div>
-                                
+
                             </div>
                         </div>
                     </div>
                     <div class="outward-ref-info">
-                        <div class="form-label"> 
+                        <div class="form-label">
                             CHỨNG TỪ
                         </div>
                         <div class="outward-ref-form">
@@ -493,20 +515,20 @@ c                                                    <div class="div-wrap-icon">
                                 <div class="custom-form-row">
                                     <div class="form-input-label"> Số phiếu xuất </div>
                                     <div class="div-wrap-input form-input-4">
-                                        <input type="text" class="non-border-filter-input" name="name" value="" />
+                                        <input type="text" class="non-border-filter-input outward-ref-no" name="name" value="" />
                                     </div>
                                 </div>
                                 <div class="custom-form-row">
                                     <div class="form-input-label"> Ngày xuất </div>
                                     <div class="div-wrap-input form-input-4">
-                                        <input type="text" class="non-border-filter-input" name="name" value="" />
+                                        <input type="text" class="non-border-filter-input outward-date" name="name" value="" />
                                         <div class="common-icon calendar-icon"> </div>
                                     </div>
                                 </div>
                                 <div class="custom-form-row">
                                     <div class="form-input-label"> Giờ xuất </div>
                                     <div class="div-wrap-input form-input-4">
-                                        <input type="text" class="non-border-filter-input" name="name" value="" />
+                                        <input type="text" class="non-border-filter-input outward-time" name="name" value="" />
                                         <div class="common-icon hour-icon"> </div>
                                     </div>
                                 </div>
@@ -531,45 +553,248 @@ c                                                    <div class="div-wrap-icon">
                                     <th class="width-40"></th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                <tr>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
+                            <tbody class="outward-detail-table">
+                                
                             </tbody>
                         </table>
-                        <div class="detail-table-form-footer">
-                            <table class="table">
-                                <tr>
-                                    <td class="width-150"></td>
-                                    <td class=""></td>
-                                    <td class="width-180"></td>
-                                    <td class="width-90"></td>
-                                    <td class="width-100"></td>
-                                    <td class="width-90"></td>
-                                    <td class="width-100"></td>
-                                    <td class="width-40"></td>
-                                </tr>
-                            </table>
+                        <div class="detail-table-space">
+
                         </div>
+                    </div>
+                    <div class="detail-table-form-footer">
+                        <table class="table">
+                            <tr>
+                                <td class="width-150 "></td>
+                                <td class=""></td>
+                                <td class="width-180 "></td>
+                                <td class="width-90 "></td>
+                                <td class="width-100 "></td>
+                                <td class="width-90 "></td>
+                                <td class="width-100 "></td>
+                                <td class="width-40 "></td>
+                            </tr>
+                        </table>
                     </div>
                 </div>
             </div>
         </div>
-
     </div>
-    <script src="../Javascript/Library/jquery-3.3.1.min.js"></script>
-    <script src="../Javascript/Library/jquery-ui.min.js"></script>
+
+    <div class="dropdown-content product" comboboxName="product">
+        <div>
+            <div class="thead-dropdown">
+                <div class="width-130 dropdown-column-name">
+                    Mã
+                </div>
+                <div class="width-250 dropdown-column-name">
+                    Tên
+                </div>
+                <div class="div-on-combobox-tbl-scroll">
+                </div>
+            </div>
+            <div class="tbody-dropdown">
+                <table class="table">
+                    <tbody class="product-combobox-data">
+                        <tr>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <!--<div class="dialogSelectObject">
+        <div class="main-dialog-content">
+            <div class="dialog-header-filter">
+                <div> Loại đối tượng  </div>
+                <div class="dropdown filter-by-type">
+                    <div class="custom-dropdown bts-dropdown hover-pointer" type="button" data-toggle="dropdown">
+                        <div class="dropdown-text"> Nhân viên </div>
+                        <div> <i class="fa fa-caret-down"></i></div>
+                    </div>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Nhân viên</a></li>
+                        <li><a href="#">Khách hàng</a></li>
+                        <li><a href="#">Nhà cung cấp</a></li>
+                    </ul>
+                </div>
+                <input type="text" class="border-input form-input-2" placeholder="Nhập mã đối tượng, tên đối tượng" />
+                <div class="blue-border-btn custom-btn hover-pointer">
+                    <div class="common-icon btn-search-blue-icon"></div>
+                    <div>Tìm kiếm</div>
+                </div>
+            </div>
+            <div class="dialog-body">
+                <div class="div-wrap-select-object-tbl">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th class="width-40"></th>
+                                <th class="width-130">Mã đối tượng</th>
+                                <th class="width-180">Tên đối tượng</th>
+                                <th class="width-150">Loại đối tượng</th>
+                                <th>Địa chỉ</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div class="common-icon radio-btn-true">  </div>
+                                </td>
+                                <td> KH0001 </td>
+                                <td> Nguyễn Mạnh Duy </td>
+                                <td> Khách hàng </td>
+                                <td> Việt Lâm - Vị Xuyên - Hà Giang</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="pagination-table">
+                    <div class="icon-pagination custom-disabled-btn icon-double-arrow-left hover-pointer"></div>
+                    <div class="icon-pagination custom-disabled-btn icon-arrow-left hover-pointer"></div>
+                    <span class="text-pagination">Trang</span>
+                    <input type="number" min="1" max="10" value="1" class="input-pagination positive-num-input" />
+                    <span class="text-pagination">trên 10</span>
+                    <div class="icon-pagination icon-arrow-right hover-pointer"></div>
+                    <div class="icon-pagination icon-double-arrow-right hover-pointer"></div>
+                    <div class="icon-pagination icon-refresh-pagination hover-pointer"></div>
+                    <div class="dropdown">
+                        <div class="bts-dropdown row-per-page hover-pointer" type="button" data-toggle="dropdown">
+                            <div class="dropdown-text"> 15 </div>
+                            <div> <i class="fa fa-caret-down"></i></div>
+                        </div>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">30</a></li>
+                            <li><a href="#">50</a></li>
+                            <li><a href="#">100</a></li>
+                        </ul>
+                    </div>
+                    <span class="text-pagination result-pagination"> <span class="record-range"> 1 - 30  </span> trong 300 kết quả</span>
+                </div>
+            </div>
+            <hr />
+            <div class="dialog-footer">
+                <div style="flex-grow: 1">
+                    <div class="help-header">
+                        <img src="/Contents/Images/icon_help_18.png"/>
+                        <span class="text-help-header">Trợ giúp</span>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="custom-btn custom-btn-blue-back">
+                        <div class="common-icon btn-agree-icon"> </div>
+                        <span>Chọn</span>
+                    </div>
+                </div>
+                <div>
+                    <div class="custom-btn custom-btn-no-border">
+                        <div class="common-icon btn-cancel-icon"></div>
+                        <span>Hủy bỏ</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>-->
+    <!--<div class="dialogSelectItem">
+        <div class="main-dialog-content">
+            <div class="dialog-header-filter">
+                <div> Nhóm hàng hóa  </div>
+                <div class="dropdown filter-by-type">
+                    <div class="custom-dropdown bts-dropdown hover-pointer" type="button" data-toggle="dropdown">
+                        <div class="dropdown-text"> Tất cả </div>
+                        <div> <i class="fa fa-caret-down"></i></div>
+                    </div>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">HTML</a></li>
+                        <li><a href="#">CSS</a></li>
+                        <li><a href="#">JavaScript</a></li>
+                    </ul>
+                </div>
+                <input type="text" class="border-input form-input-2" placeholder="Nhập mã tên hàng hóa, tên hàng hóa" />
+                <div class="blue-border-btn custom-btn hover-pointer">
+                    <div class="common-icon btn-search-blue-icon"></div>
+                    <div>Tìm kiếm</div>
+                </div>
+            </div>
+            <div class="dialog-body">
+                <div class="div-wrap-select-item-tbl">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th class="width-230">Mã SKU</th>
+                                <th>Tên hàng hóa</th>
+                                <th class="width-150">Nhóm hàng hóa</th>
+                                <th class="width-90">Đơn vị tính</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>2</td>
+                                <td>3</td>
+                                <td>4</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="pagination-table">
+                    <div class="icon-pagination custom-disabled-btn icon-double-arrow-left hover-pointer"></div>
+                    <div class="icon-pagination custom-disabled-btn icon-arrow-left hover-pointer"></div>
+                    <span class="text-pagination">Trang</span>
+                    <input type="number" min="1" max="10" value="1" class="input-pagination positive-num-input" />
+                    <span class="text-pagination">trên 10</span>
+                    <div class="icon-pagination icon-arrow-right hover-pointer"></div>
+                    <div class="icon-pagination icon-double-arrow-right hover-pointer"></div>
+                    <div class="icon-pagination icon-refresh-pagination hover-pointer"></div>
+                    <div class="dropdown">
+                        <div class="bts-dropdown row-per-page hover-pointer" type="button" data-toggle="dropdown">
+                            <div class="dropdown-text"> 15 </div>
+                            <div> <i class="fa fa-caret-down"></i></div>
+                        </div>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">30</a></li>
+                            <li><a href="#">50</a></li>
+                            <li><a href="#">100</a></li>
+                        </ul>
+                    </div>
+                    <span class="text-pagination result-pagination"> <span class="record-range"> 1 - 30  </span> trong 300 kết quả</span>
+                </div>
+            </div>
+            <hr />
+            <div class="dialog-footer">
+                <div style="flex-grow: 1">
+                    <div class="help-header">
+                        <img src="/Contents/Images/icon_help_18.png"/>
+                        <span class="text-help-header">Trợ giúp</span>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="custom-btn custom-btn-blue-back">
+                        <div class="common-icon btn-agree-icon"> </div>
+                        <span>Chọn</span>
+                    </div>
+                </div>
+                <div>
+                    <div class="custom-btn custom-btn-no-border">
+                        <div class="common-icon btn-cancel-icon"></div>
+                        <span>Hủy bỏ</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>-->
+
+    <script src="../Javascript/Library/jquery-3.4.1.js"></script>
+    <script src="../Javascript/Library/jquery-ui.js"></script>
     <script src="../Javascript/Library/popper.min.js"></script>
     <script src="../Javascript/Library/bootstrap.min.js"></script>
-    <script src="../Javascript/Resources/Resource.js"></script>
+    <script src="../Javascript/Resources/resource.js"></script>
+    <script src="../Javascript/Common/ajax.js"></script>
+    <script src="../Javascript/Common/common.js"></script>
     <script src="../Javascript/Common/dialog.js"></script>
+    <script src="../Javascript/Common/databinder.js"></script>
     <script src="../Javascript/Main/main.js"></script>
 </body>
 </html>
+

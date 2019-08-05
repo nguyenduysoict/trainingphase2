@@ -10,9 +10,9 @@
     align-items: center;
 }
 
-.time-range-filter {
-    width: 130px;
-    height: 35px;
+.custom-dropdown {
+    width: 150px;
+    height: 33px;
     border: 1px solid #ddd;
     border-radius: 3px;
 }
@@ -39,9 +39,9 @@
     background-color: white;
     height: 54px;
     width: 100%;
-    border-top: 1px solid #ddd;
+    border: 1px solid #ddd;
     display: flex;
-    padding-left: 10px;
+    padding: 10px;
 }
 
 
@@ -166,7 +166,7 @@
 }   
 
 .master-table-footer table tbody tr td {
-    height: 35px;
+    height: 33px;
 }
 
     .div-wrap-master-tbl {
@@ -239,4 +239,76 @@
 .detail-table-form-footer {
     background-color: #FFEEDA;
     font-weight: bold;
+    height: 33px;
+}
+
+.detail-table-form-footer td{
+    height: 33px;
+}
+
+.no-padding-cell{
+    padding: 0!important;
+    height: 33px!important;
+}
+
+.detail-tbl-branch-dropbox {
+    width: 100%;
+    margin-top: 2px;
+}
+
+.arrow-up {
+    background: url(/Contents/Icons/arrow-up.png) no-repeat 4px 3px;
+    margin: 4px 0;
+}
+
+.amount-arrow {
+    width: 16px;
+    height: 11px;
+    opacity: 0.5;
+}
+
+.arrow-down {
+    background: url(/Contents/Icons/arrow-down.png) no-repeat 4px 3px;
+}
+
+.div-wrap-detail-body-table{
+    height: 300px;
+}
+
+.detail-table-space{
+    border-left: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+}
+
+.dialog-header-filter {
+    display: flex;
+    margin: 5px;
+    align-items: center;
+}
+
+.filter-by-type {
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+.help-header {
+    display: flex;
+}
+
+.text-help-header {
+    margin-left: 5px;
+    color: #026b97;
+}
+
+.div-wrap-select-object-tbl{
+    margin-top: 15px;
+    height: 300px;
+}
+.div-wrap-select-item-tbl{
+    margin-top: 15px;
+    height: 400px;
+}
+
+.product{
+    z-index: 102;
 }

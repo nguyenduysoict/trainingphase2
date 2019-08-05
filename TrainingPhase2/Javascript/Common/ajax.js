@@ -1,7 +1,11 @@
 ﻿class AjaxJS {
     constructor() {
         this.receiptNumber = "XK0000012";
-        this.detailExportReceipt = []
+        this.detailExportReceipt = [];
+    }
+
+    getRefNo() {
+        return 'XK002310'
     }
 
     /**
@@ -145,7 +149,7 @@
                 }
                 return object;
 
-            case "goods":
+            case "product":
                 var goods = [];
                 for (let i = 1; i <= 20; i++) {
                     var item = {

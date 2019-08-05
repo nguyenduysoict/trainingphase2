@@ -10,6 +10,10 @@ thead {
     background-color: #f0f0f0;
 }
 
+tbody tr:hover {
+    background: rgba(195, 236, 255, 0.5);
+}
+
     thead th {
         text-align: center;
     }
@@ -116,9 +120,23 @@ thead {
 
 .btn-filter-icon {
     background-position: -605px -131px;
-    margin: 5px 0;
+    margin-top: 7px;
 }
 
+.btn-agree-icon {
+    background-position: -377px -127px;
+    margin-right: 5px;  
+}
+
+.btn-cancel-icon {
+    background-position: -255px -130px;
+    margin-top: 4px;
+}
+
+.btn-search-blue-icon {
+    background: url(/Contents/Icons/Search-blue.png) no-repeat;
+    margin-top: 2px;
+}
 .calendar-icon {
     background-position: -4px -178px;
     margin: 5px 7px;
@@ -129,12 +147,22 @@ thead {
     margin-right: 6px;
 }
 
+.garbage-icon {
+    background-position: 4px 1px;
+    width: 27px;
+    height: 24px;
+    margin-left: 5px;
+    margin-top: 4px;
+}
+
 .radio-btn-true {
-    background-position: -102px -77px
+    background-position: -102px -77px;
+    margin-left: 5px;
 }
 
 .radio-btn-false {
     background-position: -77px -77px;
+    margin-left: 5px;
 }
 
 .toolbar-btn-lbl {
@@ -150,15 +178,27 @@ thead {
     flex-grow: 1;
 }
 
-.input-border {
-    height: 35px;
+.border-input {
+    height: 33px;
     padding: 7px 10px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
 }
 
 .non-border-filter-input {
-    height: 35px;
+    height: 33px;
     padding: 10px;
     border: none;
+}
+
+.div-wrap-input-no-border {
+    display: flex;
+    align-items: center;
+    background-color: white;
+}
+
+.div-wrap-input-no-border input{
+    width: 100%;
 }
 
 .div-wrap-input {
@@ -186,10 +226,15 @@ thead {
 
 
 .custom-btn {
-    height: 35px;
+    height: 33px;
     padding: 7px 12px;
     border-radius: 3px;
     display: flex;
+    align-items: center;
+}
+
+.custom-btn:hover{
+    cursor: pointer;
 }
 
 .blue-border-btn {
@@ -198,9 +243,31 @@ thead {
     margin-left: 20px;
 }
 
+.custom-btn-blue-back {
+    font-weight: 500;
+    background-color: #026b97;
+    color: white;
+    margin-right: 10px;
+}
+
+.custom-btn-no-border{
+    border: 1px solid;
+    border-color: transparent;
+}
+
+.custom-btn-no-border:hover {
+    border: 1px solid #026b97;
+}
+
 .custom-disabled-btn {
     pointer-events: none;
     opacity: 0.5;
+}
+
+.disabled-cell {
+    opacity: 0.8;
+    pointer-events: none;
+    background-color: #e5e6eb;
 }
 
 .div-wrap-icon{
@@ -263,6 +330,10 @@ thead {
     width: 100px;
 }
 
+.width-130{
+    width: 130px;
+}
+
 .width-150{
     width: 150px;
 }
@@ -271,6 +342,84 @@ thead {
     width: 180px;
 }
 
+.width-200{
+    width: 200px;
+}
 
+.width-230{
+    width: 230px;
+}
 
+.width-250{
+    width: 250px;
+}
 
+.text-align-right{
+    text-align:right;
+}
+
+.div-wrap-form-detail-table {
+    height: 340px;
+}
+
+.div-wrap-form-detail-table > table > tbody > tr > td input{
+    width: 100%;
+}
+
+.branch-dropdown-cell {
+    display: flex;
+    margin-top: 6px;
+    margin-left: 6px;
+}
+
+.dialog-footer{
+    display: flex;
+    align-items: center;
+}
+
+.selected-row {
+    background-color: rgb(195, 236, 255);
+}
+
+.dropdown-div {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    z-index: 1;
+    border: 1px solid #e1e1e1;
+    box-shadow: -1px 3px 18px -8px rgba(0,0,0,0.75);
+    background-color: white;
+    left: -1px;
+}
+
+.thead-dropdown {
+    display: flex;
+    background: #f0f0f0;
+    font-weight: bold;
+    text-align: center;
+    height: 33px;
+    color: #212121;
+}
+
+    .thead-dropdown .dropdown-column-name {
+        padding: 7px;
+        border-left: 1px solid #ddd;
+    }
+
+.tbody-dropdown {
+    height: 200px;
+    overflow-y: scroll
+}
+
+.div-on-combobox-tbl-scroll{
+    width: 18px;
+    border-left: 1px solid #ddd;
+}
+
+.show{
+    display: block;
+}
