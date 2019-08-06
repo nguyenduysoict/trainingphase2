@@ -183,14 +183,12 @@
     <Content Include="Javascript\Common\databinder.js" />
     <Content Include="Javascript\Common\dataformater.js" />
     <Content Include="Javascript\Common\dialog.js" />
-    <Content Include="Javascript\Common\windowresizehandle.js" />
     <Content Include="Javascript\Library\bootstrap.min.js" />
     <Content Include="Javascript\Library\jquery-3.4.1.js" />
     <Content Include="Javascript\Library\jquery-ui.js" />
     <Content Include="Javascript\Library\jquery.maskedinput.js" />
     <Content Include="Javascript\Library\jquery.timepicker.min.js" />
     <Content Include="Javascript\Library\popper.min.js" />
-    <Content Include="Javascript\Common\main.js" />
     <Content Include="Javascript\Main\main.js" />
     <Content Include="Javascript\Resources\resource.js" />
     <Content Include="obj\Debug\TrainingPhase2.csproj.FileListAbsolute.txt" />

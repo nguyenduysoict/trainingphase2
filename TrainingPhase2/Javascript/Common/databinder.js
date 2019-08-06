@@ -117,15 +117,12 @@
                 <td class="no-padding-cell width-150">
                     <div class="dropdown-div">
                         <div class="div-wrap-input-no-border">
-                            <input type="text" class="non-border-filter-input" name="name" value="" placeholder="Tìm tên, mã" />
+                            <input type="text" class="non-border-filter-input" placeholder="Tìm tên, mã" />
                             <div class="icon-in-input arrow-down-dropbox-icon" comboboxName="product">
-                                <img class="arrow-down-line-img" src="/Contents/Icons/arrow-down-line.png" />
                             </div>
-                            <div class="icon-in-input">
-                                <div class="common-icon quick-search-icon"> </div>
+                            <div class="icon-in-input quick-search-icon">
                             </div>
                         </div>
-
                     </div>
                 </td>
                 <td class="disabled-cell"></td>
@@ -143,13 +140,13 @@
         var row =
             `<tr>
                 <td class="no-padding-cell width-150">
-                    <div class="div-wrap-input-no-border">
-                        <input type="text" class="non-border-filter-input" name="name" value="${item.itemCode}" />
-                        <div class="icon-in-input">
-                            <img class="arrow-down-line-img" src="/Contents/Icons/arrow-down-line.png" />
-                        </div>
-                        <div class="icon-in-input">
-                            <div class="common-icon quick-search-icon item-quick-search"> </div>
+                    <div class="dropdown-div">
+                        <div class="div-wrap-input-no-border">
+                            <input type="text" class="non-border-filter-input item-code-input" name="name" value="${item.itemCode}" />
+                            <div class="icon-in-input item-code-icon arrow-down-dropbox-icon" comboboxName="product" style="display:none">
+                            </div>
+                            <div class="icon-in-input item-code-icon quick-search-icon" style="display:none">
+                            </div>
                         </div>
                     </div>
                 </td>

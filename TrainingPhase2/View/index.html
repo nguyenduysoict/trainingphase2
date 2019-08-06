@@ -5,6 +5,7 @@
     <link href="../CSS/Library/font-awesome/css/font-awesome.css" rel="stylesheet" />
     <link href="../CSS/Library/bootstrap.css" rel="stylesheet" />
     <link href="../CSS/Library/jquery-ui.css" rel="stylesheet" />
+    <link href="../CSS/Library/jquery.timepicker.css" rel="stylesheet" />
     <link href="../CSS/Custom/custom.css" rel="stylesheet" />
     <link href="../CSS/Common/common.css" rel="stylesheet" />
     <link href="../CSS/Common/fonts.css" rel="stylesheet" />
@@ -151,12 +152,12 @@
 
                         <div class="lbl-filter"> Từ ngày </div>
                         <div class="div-wrap-input form-input-4">
-                            <input type="text" class="non-border-filter-input" name="name" value="" />
+                            <input type="text" class="non-border-filter-input date-picker-input" />
                             <div class="common-icon calendar-icon"> </div>
                         </div>
                         <div class="lbl-filter"> đến ngày </div>
                         <div class="div-wrap-input form-input-4">
-                            <input type="text" class="non-border-filter-input" name="name" value="" />
+                            <input type="text" class="non-border-filter-input date-picker-input" />
                             <div class="common-icon calendar-icon"> </div>
                         </div>
 
@@ -188,7 +189,7 @@
                                         <tr>
                                             <td class="column-1-master-tbl">
                                                 <div class="div-wrap-filter-input">
-                                                    <input type="text" class="non-border-filter-input" name="name" value="" />
+                                                    <input type="text" class="non-border-filter-input date-picker-input" />
                                                     <div class="common-icon calendar-icon"> </div>
                                                 </div>
                                             </td>
@@ -197,7 +198,7 @@
                                                     <div class="div-wrap-icon">
                                                         <div class="common-icon quick-search-icon"> </div>
                                                     </div>
-                                                    <input type="text" class="non-border-filter-input" name="name" value="" />
+                                                    <input type="text" class="non-border-filter-input" />
                                                 </div>
                                             </td>
                                             <td class="column-3-master-tbl">
@@ -205,7 +206,7 @@
                                                     <div class="div-wrap-icon">
                                                         <div class="common-icon quick-search-icon"> </div>
                                                     </div>
-                                                    <input type="text" class="non-border-filter-input" name="name" value="" />
+                                                    <input type="text" class="non-border-filter-input" />
 
                                                 </div>
                                             </td>
@@ -223,7 +224,7 @@
                                                             <li><a href="#"> <span> <= </span> : Nhỏ hơn hoặc bằng</a></li>
                                                         </ul>
                                                     </div>
-                                                    <input type="text" class="non-border-filter-input" name="name" value="" />
+                                                    <input type="text" class="non-border-filter-input" />
                                                 </div>
                                             </td>
                                             <td class="column-5-master-tbl">
@@ -231,7 +232,7 @@
                                                     <div class="div-wrap-icon">
                                                         <div class="common-icon quick-search-icon"> </div>
                                                     </div>
-                                                    <input type="text" class="non-border-filter-input" name="name" value="" />
+                                                    <input type="text" class="non-border-filter-input" />
                                                 </div>
                                             </td>
                                             <td class="column-6-master-tbl">
@@ -455,13 +456,14 @@
                                     <div class="form-input-label"> Nhân viên </div>
                                     <div class="dropdown-div">
                                         <div class="div-wrap-input form-input-1">
-                                            <input type="text" class="non-border-filter-input input-combobox" name="name" value="" />
+                                            <input type="text" class="non-border-filter-input input-combobox" />
                                             <div class="icon-in-input arrow-down-dropbox-icon" comboboxName="object">
-                                                <img class="arrow-down-line-img" src="/Contents/Icons/arrow-down-line.png" />
                                             </div>
-                                            <div class="icon-in-input">
-                                                <div class="common-icon quick-search-icon btn-search-object"> </div>
+                                            <div class="icon-in-input quick-search-icon btn-search-object">
                                             </div>
+                                        </div>
+                                        <div class="exclamation-icon">
+
                                         </div>
                                         <div class="dropdown-content object" comboboxName="object">
                                             <div>
@@ -486,20 +488,22 @@
                                             </div>
                                         </div>
                                     </div>
+
                                     <div class="div-wrap-input form-input-2">
-                                        <input type="text" class="non-border-filter-input" name="name" value="" />
+                                        <input type="text" class="non-border-filter-input" />
                                     </div>
+                                    
                                 </div>
                                 <div class="custom-form-row">
                                     <div class="form-input-label"> Địa chỉ</div>
                                     <div class="div-wrap-input form-input-3">
-                                        <input type="text" class="non-border-filter-input" name="name" value="" />
+                                        <input type="text" class="non-border-filter-input" />
                                     </div>
                                 </div>
                                 <div class="custom-form-row">
                                     <div class="form-input-label"> Diễn giải</div>
                                     <div class="div-wrap-input form-input-3">
-                                        <input type="text" class="non-border-filter-input" name="name" value="" />
+                                        <input type="text" class="non-border-filter-input" />
                                     </div>
                                 </div>
 
@@ -515,20 +519,20 @@
                                 <div class="custom-form-row">
                                     <div class="form-input-label"> Số phiếu xuất </div>
                                     <div class="div-wrap-input form-input-4">
-                                        <input type="text" class="non-border-filter-input outward-ref-no" name="name" value="" />
+                                        <input type="text" class="non-border-filter-input outward-ref-no" />
                                     </div>
                                 </div>
                                 <div class="custom-form-row">
                                     <div class="form-input-label"> Ngày xuất </div>
                                     <div class="div-wrap-input form-input-4">
-                                        <input type="text" class="non-border-filter-input outward-date" name="name" value="" />
+                                        <input type="text" class="non-border-filter-input outward-date date-picker-input" />
                                         <div class="common-icon calendar-icon"> </div>
                                     </div>
                                 </div>
                                 <div class="custom-form-row">
                                     <div class="form-input-label"> Giờ xuất </div>
                                     <div class="div-wrap-input form-input-4">
-                                        <input type="text" class="non-border-filter-input outward-time" name="name" value="" />
+                                        <input type="text" class="non-border-filter-input outward-time time-picker-input" />
                                         <div class="common-icon hour-icon"> </div>
                                     </div>
                                 </div>
@@ -553,9 +557,7 @@
                                     <th class="width-40"></th>
                                 </tr>
                             </thead>
-                            <tbody class="outward-detail-table">
-                                
-                            </tbody>
+                            <tbody class="outward-detail-table"></tbody>
                         </table>
                         <div class="detail-table-space">
 
@@ -595,8 +597,7 @@
             <div class="tbody-dropdown">
                 <table class="table">
                     <tbody class="product-combobox-data">
-                        <tr>
-                        </tr>
+                        <tr></tr>
                     </tbody>
                 </table>
             </div>
@@ -787,13 +788,16 @@
 
     <script src="../Javascript/Library/jquery-3.4.1.js"></script>
     <script src="../Javascript/Library/jquery-ui.js"></script>
+    <script src="../Javascript/Library/jquery.timepicker.min.js"></script>
     <script src="../Javascript/Library/popper.min.js"></script>
     <script src="../Javascript/Library/bootstrap.min.js"></script>
+    <script src="../Javascript/Library/jquery.maskedinput.js"></script>
     <script src="../Javascript/Resources/resource.js"></script>
-    <script src="../Javascript/Common/ajax.js"></script>
     <script src="../Javascript/Common/common.js"></script>
+    <script src="../Javascript/Common/ajax.js"></script>
     <script src="../Javascript/Common/dialog.js"></script>
     <script src="../Javascript/Common/databinder.js"></script>
+    <script src="../Javascript/Common/calendardisplay.js"></script>
     <script src="../Javascript/Main/main.js"></script>
 </body>
 </html>

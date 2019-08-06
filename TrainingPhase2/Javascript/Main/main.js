@@ -44,7 +44,7 @@ class MainJS {
 
         $(document).on("click", ".product-combobox-data>tr", this.onSelectProductItem.bind(this));
 
-
+        $(document).on("focus", ".item-code-input", this.focusOnItemCodeInput);
 
     }
 
@@ -61,6 +61,7 @@ class MainJS {
         this.productComboboxdata = this.AjaxJS.getComboboxData("product");
         this.DataBinderJS.bindingComboboxData("object", this.objectComboboxdata);
         this.DataBinderJS.bindingComboboxData("product", this.productComboboxdata);
+        $('.outward-detail-table').html('');
         this.DataBinderJS.appendEmptyRowToOutwardDetailTable();
         this.DialogOutwardRef.open();
     }
@@ -72,17 +73,24 @@ class MainJS {
         this.DialogSelectItem.open();
     }
 
-    showComboBox() {
-        $('dropdown-div').removeClass('show');
+    showComboBox(event) {
         var comboboxName = $(this).attr("comboboxName");
+        $(this).prev().focus();
+        var relativeParent = this.closest('.dropdown-div');
         if (comboboxName === "product") {
-            var relativeParent = this.closest('.dropdown-div');
             var pos = $(relativeParent).offset();
             $('.product').css('top', pos.top + 34);
             $('.product').css('left', pos.left - 1);
             $('.product').addClass('show');
+        } else if (comboboxName === "object") {
+            var dropdownContent = $(this.parentElement).siblings('.dropdown-content');
+            if ($(dropdownContent).hasClass('show')) {
+                $(dropdownContent).removeClass('show');
+                return;
+            }
         }
         $('.' + comboboxName).addClass("show");
+        $(relativeParent).find('input').focus();
     }
 
     onSelectProductItem(sender) {
@@ -99,7 +107,12 @@ class MainJS {
         this.DataBinderJS.appendEmptyRowToOutwardDetailTable();
     }
 
+    /**
+     * Hiển thị icon khi click vào ô mã sản phẩm trong bảng chọn mặt hàng
+     * * @param {any} sender
+     */
 
-
-   
+    focusOnItemCodeInput() {
+        $(this).siblings().addClass('show');
+    }
 }

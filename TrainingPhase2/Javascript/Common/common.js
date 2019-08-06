@@ -1,15 +1,19 @@
-/**
- * Hàm sinh id
-* Createby NMDuy 25/07/2019
- * 
- */
 
-function idGenerate(){
-    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
-        var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
-        return v.toString(16);
-    });
-}
+
+
+$(".exclamation-icon").on({
+    mouseenter: function () {
+        var tooltipContent = `<div class="custom-tooltip tooltip-appened"> Trường này không được để trống! </div>`;
+        $(this).append(tooltipContent);
+        $(this).children().css('display', 'unset');
+    },
+    mouseleave: function () {
+        $(this).html('');
+        $(this).children().css('display', 'none');
+    }
+});
+
+
 
 
 /**
@@ -19,13 +23,22 @@ function idGenerate(){
 
 function getCurrentDate() {
     var toDay = new Date();
-    return formatDate(toDay)
+    return formatDate(toDay);
 }
 
+/**
+ * Lấy giờ hiện tại 
+ * Createby NMDuy 25/07/2019
+ * */
 
 function getCurrentTime(){
     var now = new Date();
-    var currentTime = now.getHours() + ":" + now.getMinutes();
+    var currentHour = now.getHours();
+    var currentMinute = now.getMinutes();
+    var currentTime = '';
+    if (currentHour < 10) currentHour = '0' + currentHour;
+    if (currentMinute < 10) currentMinute = '0' + currentMinute;
+    currentTime = currentHour + ":" + currentMinute;
     return currentTime;
 }
 
@@ -169,26 +182,4 @@ function convertToISODate(date) {
     var yyyy = date[2];
     var newDate = yyyy + '/' + mm + '/' + dd;
     return new Date(newDate);
-}
-
-/**
- * Hàm kiểm tra ngày nhập liệu có hợp lệ
- * @param {any} date ngày cần kiểm tra
- * Createby NMDuy 25/07/2019
- */
-function checkValidDate(date) {
-    var dateRegex = /^(?:(?:31(\/|-|\.)(?:0?[13578]|1[02]))\1|(?:(?:29|30)(\/|-|\.)(?:0?[1,3-9]|1[0-2])\2))(?:(?:1[6-9]|[2-9]\d)?\d{2})$|^(?:29(\/|-|\.)0?2\3(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\d|2[0-8])(\/|-|\.)(?:(?:0?[1-9])|(?:1[0-2]))\4(?:(?:1[6-9]|[2-9]\d)?\d{2})$/;
-    return dateRegex.test(date);
-}
-
-
-/**
- * Hàm kiểm tra giờ nhập liệu có hợp lệ
- * @param {any} time giờ cần kiểm tra 
- * Createby NMDuy 25/07/2019
- */
-
-function checkValidTime(time) {
-    var timeRegex = /^([0-1]\d|2[0-3]):([0-5]\d)$/;
-    return timeRegex.test(time);
 }

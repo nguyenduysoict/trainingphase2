@@ -28,21 +28,6 @@ tbody tr:hover {
     margin-bottom: 3px;
 }
 
-.common-icon{
-    background: url(/Contents/Icons/common-icon.png) no-repeat;
-    width: 17px;
-    height: 16px;
-}
-
-.common-icon:hover{
-    cursor:pointer;
-}
-
-.fa-icon-arrow-down{
-    margin-left: 5px;
-}
-
-
 .main-toolbar {
     height: 35px;
     background-color: #026b97;
@@ -65,6 +50,21 @@ tbody tr:hover {
         color: white;
         border: 1px solid #0088c2;
     }
+
+.common-icon {
+    background: url(/Contents/Icons/common-icon.png) no-repeat;
+    width: 17px;
+    height: 16px;
+}
+
+    .common-icon:hover {
+        cursor: pointer;
+    }
+
+
+.fa-icon-arrow-down {
+    margin-left: 5px;
+}
 
 .btn-icon-before {
     background-position: -475px -129px;
@@ -147,6 +147,27 @@ tbody tr:hover {
     margin-right: 6px;
 }
 
+.exclamation-icon {
+    background: url(/Contents/Icons/exclamation.png) no-repeat;
+    background-position: 2px 2px;
+    width: 20px;
+    height: 20px;
+    margin-left: 3px;
+}
+
+.quick-search-icon {
+    background: url(/Contents/Images/Quick-search.png) no-repeat;
+    width: 27px;
+    height: 16px;
+}
+
+.arrow-down-dropbox-icon {
+    background: url(/Contents/Icons/arrow-down-line.png) no-repeat;
+    background-position: 3px 7px;
+    width: 20px;
+    height: 20px;
+}
+
 .garbage-icon {
     background-position: 4px 1px;
     width: 27px;
@@ -187,7 +208,7 @@ tbody tr:hover {
 
 .non-border-filter-input {
     height: 33px;
-    padding: 10px;
+    padding: 7px;
     border: none;
 }
 
@@ -274,12 +295,6 @@ tbody tr:hover {
     margin-left: 7px;
 }
 
-.quick-search-icon {
-    background: url(/Contents/Images/Quick-search.png) no-repeat;
-    width: 20px;
-    height: 16px;
-}
-
 .custom-form-row{
     display: flex;
     align-items: center;
@@ -287,7 +302,7 @@ tbody tr:hover {
 }
 
 .icon-in-input{
-    margin-right: 8px;
+    margin-right: 5px;
     font-size: 14px;
 }
 
@@ -310,7 +325,7 @@ tbody tr:hover {
 
 
 .form-input-4{
-    width: 140px
+    width: 120px
 }
 
 .form-input-label{
@@ -423,3 +438,22 @@ tbody tr:hover {
 .show{
     display: block;
 }
+
+.exclamation-icon {
+    position: relative;
+    display: inline-block;
+}
+
+    .exclamation-icon .custom-tooltip {
+        display: none;
+        width: 220px;
+        background-color: #dc3545;
+        color: #fff;
+        text-align: center;
+        border-radius: 6px;
+        padding: 5px 0;
+        position: absolute;
+        z-index: 1;
+        left: -90px;
+        top: 25px;
+    }
