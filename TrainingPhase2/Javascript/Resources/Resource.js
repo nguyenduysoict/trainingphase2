@@ -6,6 +6,6 @@
         this.DuplicateOutwardRefDialogTitle = "Nhân bản phiếu xuất kho";
         this.SelectObject = "Chọn đối tượng";
         this.SelectItem = "Chọn hàng hóa";
-
+        this.FieldCannotEmpty = "Trường này không được để trống!";
     }
 }

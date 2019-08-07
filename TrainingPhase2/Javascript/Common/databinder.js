@@ -117,7 +117,7 @@
                 <td class="no-padding-cell width-150">
                     <div class="dropdown-div">
                         <div class="div-wrap-input-no-border">
-                            <input type="text" class="non-border-filter-input" placeholder="Tìm tên, mã" />
+                            <input type="text" class="non-border-filter-input" placeholder="Tìm tên, mã" tabindex="0" />
                             <div class="icon-in-input arrow-down-dropbox-icon" comboboxName="product">
                             </div>
                             <div class="icon-in-input quick-search-icon">
@@ -142,7 +142,7 @@
                 <td class="no-padding-cell width-150">
                     <div class="dropdown-div">
                         <div class="div-wrap-input-no-border">
-                            <input type="text" class="non-border-filter-input item-code-input" name="name" value="${item.itemCode}" />
+                            <input type="text" class="non-border-filter-input item-code-input" name="name" value="${item.itemCode}" tabindex="0" />
                             <div class="icon-in-input item-code-icon arrow-down-dropbox-icon" comboboxName="product" style="display:none">
                             </div>
                             <div class="icon-in-input item-code-icon quick-search-icon" style="display:none">
@@ -155,7 +155,7 @@
                     <div class="dropdown">
                         <div class="hover-pointer branch-dropdown-cell" data-toggle="dropdown">
                             <div class="detail-tbl-branch-dropbox"> Chi nhánh Cầu Giấy </div>
-                            <div class="icon-in-input"> <i class="fa fa-caret-down"></i></div>
+                            <div class="icon-in-input" tabindex="0"> <i class="fa fa-caret-down"></i></div>
                         </div>
                         <ul class="dropdown-menu">
                             <li><a href="#"> <span> = </span> : Bằng </a></li>
@@ -167,16 +167,16 @@
                     </div>
                 </td>
                 <td class="disabled-cell width-90"> ${item.countUnit} </td>
-                <td class="no-padding-cell width-100"> <input type="text" class="positive-num-input text-align-right non-border-filter-input" value="${item.unitPrice}" /> </td>
+                <td class="no-padding-cell width-100"> <input type="text" class="positive-num-input text-align-right non-border-filter-input" tabindex="0" value="${item.unitPrice}" /> </td>
                 <td class="no-padding-cell width-90">
                     <div style="display: flex">
-                        <input type="text" class="positive-num-input text-align-right non-border-filter-input" value="1" />
+                        <input type="text" class="positive-num-input text-align-right non-border-filter-input" value="1" tabindex="0" />
                         <div class="up-down-arrow"> <div class="amount-arrow arrow-up"></div> <div class="amount-arrow arrow-down"></div> </div>
                     </div>
                 </td>
-                <td class="no-padding-cell width-100"> <input type="text" class="positive-num-input text-align-right non-border-filter-input value="${item.unitPrice}" /> </td>
+                <td class="no-padding-cell width-100"> <input type="text" class="positive-num-input text-align-right non-border-filter-input" value="${item.unitPrice}" tabindex="0" /> </td>
                 <td class="no-padding-cell width-40">
-                    <div class="garbage-icon common-icon"></div>
+                    <div class="garbage-icon common-icon" tabindex="0"></div>
                 </td>
             </tr>`;
         $('.outward-detail-table').append(row);

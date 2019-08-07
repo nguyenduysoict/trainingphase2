@@ -1,19 +1,112 @@
 
 
+$(document).ready(function () {
 
-$(".exclamation-icon").on({
-    mouseenter: function () {
-        var tooltipContent = `<div class="custom-tooltip tooltip-appened"> Trường này không được để trống! </div>`;
-        $(this).append(tooltipContent);
-        $(this).children().css('display', 'unset');
-    },
-    mouseleave: function () {
-        $(this).html('');
-        $(this).children().css('display', 'none');
-    }
+    // Khởi tạo resource
+    resource = new Resource();
+
+    //Hiển thị tooltip khi mouseenter icon cảnh báo
+    $(document).on("mouseenter", ".exclamation-icon", function () {
+        var tooltipContent = resource.FieldCannotEmpty;
+        showTooltip(this, tooltipContent);
+    });
+
+    //Ẩn tooltip khi mouseenter icon cảnh báo
+    $(document).on("mouseleave", ".exclamation-icon", function () {
+        hideTooltip(this);
+    });
+
+    // Xử lý hiển thị tooltip, validate input
+    $("input").on({
+        focus: function () {
+            var divWrapInput = $(this).closest('.div-wrap-input');
+            $(divWrapInput).css("border-color", "dodgerblue");
+        },
+        focusout: function () {
+            var divWrapInput = $(this).closest('.div-wrap-input');
+            var currentWidth = $(divWrapInput).outerWidth();
+            if ($(this).hasClass('required-input')) {
+                var inputValue = $(this).val().trim();
+                if (inputValue === '') {
+                    $(divWrapInput).css("border-color", "red");
+                    var exclamationIcon = `<div class="exclamation-icon"></div>`;
+                    if (!$(divWrapInput).next().hasClass('exclamation-icon')) {
+                        if ($(divWrapInput).hasClass('inner-form-input')) {
+                            $(divWrapInput).css("width", currentWidth - 26 + 'px');
+                        }
+                        $(divWrapInput).after(exclamationIcon);
+                    }
+                } else {
+                    if ($(divWrapInput).next().hasClass('exclamation-icon')) {
+                        $(divWrapInput).next().remove();
+                        $(divWrapInput).css("width", currentWidth + 26 + 'px');
+                    }
+                    $(divWrapInput).css("border-color", "#ddd");
+                }
+            } else {
+                $(divWrapInput).css("border-color", "#ddd");
+            }
+        },
+        keyup: function () {
+            var divWrapInput = $(this).closest('.div-wrap-input');
+            var currentWidth = $(divWrapInput).outerWidth();
+            if ($(this).hasClass('required-input')) {
+                if ($(divWrapInput).next().hasClass('exclamation-icon')) {
+                    var inputValue = $(this).val().trim();
+                    if (inputValue !== '') {
+                        $(divWrapInput).next().remove();
+                        $(divWrapInput).css("width", currentWidth + 26 + 'px');
+                    }
+                }
+            }
+        }
+    });
+
+    /**
+    * Ẩn combobox menu khi click ra vùng ngoài
+    * Createby NMDuy 25/07/2019 
+    */
+    $(document).click(function (e) {
+        var container = $(".input-combobox");
+        if (!container.is(e.target) && container.has(e.target).length === 0) {
+            var container2 = $(".arrow-down-dropbox-icon");
+            if (!container2.is(e.target) && container2.has(e.target).length === 0) {
+                $(".dropdown-content").removeClass("show");
+            }
+        }
+    });
+
+
+    $(document).keydown(function (e) {
+        even = e || window.event;
+        if (e.keyCode === 13) {
+            var focused = $(':focus');
+            $(focused).trigger("click");
+        }
+    });
+
 });
 
+/**
+ * Hàm hiển thị tooltip
+ * @param {any} exclamationElement
+ */
 
+function showTooltip(exclamationElement, tooltipContent) {
+    var tooltipElement = `<div class="custom-tooltip"> ${tooltipContent} </div>`;
+    $(exclamationElement).append(tooltipElement);
+    $(exclamationElement).children().css('display', 'unset');
+}
+
+/**
+ * Hàm ẩn tooltip
+ * @param {any} exclamationElement
+ */
+
+function hideTooltip(exclamationElement) {
+    $(exclamationElement).html('');
+    $(exclamationElement).children().css('display', 'none');
+}
 
 
 /**

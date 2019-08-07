@@ -1,20 +1,6 @@
 ﻿$(document).ready(function () {
     // Khởi tạo đối tượng MainJS xử lý nghiệp vụ
     mainJS = new MainJS();
-
-    /**
-     * Ẩn combobox menu khi click ra vùng ngoài
-     * Createby NMDuy 25/07/2019 
-     */
-    $(document).click(function (e) {
-        var container = $(".input-combobox");
-        if (!container.is(e.target) && container.has(e.target).length === 0) {
-            var container2 = $(".arrow-down-dropbox-icon");
-            if (!container2.is(e.target) && container2.has(e.target).length === 0) {
-                $(".dropdown-content").removeClass("show");
-            }
-        }
-    });
 });
 
 /**
@@ -46,13 +32,16 @@ class MainJS {
 
         $(document).on("focus", ".item-code-input", this.focusOnItemCodeInput);
 
+        $(document).on("focus", ".end-tab", this.onFocusEndtab);
+        $(document).on("focus", ".start-tab", this.onFocusStarttab);
+        $(document).on("click", ".garbage-icon", this.onDeleteItemDetailRow);
+
     }
 
     showOutwardRefDialog() {
         var currentDate = getCurrentDate();
         var currentTime = getCurrentTime();
         this.refNo = this.AjaxJS.getRefNo();
-
         $('.outward-ref-no').val(this.refNo);
         $('.outward-date').val(currentDate);
         $('.outward-time').val(currentTime);
@@ -64,6 +53,8 @@ class MainJS {
         $('.outward-detail-table').html('');
         this.DataBinderJS.appendEmptyRowToOutwardDetailTable();
         this.DialogOutwardRef.open();
+        $('.staff-code-input').focus();
+
     }
 
     showObjectSelectDialog() {
@@ -73,9 +64,8 @@ class MainJS {
         this.DialogSelectItem.open();
     }
 
-    showComboBox(event) {
+    showComboBox() {
         var comboboxName = $(this).attr("comboboxName");
-        $(this).prev().focus();
         var relativeParent = this.closest('.dropdown-div');
         if (comboboxName === "product") {
             var pos = $(relativeParent).offset();
@@ -83,7 +73,7 @@ class MainJS {
             $('.product').css('left', pos.left - 1);
             $('.product').addClass('show');
         } else if (comboboxName === "object") {
-            var dropdownContent = $(this.parentElement).siblings('.dropdown-content');
+            var dropdownContent = $(relativeParent).find('.dropdown-content');
             if ($(dropdownContent).hasClass('show')) {
                 $(dropdownContent).removeClass('show');
                 return;
@@ -114,5 +104,20 @@ class MainJS {
 
     focusOnItemCodeInput() {
         $(this).siblings().addClass('show');
+    }
+
+    /**
+     * */
+    onFocusEndtab() {
+        $('.outward-detail-table tr:first-child  td:first-child input').focus();
+    }
+
+    onFocusStarttab() {
+        $('.outward-detail-table tr:last-child  td:first-child input').focus();
+    }
+
+    onDeleteItemDetailRow() {
+        $(this).parent().parent().remove();
+        $('.outward-detail-table tr:last-child  td:first-child input').focus();
     }
 }

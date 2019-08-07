@@ -114,7 +114,7 @@
 
 .div-on-thead-scroll {
     width: 18px;
-    height: 69px;
+    height: 67px;
     border-top: 1px solid #ddd;
     background-color: #f0f0f0;
     border-right: 1px solid #ddd;
@@ -189,7 +189,7 @@
 }
 
 .operator-dropdown {
-    font-size: 19px;
+    font-size: 18px;
     padding: 4px 13px;
     border-right: 1px solid #ddd;
 }
@@ -222,17 +222,18 @@
 
 .outward-form{
     display: flex;
-    margin-top: 10px;
+    margin-top: 15px 0;
 }
 
 .form-label {
     font-size: 16px;
     font-weight: bold;
     color: rgba(1,1,1, 0.5);
+    margin: 8px 0;
 }
 
 .general-infomation{
-    width: 720px;
+    width: 950px;
     margin-right: 10px;
 }
 

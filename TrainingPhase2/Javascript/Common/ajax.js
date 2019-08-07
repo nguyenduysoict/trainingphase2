@@ -4,8 +4,14 @@
         this.detailExportReceipt = [];
     }
 
+    //Lấy số chứng từ
     getRefNo() {
-        return 'XK002310'
+        return 'XK002310';
+    }
+
+    //Lấy dữ liệu bảng phiếu xuất kho
+    getOutwardMasterTableData() {
+        
     }
 
     /**

@@ -257,8 +257,8 @@
                             <div class="div-on-thead-scroll"></div>
                         </div>
 
-                        <div class="div-wrap-master-tbl">
-                            <table class="table">
+                        <div class="div-wrap-master-tbl" style="border-top: 1px solid #ddd">
+                            <!--<table class="table">
                                 <tbody>
                                     <tr>
                                         <td class="column-1-master-tbl"> 1 </td>
@@ -267,11 +267,14 @@
                                         <td class="column-4-master-tbl"> 1 </td>
                                         <td class="column-5-master-tbl"> 1 </td>
                                         <td class="column-6-master-tbl"> 1 </td>
-
                                     </tr>
                                 </tbody>
-                            </table>
+                            </table>-->
+                            <div class="loading-icon">
+                                <img src="/Contents/Icons/ajax-loader.gif" />
+                            </div>
                         </div>
+                        
 
 
                         <div class="master-table-footer">
@@ -450,21 +453,15 @@
                         <div class="form-label">
                             THÔNG TIN CHUNG
                         </div>
-                        <div class="general-info-form">
-                            <div class="left-side-form">
-                                <div class="custom-form-row">
-                                    <div class="form-input-label"> Nhân viên </div>
-                                    <div class="dropdown-div">
-                                        <div class="div-wrap-input form-input-1">
-                                            <input type="text" class="non-border-filter-input input-combobox" />
-                                            <div class="icon-in-input arrow-down-dropbox-icon" comboboxName="object">
-                                            </div>
-                                            <div class="icon-in-input quick-search-icon btn-search-object">
-                                            </div>
-                                        </div>
-                                        <div class="exclamation-icon">
-
-                                        </div>
+                        <div class="start-tab" tabindex="0"></div>
+                        <div class="grid-form-container">
+                            <div class="grid-form-item"><span>Nhân viên</span></div>
+                            <div class="grid-form-item multi-input-grid">
+                                <div style="width: 200px; display: flex">
+                                    <div class="div-wrap-input form-input-1 dropdown-div inner-form-input">
+                                        <input type="text" class="non-border-filter-input input-combobox required-input staff-code-input" tabindex="0" />
+                                        <div class="icon-in-input arrow-down-dropbox-icon" comboboxName="object"></div>
+                                        <div class="icon-in-input quick-search-icon btn-search-object"></div>
                                         <div class="dropdown-content object" comboboxName="object">
                                             <div>
                                                 <div class="thead-dropdown">
@@ -488,25 +485,23 @@
                                             </div>
                                         </div>
                                     </div>
-
-                                    <div class="div-wrap-input form-input-2">
-                                        <input type="text" class="non-border-filter-input" />
-                                    </div>
-                                    
                                 </div>
-                                <div class="custom-form-row">
-                                    <div class="form-input-label"> Địa chỉ</div>
-                                    <div class="div-wrap-input form-input-3">
-                                        <input type="text" class="non-border-filter-input" />
-                                    </div>
-                                </div>
-                                <div class="custom-form-row">
-                                    <div class="form-input-label"> Diễn giải</div>
-                                    <div class="div-wrap-input form-input-3">
-                                        <input type="text" class="non-border-filter-input" />
-                                    </div>
+                                <div class="div-wrap-input form-input-5">
+                                    <input type="text" class="non-border-filter-input required-input" tabindex="0" />
                                 </div>
 
+                            </div>
+                            <div class="grid-form-item"><span>Địa chỉ</span></div>
+                            <div class="grid-form-item">
+                                <div class="div-wrap-input">
+                                    <input type="text" class="non-border-filter-input" tabindex="0" />
+                                </div>
+                            </div>
+                            <div class="grid-form-item"><span>Diễn giải</span></div>
+                            <div class="grid-form-item">
+                                <div class="div-wrap-input">
+                                    <input type="text" class="non-border-filter-input" tabindex="0" />
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -514,27 +509,26 @@
                         <div class="form-label">
                             CHỨNG TỪ
                         </div>
-                        <div class="outward-ref-form">
-                            <div class="right-side-form">
-                                <div class="custom-form-row">
-                                    <div class="form-input-label"> Số phiếu xuất </div>
-                                    <div class="div-wrap-input form-input-4">
-                                        <input type="text" class="non-border-filter-input outward-ref-no" />
-                                    </div>
+
+                        <div class="grid-form-container">
+                            <div class="grid-form-item"><span>Số phiếu xuất</span></div>
+                            <div class="grid-form-item">
+                                <div class="div-wrap-input">
+                                    <input type="text" class="non-border-filter-input outward-ref-no" tabindex="0" />
                                 </div>
-                                <div class="custom-form-row">
-                                    <div class="form-input-label"> Ngày xuất </div>
-                                    <div class="div-wrap-input form-input-4">
-                                        <input type="text" class="non-border-filter-input outward-date date-picker-input" />
-                                        <div class="common-icon calendar-icon"> </div>
-                                    </div>
+                            </div>
+                            <div class="grid-form-item"><span>Ngày xuất</span></div>
+                            <div class="grid-form-item">
+                                <div class="div-wrap-input">
+                                    <input type="text" class="non-border-filter-input outward-date date-picker-input" tabindex="0"/>
+                                    <div class="common-icon calendar-icon"> </div>
                                 </div>
-                                <div class="custom-form-row">
-                                    <div class="form-input-label"> Giờ xuất </div>
-                                    <div class="div-wrap-input form-input-4">
-                                        <input type="text" class="non-border-filter-input outward-time time-picker-input" />
-                                        <div class="common-icon hour-icon"> </div>
-                                    </div>
+                            </div>
+                            <div class="grid-form-item"><span>Giờ xuất</span></div>
+                            <div class="grid-form-item">
+                                <div class="div-wrap-input">
+                                    <input type="text" class="non-border-filter-input outward-time time-picker-input" tabindex="0"/>
+                                    <div class="common-icon hour-icon"> </div>
                                 </div>
                             </div>
                         </div>
@@ -563,6 +557,7 @@
 
                         </div>
                     </div>
+                    <div class="end-tab" tabindex="0"></div>
                     <div class="detail-table-form-footer">
                         <table class="table">
                             <tr>
