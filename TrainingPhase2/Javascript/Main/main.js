@@ -22,6 +22,7 @@ class MainJS {
     }
 
     InitEvents() {
+        this.getOutwardRef();
         $(document).on("click", "#btnAdd", this.showOutwardRefDialog.bind(this));
         $(document).on("click", ".btn-search-object", this.showObjectSelectDialog.bind(this));
         $(document).on("click", ".item-quick-search", this.showItemSelectDialog.bind(this));
@@ -36,6 +37,10 @@ class MainJS {
         $(document).on("focus", ".start-tab", this.onFocusStarttab);
         $(document).on("click", ".garbage-icon", this.onDeleteItemDetailRow);
 
+    }
+
+    getOutwardRef() {
+        this.AjaxJS.getOutwardRefData();
     }
 
     showOutwardRefDialog() {

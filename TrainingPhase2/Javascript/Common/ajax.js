@@ -10,8 +10,18 @@
     }
 
     //Lấy dữ liệu bảng phiếu xuất kho
-    getOutwardMasterTableData() {
-        
+    getOutwardRefData() {
+        $.ajax({
+            method: "GET",
+            url: "/ref",
+            datatype: JSON.stringify(),
+            success: function (response) {
+                console.log(response);
+            },
+            fail: function (err) {
+                console.log(err);
+            }
+        });
     }
 
     /**

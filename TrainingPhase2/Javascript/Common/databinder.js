@@ -88,13 +88,13 @@
                         }
                     }
                     return 0;
-                })
+                });
                 $(".object-combobox-data").html('');
                 $.each(comboboxData, function (index, item) {
                     var row = `<tr customerRepaymentId="${item.id}" objectAddress="${item.address}" objectCode="${item.code}" objectName="${item.name}"> <td width="130px">${item.code}</td> <td width="250px" class="center-td">${item.name}</td> <td width="150px">${item.type}</td></tr >`;
                     $(".object-combobox-data").append(row);
-                })
-                $(".object-combobox-data").children().first().addClass('selected-combobox-row');
+                });
+                $(".object-combobox-data").children().first().addClass('selected-row');
 
                 break;
 
@@ -106,7 +106,7 @@
                      </tr >`;
                     $(".product-combobox-data").append(row);
                 });
-                $(".product-combobox-data").children().first().addClass('selected-combobox-row');
+                $(".product-combobox-data").children().first().addClass('selected-row');
                 break;
         }
     }
