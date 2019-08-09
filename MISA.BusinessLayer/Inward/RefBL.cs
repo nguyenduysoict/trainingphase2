@@ -13,7 +13,6 @@ namespace MISA.BusinessLayer
         public IEnumerable<RefViewModel> GetRefs()
         {
             RefDL refDL = new RefDL();
-
             return refDL.GetRefs();
         }
     }

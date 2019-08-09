@@ -199,7 +199,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\DefaultController.cs" />
     <Compile Include="Controllers\RefController.cs" />
+    <Compile Include="Controllers\RefDetailController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -278,6 +280,10 @@
     <ProjectReference Include="..\MISA.BusinessLayer\MISA.BusinessLayer.csproj">
       <Project>{692d87c0-563a-4da8-958c-d4cf839e1df4}</Project>
       <Name>MISA.BusinessLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MISA.Commons\MISA.Commons.csproj">
+      <Project>{5bd1bf41-c741-4259-93ad-d7c116949ebd}</Project>
+      <Name>MISA.Commons</Name>
     </ProjectReference>
     <ProjectReference Include="..\MISA.Entity\MISA.Entity.csproj">
       <Project>{ccb5b915-13ed-43d2-9c76-0fa6d8e3bb92}</Project>

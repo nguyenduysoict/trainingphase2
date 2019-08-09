@@ -4,52 +4,47 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using MISA.BusinessLayer;
-using MISA.Entity;
 using MISA.Commons;
-
 
 namespace TrainingPhase2.Controllers
 {
-    [RoutePrefix("ref")]
-    public class RefController : ApiController
+    [RoutePrefix("RefDetail")]
+    public class RefDetailController : ApiController
     {
         [Route("")]
-        public AjaxResult Get()
+        public IEnumerable<string> Get()
+        {
+            return new string[] { "value1", "value2" };
+        }
+
+        [Route("id")]
+        public AjaxResult Get(string id)
         {
             var result = new AjaxResult();
+
             try
             {
-                RefBL refBL = new RefBL();
-                result.Success = true;
-                result.Data = refBL.GetRefs();
+                //var refDetailBL = new Ref
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                result.Success = false;
-                result.Data = ex;
+
+                throw;
             }
             return result;
-            
         }
 
-        // GET: api/Ref/5
-        public string Get(int id)
-        {
-            return "value";
-        }
-
-        // POST: api/Ref
+        // POST: api/RefDetail
         public void Post([FromBody]string value)
         {
         }
 
-        // PUT: api/Ref/5
+        // PUT: api/RefDetail/5
         public void Put(int id, [FromBody]string value)
         {
         }
 
-        // DELETE: api/Ref/5
+        // DELETE: api/RefDetail/5
         public void Delete(int id)
         {
         }
