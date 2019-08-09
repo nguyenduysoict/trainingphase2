@@ -168,8 +168,6 @@ D:\nmduy\trainingphase2\TrainingPhase2\bin\roslyn\VBCSCompiler.exe
 D:\nmduy\trainingphase2\TrainingPhase2\bin\roslyn\VBCSCompiler.exe.config
 D:\nmduy\trainingphase2\TrainingPhase2\bin\MISA.BusinessLayer.dll
 D:\nmduy\trainingphase2\TrainingPhase2\bin\MISA.BusinessLayer.pdb
-D:\nmduy\trainingphase2\TrainingPhase2\obj\Debug\TrainingPhase2.csprojAssemblyReference.cache
-D:\nmduy\trainingphase2\TrainingPhase2\obj\Debug\TrainingPhase2.csproj.CopyComplete
 D:\nmduy\trainingphase2\TrainingPhase2\obj\Debug\TrainingPhase2.dll
 D:\nmduy\trainingphase2\TrainingPhase2\obj\Debug\TrainingPhase2.pdb
 D:\nmduy\trainingphase2\TrainingPhase2\bin\MISA.Entity.dll
@@ -178,3 +176,4 @@ D:\nmduy\trainingphase2\TrainingPhase2\bin\MISA.Commons.dll
 D:\nmduy\trainingphase2\TrainingPhase2\bin\MISA.Commons.pdb
 D:\nmduy\trainingphase2\TrainingPhase2\bin\MISA.DataLayer.dll
 D:\nmduy\trainingphase2\TrainingPhase2\bin\MISA.DataLayer.pdb
+D:\nmduy\trainingphase2\TrainingPhase2\obj\Debug\TrainingPhase2.csprojResolveAssemblyReference.cache

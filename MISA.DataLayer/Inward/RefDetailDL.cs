@@ -9,10 +9,11 @@ namespace MISA.DataLayer
 {
     public class RefDetailDL:BaseDL
     {
-        public IEnumerable<RefDetailViewModel> GetRefDetailById(string id)
+        public IEnumerable<RefDetailViewModel> GetRefDetailById(Guid id)
         {
             var tableName = "View_RefDetail";
-            IEnumerable<RefDetailViewModel> refDetails = this.GetDataById<RefDetailViewModel>(tableName, id);
+            var columnName = "RefID";
+            IEnumerable<RefDetailViewModel> refDetails = this.GetDataById<RefDetailViewModel>(tableName, columnName, id);
             return refDetails;
         }
     }

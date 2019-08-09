@@ -5,11 +5,13 @@ using System.Text;
 using System.Threading.Tasks;
 using MISA.Entity;
 using MISA.DataLayer;
-namespace MISA.BusinessLayer.Inward
+
+
+namespace MISA.BusinessLayer
 {
-    class RefDetailBL
+    public class RefDetailBL
     {
-        public IEnumerable<RefDetailViewModel> GetRefDetailById(string id)
+        public IEnumerable<RefDetailViewModel> GetRefDetailById(Guid id)
         {
             RefDetailDL refDetailDL = new RefDetailDL();
             return refDetailDL.GetRefDetailById(id);

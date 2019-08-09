@@ -3,4 +3,4 @@ D:\nmduy\trainingphase2\MISA.Entity\bin\Debug\MISA.Entity.pdb
 D:\nmduy\trainingphase2\MISA.Entity\obj\Debug\MISA.Entity.csproj.CoreCompileInputs.cache
 D:\nmduy\trainingphase2\MISA.Entity\obj\Debug\MISA.Entity.dll
 D:\nmduy\trainingphase2\MISA.Entity\obj\Debug\MISA.Entity.pdb
-D:\nmduy\trainingphase2\MISA.Entity\obj\Debug\MISA.Entity.csprojAssemblyReference.cache
+D:\nmduy\trainingphase2\MISA.Entity\obj\Debug\MISA.Entity.csprojResolveAssemblyReference.cache

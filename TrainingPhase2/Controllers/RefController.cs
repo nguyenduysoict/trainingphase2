@@ -33,10 +33,21 @@ namespace TrainingPhase2.Controllers
             
         }
 
-        // GET: api/Ref/5
-        public string Get(int id)
+        [Route("{id}")]
+        public AjaxResult Get(Guid id)
         {
-            return "value";
+            var result = new AjaxResult();
+            try
+            {
+                RefBL refBL = new RefBL();
+                result.Success = true;
+            }
+            catch (Exception ex)
+            {
+                result.Success = false;
+                throw;
+            }
+            return result;
         }
 
         // POST: api/Ref

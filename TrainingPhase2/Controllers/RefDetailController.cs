@@ -5,6 +5,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using MISA.Commons;
+using MISA.BusinessLayer;
 
 namespace TrainingPhase2.Controllers
 {
@@ -14,22 +15,25 @@ namespace TrainingPhase2.Controllers
         [Route("")]
         public IEnumerable<string> Get()
         {
-            return new string[] { "value1", "value2" };
+            return new string[] { "value3", "value2" };
         }
 
-        [Route("id")]
-        public AjaxResult Get(string id)
+        [Route("{id}")]
+        public AjaxResult Get(Guid id)
         {
             var result = new AjaxResult();
-
             try
             {
-                //var refDetailBL = new Ref
-            }
-            catch (Exception)
-            {
 
-                throw;
+                RefDetailBL refDetailBL = new RefDetailBL();
+                result.Success = true;
+                result.Data = refDetailBL.GetRefDetailById(id);
+
+            }
+            catch (Exception ex)
+            {
+                result.Success = false;
+                result.Data = ex;
             }
             return result;
         }
