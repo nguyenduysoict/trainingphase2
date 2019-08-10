@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
 using MISA.Entity;
+using System.Collections;
 
 namespace MISA.DataLayer
 {
@@ -18,7 +19,16 @@ namespace MISA.DataLayer
             return refs;
         }
 
-        
+        public string GetRefID(string refCode)
+        {
+            using(DataAccess dataAccess = new DataAccess())
+            {
+                var param = new Hashtable();
+                param.Add("RefID", refCode);
+            }
+
+            return "";
+        } 
 
     }
 }

@@ -9,6 +9,7 @@ namespace MISA.Entity
     public class RefViewModel
     {
         public Guid RefID { get; set; }
+
         public string RefNo { get; set; }
 
         public DateTime RefDate { get; set; }

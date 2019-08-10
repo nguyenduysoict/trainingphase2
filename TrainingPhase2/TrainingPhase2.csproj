@@ -181,7 +181,6 @@
     <Content Include="Javascript\Common\calendardisplay.js" />
     <Content Include="Javascript\Common\common.js" />
     <Content Include="Javascript\Common\databinder.js" />
-    <Content Include="Javascript\Common\dataformater.js" />
     <Content Include="Javascript\Common\dialog.js" />
     <Content Include="Javascript\Library\bootstrap.min.js" />
     <Content Include="Javascript\Library\jquery-3.4.1.js" />

@@ -10,10 +10,21 @@ namespace MISA.BusinessLayer
 {
     public class RefBL
     {
+        private RefDL refDL;
+
+        public RefBL()
+        {
+            refDL = new RefDL(); 
+        }
         public IEnumerable<RefViewModel> GetRefs()
         {
-            RefDL refDL = new RefDL();
             return refDL.GetRefs();
+        }
+
+        public int AddNewRef(RefSaveInfo refSaveInfo)
+        {
+
+            return -1;
         }
     }
 }

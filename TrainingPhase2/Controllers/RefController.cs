@@ -45,14 +45,28 @@ namespace TrainingPhase2.Controllers
             catch (Exception ex)
             {
                 result.Success = false;
+                result.Data = ex;
                 throw;
             }
             return result;
         }
 
-        // POST: api/Ref
-        public void Post([FromBody]string value)
+        [Route("")]
+        public AjaxResult Post([FromBody]RefSaveInfo refSaveInfo)
         {
+            var result = new AjaxResult();
+            try
+            {
+                RefBL refBL = new RefBL();
+                result.Success = true;
+            }
+            catch (Exception ex)
+            {
+                result.Success = false;
+                result.Data = ex;
+                throw;
+            }
+            return result;
         }
 
         // PUT: api/Ref/5

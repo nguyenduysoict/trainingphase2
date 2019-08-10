@@ -62,6 +62,26 @@ $(document).ready(function () {
         }
     });
 
+
+    // Tăng giảm giá trị input khi click vào nút mũi tên tăng giảm
+    $(document).on("click", ".amount-arrow", function () {
+        var numberInputNearby = $(this).parent().siblings();
+        var inputValue = parseInt($(numberInputNearby).val(), 10);
+        if ($(this).hasClass("arrow-up")) {
+            $(numberInputNearby).val(inputValue + 1);
+        } else {
+            if (inputValue > 0) {
+                $(numberInputNearby).val(inputValue - 1);
+            }
+        }
+    })
+
+    //
+    $(document).on("keypress", ".positive-num-input", validateNumberInput);
+    //$(document).on("keyup", ".positive-num-input", displayCustomNumber);
+    //$(document).on("focusout", ".positive-num-input", checkNegativeNumber);
+    $(document).on("focus", ".positive-num-input", selectAllValue(this));
+
     /**
     * Ẩn combobox menu khi click ra vùng ngoài
     * Createby NMDuy 25/07/2019 
@@ -86,6 +106,30 @@ $(document).ready(function () {
     });
 
 });
+
+// Kiểm tra ký tự hợp lệ khi nhập ô input số
+
+function validateNumberInput(event) {
+    var key = window.event ? event.keyCode : event.which;
+    var value = $(this).val();
+    if (event.keyCode === 8 || event.keyCode === 46) {
+        return true;
+    } else if ((key >= 48 && key <= 57)) {
+        return true;
+    } else if (key === 45) {
+        if (!value.includes('-')) {
+            return true;
+        } else {
+            return false;
+        }
+    } else {
+        return false;
+    }
+}
+
+function selectAllValue(inputElement) {
+    $(inputElement).select();
+}
 
 /**
  * Hàm hiển thị tooltip
@@ -275,4 +319,27 @@ function convertToISODate(date) {
     var yyyy = date[2];
     var newDate = yyyy + '/' + mm + '/' + dd;
     return new Date(newDate);
+}
+
+/**
+     * format tiền ra định dạng số nguyên
+     * @param {any} stringNumber: giá trị số định dạng tiền
+     */
+
+function formatMoneyToNumber(stringNumber){
+    return parseInt(stringNumber.split('.').join(''));
+}
+
+/**
+ * format số ra định dạng tiền
+ * @param {any} stringNumber: giá trị số
+ */
+
+function formatNumberToMoney(value) {
+    value = value.toString();
+    var plain = value.split('.').join('');
+    var reversed = plain.split('').reverse().join('');
+    var reversedWithDots = reversed.match(/.{1,3}/g).join('.');
+    var normal = reversedWithDots.split('').reverse().join('');
+    return normal;
 }
