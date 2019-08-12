@@ -22,31 +22,6 @@ $(document).ready(function () {
             var divWrapInput = $(this).closest('.div-wrap-input');
             $(divWrapInput).css("border-color", "dodgerblue");
         },
-        focusout: function () {
-            var divWrapInput = $(this).closest('.div-wrap-input');
-            var currentWidth = $(divWrapInput).outerWidth();
-            if ($(this).hasClass('required-input')) {
-                var inputValue = $(this).val().trim();
-                if (inputValue === '') {
-                    $(divWrapInput).css("border-color", "red");
-                    var exclamationIcon = `<div class="exclamation-icon"></div>`;
-                    if (!$(divWrapInput).next().hasClass('exclamation-icon')) {
-                        if ($(divWrapInput).hasClass('inner-form-input')) {
-                            $(divWrapInput).css("width", currentWidth - 26 + 'px');
-                        }
-                        $(divWrapInput).after(exclamationIcon);
-                    }
-                } else {
-                    if ($(divWrapInput).next().hasClass('exclamation-icon')) {
-                        $(divWrapInput).next().remove();
-                        $(divWrapInput).css("width", currentWidth + 26 + 'px');
-                    }
-                    $(divWrapInput).css("border-color", "#ddd");
-                }
-            } else {
-                $(divWrapInput).css("border-color", "#ddd");
-            }
-        },
         keyup: function () {
             var divWrapInput = $(this).closest('.div-wrap-input');
             var currentWidth = $(divWrapInput).outerWidth();
@@ -60,6 +35,7 @@ $(document).ready(function () {
                 }
             }
         }
+
     });
 
 
@@ -76,11 +52,75 @@ $(document).ready(function () {
         }
     })
 
-    //
+    $('input').blur(function (e) {
+        var divWrapInput = this.closest('.div-wrap-input');
+        var inputValue = $(this).val().trim();
+        var currentWidth = $(divWrapInput).outerWidth();
+        if (!divWrapInput.isSameNode(e.relatedTarget)) {
+            if ($(this).hasClass('required-input')) {
+                if (inputValue === '') {
+                    $(divWrapInput).css("border-color", "red");
+                    var exclamationIcon = `<div class="exclamation-icon"></div>`;
+                    if (!$(divWrapInput).next().hasClass('exclamation-icon')) {
+                        $(divWrapInput).css("width", currentWidth - 26 + 'px');
+                        $(divWrapInput).after(exclamationIcon);
+                    }
+                } else {
+                    if ($(divWrapInput).next().hasClass('exclamation-icon')) {
+                        $(divWrapInput).next().remove();
+                        $(divWrapInput).css("width", currentWidth + 26 + 'px');
+                    }
+                    $(divWrapInput).css("border-color", "#ddd");
+                }
+            } else {
+                $(divWrapInput).css("border-color", "#ddd");
+            }
+        }
+    })
+
+
+    //$(".div-wrap-input, .div-wrap-input *").blur(function (e) {
+    //    var divWrapInput = $(this).closest('.div-wrap-input');
+    //    var inputValue = $(this).val().trim();
+    //    var currentWidth = $(divWrapInput).outerWidth();
+
+    //    if ($(e.relatedTarget).hasClass('ui-dialog')) {
+
+    //    }
+
+    //    if (!$(e.relatedTarget).is("#main, #main *")) {
+    //        //focus out.
+    //    }
+        
+    //    if ($(this).is('input')) {
+            
+    //    }
+
+    //    if ($(this).hasClass('required-input')) {
+    //            if (inputValue === '') {
+    //                $(divWrapInput).css("border-color", "red");
+    //                var exclamationIcon = `<div class="exclamation-icon"></div>`;
+    //                if (!$(divWrapInput).next().hasClass('exclamation-icon')) {
+    //                    $(divWrapInput).css("width", currentWidth - 26 + 'px');
+    //                    $(divWrapInput).after(exclamationIcon);
+    //                }
+    //            } else {
+    //                if ($(divWrapInput).next().hasClass('exclamation-icon')) {
+    //                    $(divWrapInput).next().remove();
+    //                    $(divWrapInput).css("width", currentWidth + 26 + 'px');
+    //                }
+    //                $(divWrapInput).css("border-color", "#ddd");
+    //            }
+            
+    //    } else {
+    //        $(divWrapInput).css("border-color", "#ddd");
+    //    }
+    //});
+
     $(document).on("keypress", ".positive-num-input", validateNumberInput);
     //$(document).on("keyup", ".positive-num-input", displayCustomNumber);
     //$(document).on("focusout", ".positive-num-input", checkNegativeNumber);
-    $(document).on("focus", ".positive-num-input", selectAllValue(this));
+    //$(document).on("focus", ".positive-num-input", selectAllValue(this));
 
     /**
     * Ẩn combobox menu khi click ra vùng ngoài

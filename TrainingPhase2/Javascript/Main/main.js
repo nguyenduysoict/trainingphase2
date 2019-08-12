@@ -72,19 +72,22 @@ class MainJS {
     showComboBox() {
         var comboboxName = $(this).attr("comboboxName");
         var relativeParent = this.closest('.dropdown-div');
+
         if (comboboxName === "product") {
             var pos = $(relativeParent).offset();
             $('.product').css('top', pos.top + 34);
             $('.product').css('left', pos.left - 1);
             $('.product').addClass('show');
+
         } else if (comboboxName === "object") {
+            $('.product').removeClass('show');
             var dropdownContent = $(relativeParent).find('.dropdown-content');
             if ($(dropdownContent).hasClass('show')) {
                 $(dropdownContent).removeClass('show');
-                return;
+            } else {
+                $(dropdownContent).addClass('show');
             }
         }
-        $('.' + comboboxName).addClass("show");
         $(relativeParent).find('input').focus();
     }
 
