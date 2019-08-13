@@ -40,6 +40,7 @@ namespace TrainingPhase2.Controllers
             try
             {
                 RefBL refBL = new RefBL();
+                result.Data = refBL.GetRefById(id);
                 result.Success = true;
             }
             catch (Exception ex)
@@ -52,12 +53,13 @@ namespace TrainingPhase2.Controllers
         }
 
         [Route("")]
-        public AjaxResult Post([FromBody]RefSaveInfo refSaveInfo)
+        public AjaxResult Post([FromBody]Ref @ref)
         {
             var result = new AjaxResult();
             try
             {
                 RefBL refBL = new RefBL();
+                result.Data = refBL.AddNewRef(@ref);
                 result.Success = true;
             }
             catch (Exception ex)
@@ -69,9 +71,23 @@ namespace TrainingPhase2.Controllers
             return result;
         }
 
-        // PUT: api/Ref/5
-        public void Put(int id, [FromBody]string value)
+        [Route("")]
+        public AjaxResult Put([FromBody]Ref @ref)
         {
+            var result = new AjaxResult();
+            try
+            {
+                RefBL refBL = new RefBL();
+                result.Data = refBL.UpdateRef(@ref);
+                result.Success = true;
+            }
+            catch (Exception ex)
+            {
+                result.Success = false;
+                result.Data = ex;
+                throw;
+            }
+            return result;
         }
 
         // DELETE: api/Ref/5

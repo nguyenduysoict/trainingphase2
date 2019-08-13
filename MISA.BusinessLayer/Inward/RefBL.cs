@@ -20,11 +20,19 @@ namespace MISA.BusinessLayer
         {
             return refDL.GetRefs();
         }
-
-        public int AddNewRef(RefSaveInfo refSaveInfo)
+        public IEnumerable<Ref> GetRefById(Guid id)
         {
+            return refDL.GetRefById(id);
+        }
 
-            return -1;
+
+        public int AddNewRef(Ref @ref)
+        {
+            return refDL.AddNewRef(@ref);
+        }
+        public int UpdateRef(Ref @ref)
+        {
+            return refDL.UpdateRef(@ref);
         }
     }
 }
