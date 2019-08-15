@@ -2,6 +2,7 @@
     constructor() {
         this.receiptNumber = "XK0000012";
         this.detailExportReceipt = [];
+        this.DataBinderJS = new DataBinderJS();
     }
 
     //Lấy số chứng từ
@@ -10,13 +11,46 @@
     }
 
     //Lấy dữ liệu bảng phiếu xuất kho
+    //getAccountObjects() {
+    //    var _this = this;
+    //    $.ajax({
+    //        method: "GET",
+    //        url: "/accountobject",
+    //        datatype: JSON.stringify(),
+    //        success: function (response) {
+    //            _this.DataBinderJS.bindingComboboxData("object", response.Data);
+    //        },
+    //        fail: function (err) {
+    //            console.log(err);
+    //        }
+    //    });
+    //}
+
+    get(url, async, callback) {
+        $.ajax({
+            method: "GET",
+            url: url,
+            async: async,
+            datatype: JSON.stringify(),
+            success: function (response) {
+                callback(response)
+            },
+            fail: function (err) {
+                console.log(err);
+            }
+        });
+    }
+
+
+
+    //Lấy dữ liệu đối tượng
     getOutwardRefData() {
         $.ajax({
             method: "GET",
             url: "/ref",
             datatype: JSON.stringify(),
             success: function (response) {
-                console.log(response);
+                
             },
             fail: function (err) {
                 console.log(err);

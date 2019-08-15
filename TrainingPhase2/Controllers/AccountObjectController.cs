@@ -1,54 +1,55 @@
-﻿using System;
+﻿using MISA.Commons;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using MISA.Commons;
 using MISA.BusinessLayer;
 
 namespace TrainingPhase2.Controllers
 {
-    [RoutePrefix("RefDetail")]
-    public class RefDetailController : ApiController
+    [RoutePrefix("accountobject")]
+    public class AccountObjectController : ApiController
     {
         [Route("")]
-        public IEnumerable<string> Get()
-        {
-            return new string[] { "value3", "value2" };
-        }
-
-        [Route("{id}")]
-        public AjaxResult Get(Guid id)
+        public AjaxResult Get()
         {
             var result = new AjaxResult();
             try
             {
-
-                var refDetailBL = new RefDetailBL();
+                var accountObjectBL = new AccountObjectBL();
+                result.Data = accountObjectBL.GetAccountObjects();
                 result.Success = true;
-                result.Data = refDetailBL.GetRefDetailById(id);
-
             }
             catch (Exception ex)
             {
                 result.Success = false;
                 result.Data = ex;
+                throw;
             }
+
             return result;
+
         }
 
-        // POST: api/RefDetail
+        // GET: api/AccountObject/5
+        public string Get(int id)
+        {
+            return "value";
+        }
+
+        // POST: api/AccountObject
         public void Post([FromBody]string value)
         {
         }
 
-        // PUT: api/RefDetail/5
+        // PUT: api/AccountObject/5
         public void Put(int id, [FromBody]string value)
         {
         }
 
-        // DELETE: api/RefDetail/5
+        // DELETE: api/AccountObject/5
         public void Delete(int id)
         {
         }

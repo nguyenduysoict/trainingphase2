@@ -11,18 +11,15 @@
 class MainJS {
     constructor() {
         this.AjaxJS = new AjaxJS();
-        this.Resources = new Resource();
-        this.DialogOutwardRef = new Dialog(this.Resources.AddNewOtherOutwardRefDialogTitle, 1000, 700, "dialogOutwardRef");
-        this.DialogSelectObject = new Dialog(this.Resources.SelectObject, 800, 'auto', "dialogSelectObject");
-        this.DialogSelectItem = new Dialog(this.Resources.SelectItem, 900, 'auto', "dialogSelectItem");
+        this.DialogOutwardRef = new Dialog(Resource.AddNewOtherOutwardRefDialogTitle, 1000, 700, "dialogOutwardRef");
         this.DataBinderJS = new DataBinderJS();
         this.InitEvents();
         this.refNo = '';
-        this.objectComboboxdata = [];
+        this.objectComboboxData = [];
     }
 
     InitEvents() {
-        this.getOutwardRef();
+        //this.getOutwardRef();
         $(document).on("click", "#btnAdd", this.showOutwardRefDialog.bind(this));
         $(document).on("click", ".btn-search-object", this.showObjectSelectDialog.bind(this));
         $(document).on("click", ".item-quick-search", this.showItemSelectDialog.bind(this));
@@ -30,6 +27,8 @@ class MainJS {
         $(document).on("click", ".arrow-down-dropbox-icon", this.showComboBox);
 
         $(document).on("click", ".product-combobox-data>tr", this.onSelectProductItem.bind(this));
+
+        $(document).on("click", ".object-combobox-data>tr", this.onSelectObject);
 
         $(document).on("focus", ".item-code-input", this.focusOnItemCodeInput);
 
@@ -46,15 +45,23 @@ class MainJS {
     showOutwardRefDialog() {
         var currentDate = getCurrentDate();
         var currentTime = getCurrentTime();
+        var _this = this;
         this.refNo = this.AjaxJS.getRefNo();
+
         $('.outward-ref-no').val(this.refNo);
         $('.outward-date').val(currentDate);
         $('.outward-time').val(currentTime);
 
-        this.objectComboboxdata = this.AjaxJS.getComboboxData("object");
-        this.productComboboxdata = this.AjaxJS.getComboboxData("product");
-        this.DataBinderJS.bindingComboboxData("object", this.objectComboboxdata);
-        this.DataBinderJS.bindingComboboxData("product", this.productComboboxdata);
+        var objUrl = "/accountobject";
+        this.AjaxJS.get(objUrl, false, function (response) {
+            if (response.Success) {
+                _this.DataBinderJS.bindingComboboxData("object", response.Data);
+            }
+        });
+
+
+        
+
         $('.outward-detail-table').html('');
         this.DataBinderJS.appendEmptyRowToOutwardDetailTable();
         this.DialogOutwardRef.open();
@@ -103,6 +110,10 @@ class MainJS {
         $('.outward-detail-table').children()[lastRowIndex - 1].remove();
         this.DataBinderJS.appendDataRowToOutwardDetailTable(product);
         this.DataBinderJS.appendEmptyRowToOutwardDetailTable();
+    } 
+
+    onSelectObject() {
+        console.log(this);
     }
 
     /**

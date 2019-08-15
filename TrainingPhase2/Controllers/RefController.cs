@@ -20,7 +20,7 @@ namespace TrainingPhase2.Controllers
             var result = new AjaxResult();
             try
             {
-                RefBL refBL = new RefBL();
+                var refBL = new RefBL();
                 result.Success = true;
                 result.Data = refBL.GetRefs();
             }
@@ -39,7 +39,7 @@ namespace TrainingPhase2.Controllers
             var result = new AjaxResult();
             try
             {
-                RefBL refBL = new RefBL();
+                var refBL = new RefBL();
                 result.Data = refBL.GetRefById(id);
                 result.Success = true;
             }
@@ -58,7 +58,7 @@ namespace TrainingPhase2.Controllers
             var result = new AjaxResult();
             try
             {
-                RefBL refBL = new RefBL();
+                var refBL = new RefBL();
                 result.Data = refBL.AddNewRef(@ref);
                 result.Success = true;
             }
@@ -77,7 +77,7 @@ namespace TrainingPhase2.Controllers
             var result = new AjaxResult();
             try
             {
-                RefBL refBL = new RefBL();
+                var refBL = new RefBL();
                 result.Data = refBL.UpdateRef(@ref);
                 result.Success = true;
             }

@@ -2,13 +2,9 @@
 
 $(document).ready(function () {
 
-    // Khởi tạo resource
-    resource = new Resource();
-
     //Hiển thị tooltip khi mouseenter icon cảnh báo
     $(document).on("mouseenter", ".exclamation-icon", function () {
-        var tooltipContent = resource.FieldCannotEmpty;
-        showTooltip(this, tooltipContent);
+        showTooltip(this);
     });
 
     //Ẩn tooltip khi mouseenter icon cảnh báo
@@ -22,13 +18,20 @@ $(document).ready(function () {
             var divWrapInput = $(this).closest('.div-wrap-input');
             $(divWrapInput).css("border-color", "dodgerblue");
         },
-        keyup: function () {
-            var divWrapInput = $(this).closest('.div-wrap-input');
-            var currentWidth = $(divWrapInput).outerWidth();
-            if ($(this).hasClass('required-input')) {
-                if ($(divWrapInput).next().hasClass('exclamation-icon')) {
+        keyup: function (e) {
+            if (e.keyCode !== 9) {
+                if ($(this).hasClass('required-input')) {
                     var inputValue = $(this).val().trim();
-                    if (inputValue !== '') {
+                    var divWrapInput = $(this).closest('.div-wrap-input');
+                    var currentWidth = $(divWrapInput).outerWidth();
+                    if (inputValue === '') {
+                        if (!$(divWrapInput).next().hasClass('exclamation-icon')) {
+                            var exclamationIcon = `<div class="exclamation-icon"></div>`;
+                            $(divWrapInput).css("width", currentWidth - 26 + 'px');
+                            $(divWrapInput).after(exclamationIcon);
+                            showTooltip($(divWrapInput).next());
+                        }
+                    } else {
                         $(divWrapInput).next().remove();
                         $(divWrapInput).css("width", currentWidth + 26 + 'px');
                     }
@@ -64,11 +67,14 @@ $(document).ready(function () {
                     if (!$(divWrapInput).next().hasClass('exclamation-icon')) {
                         $(divWrapInput).css("width", currentWidth - 26 + 'px');
                         $(divWrapInput).after(exclamationIcon);
+                    } else {
+                        hideTooltip($(divWrapInput).next());
                     }
                 } else {
                     if ($(divWrapInput).next().hasClass('exclamation-icon')) {
                         $(divWrapInput).next().remove();
                         $(divWrapInput).css("width", currentWidth + 26 + 'px');
+                        hideTooltip($(divWrapInput).next());
                     }
                     $(divWrapInput).css("border-color", "#ddd");
                 }
@@ -77,45 +83,6 @@ $(document).ready(function () {
             }
         }
     })
-
-
-    //$(".div-wrap-input, .div-wrap-input *").blur(function (e) {
-    //    var divWrapInput = $(this).closest('.div-wrap-input');
-    //    var inputValue = $(this).val().trim();
-    //    var currentWidth = $(divWrapInput).outerWidth();
-
-    //    if ($(e.relatedTarget).hasClass('ui-dialog')) {
-
-    //    }
-
-    //    if (!$(e.relatedTarget).is("#main, #main *")) {
-    //        //focus out.
-    //    }
-        
-    //    if ($(this).is('input')) {
-            
-    //    }
-
-    //    if ($(this).hasClass('required-input')) {
-    //            if (inputValue === '') {
-    //                $(divWrapInput).css("border-color", "red");
-    //                var exclamationIcon = `<div class="exclamation-icon"></div>`;
-    //                if (!$(divWrapInput).next().hasClass('exclamation-icon')) {
-    //                    $(divWrapInput).css("width", currentWidth - 26 + 'px');
-    //                    $(divWrapInput).after(exclamationIcon);
-    //                }
-    //            } else {
-    //                if ($(divWrapInput).next().hasClass('exclamation-icon')) {
-    //                    $(divWrapInput).next().remove();
-    //                    $(divWrapInput).css("width", currentWidth + 26 + 'px');
-    //                }
-    //                $(divWrapInput).css("border-color", "#ddd");
-    //            }
-            
-    //    } else {
-    //        $(divWrapInput).css("border-color", "#ddd");
-    //    }
-    //});
 
     $(document).on("keypress", ".positive-num-input", validateNumberInput);
     //$(document).on("keyup", ".positive-num-input", displayCustomNumber);
@@ -176,7 +143,8 @@ function selectAllValue(inputElement) {
  * @param {any} exclamationElement
  */
 
-function showTooltip(exclamationElement, tooltipContent) {
+function showTooltip(exclamationElement) {
+    var tooltipContent = Resource.FieldCannotEmpty;
     var tooltipElement = `<div class="custom-tooltip"> ${tooltipContent} </div>`;
     $(exclamationElement).append(tooltipElement);
     $(exclamationElement).children().css('display', 'unset');

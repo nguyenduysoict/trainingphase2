@@ -67,32 +67,33 @@
     bindingComboboxData(comboboxName, comboboxData) {
         switch (comboboxName) {
             case "object":
+                console.log(comboboxData);
                 comboboxData = comboboxData.sort(function (a, b) {
-                    var fullNameA = a.name.split(" ");
-                    var firstNameA = fullNameA[fullNameA.length - 1];
-                    var fullNameB = b.name.split(" ");
-                    var firstNameB = fullNameB[fullNameB.length - 1];
-                    if (firstNameA < firstNameB) return -1;
-                    if (firstNameA > firstNameB) return 1;
-                    if (firstNameA == firstNameB) {
-                        if (a.objectTypeOrder > b.objectTypeOrder) {
-                            return -1;
-                        } else if (a.objectTypeOrder < b.objectTypeOrder) {
+                    if (a.AccountObjectType > b.AccountObjectType) {
+                        return -1;
+                    } else if (a.AccountObjectType < b.AccountObjectType) {
+                        return 1;
+                    } else {
+                        if (a.AccountObjectCode > b.AccountObjectCode) {
                             return 1;
+                        } else if (a.AccountObjectCode < b.AccountObjectCode) {
+                            return -1;
                         } else {
-                            if (a.code > b.code) {
-                                return 1;
-                            } else {
-                                return -1;
-                            }
+                            var fullNameA = a.AccountObjectName.split(" ");
+                            var firstNameA = fullNameA[fullNameA.length - 1];
+                            var fullNameB = b.AccountObjectName.split(" ");
+                            var firstNameB = fullNameB[fullNameB.length - 1];
+                            if (firstNameA < firstNameB) return -1;
+                            if (firstNameA > firstNameB) return 1;
                         }
                     }
                     return 0;
                 });
                 $(".object-combobox-data").html('');
                 $.each(comboboxData, function (index, item) {
-                    var row = `<tr customerRepaymentId="${item.id}" objectAddress="${item.address}" objectCode="${item.code}" objectName="${item.name}"> <td width="130px">${item.code}</td> <td width="250px" class="center-td">${item.name}</td> <td width="150px">${item.type}</td></tr >`;
+                    var row = `<tr objectCode="${item.AccountObjectCode}" objectName="${item.AccountObjectName}"> <td width="130px">${item.AccountObjectCode}</td> <td width="250px" class="center-td">${item.AccountObjectName}</td> <td width="150px">${item.TypeName}</td></tr >`;
                     $(".object-combobox-data").append(row);
+                    $(".object-combobox-data tr:last-child").data("objID", item.AccountObjectID)
                 });
                 $(".object-combobox-data").children().first().addClass('selected-row');
 
