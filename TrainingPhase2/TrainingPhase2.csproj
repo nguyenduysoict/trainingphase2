@@ -183,6 +183,7 @@
     <Content Include="Javascript\Common\common.js" />
     <Content Include="Javascript\Common\databinder.js" />
     <Content Include="Javascript\Common\dialog.js" />
+    <Content Include="Javascript\Common\drawer.js" />
     <Content Include="Javascript\Library\bootstrap.min.js" />
     <Content Include="Javascript\Library\jquery-3.4.1.js" />
     <Content Include="Javascript\Library\jquery-ui.js" />
@@ -201,8 +202,10 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountObjectController.cs" />
     <Compile Include="Controllers\EmployeeController.cs" />
+    <Compile Include="Controllers\ItemController.cs" />
     <Compile Include="Controllers\RefController.cs" />
     <Compile Include="Controllers\RefDetailController.cs" />
+    <Compile Include="Controllers\StockController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

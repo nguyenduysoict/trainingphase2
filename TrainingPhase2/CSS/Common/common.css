@@ -491,3 +491,24 @@ tbody tr:hover {
     height: 100%;
 }
 
+.branch-dropdown-menu {
+    position: absolute;
+    display: none;
+    background: white;
+    border: 1px solid #ddd;
+    min-width: 120px;
+    padding-left: 0;
+    z-index: 102;
+}
+
+    .branch-dropdown-menu li {
+        list-style-type: none;
+        padding: 7px;
+    }
+
+        .branch-dropdown-menu li:hover {
+            background-color: rgba(128, 181, 203, 1);
+            cursor: pointer;
+            color: white;
+            
+        }

@@ -45,7 +45,9 @@
     <Compile Include="Base\BaseDL.cs" />
     <Compile Include="Base\DataAccess.cs" />
     <Compile Include="Inward\AccountObjectDL.cs" />
+    <Compile Include="Inward\ItemDL.cs" />
     <Compile Include="Inward\RefDetailDL.cs" />
+    <Compile Include="Inward\StockDL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Inward\RefDL.cs" />
   </ItemGroup>

@@ -43,8 +43,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Inward\AccountObjectBL.cs" />
+    <Compile Include="Inward\ItemBL.cs" />
     <Compile Include="Inward\RefBL.cs" />
     <Compile Include="Inward\RefDetailBL.cs" />
+    <Compile Include="Inward\StockBL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

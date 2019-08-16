@@ -64,10 +64,10 @@
      * 
      */
 
-    bindingComboboxData(comboboxName, comboboxData) {
+
+    bindComboboxData(comboboxName, comboboxData) {
         switch (comboboxName) {
             case "object":
-                console.log(comboboxData);
                 comboboxData = comboboxData.sort(function (a, b) {
                     if (a.AccountObjectType > b.AccountObjectType) {
                         return -1;
@@ -96,19 +96,35 @@
                     $(".object-combobox-data tr:last-child").data("objID", item.AccountObjectID)
                 });
                 $(".object-combobox-data").children().first().addClass('selected-row');
-
                 break;
 
             case "product":
                 $(".product-combobox-data").html('');
                 $.each(comboboxData, function (index, item) {
-                    var row = `<tr itemCode="${item.itemCode}" itemName="${item.itemName}" storePlace="${item.storePlace}" countUnit="${item.countUnit}" unitPrice="${item.unitPrice}" amount="${item.amount}" sumMoney="${item.sumMoney}">
-                        <td width="130px">${item.itemCode}</td> <td width="250px" class="center-td">${item.itemName}</td>
+                    var row = `<tr itemCode="${item.SKUCode}" itemName="${item.ItemName}" countUnit="${item.UnitName}" unitPrice="${item.UnitPrice}">
+                        <td width="130px">${item.SKUCode}</td> <td width="250px" class="center-td">${item.ItemName}</td>
                      </tr >`;
                     $(".product-combobox-data").append(row);
+                    $(".product-combobox-data tr:last-child").data("itemID", item.ItemID)
+                    $(".product-combobox-data tr:last-child").data("unitID", item.UnitID)
+
                 });
                 $(".product-combobox-data").children().first().addClass('selected-row');
                 break;
+        }
+    }
+
+    bindDropdownMenu(dropMenuName, data) {
+
+        switch (dropMenuName) {
+            case "branch":
+                $(".branch-dropdown-menu").html('');
+                $.each(data, function (index, item) {
+                    var row = `<li>${item.StockName}</li>`;
+                    $(".branch-dropdown-menu").append(row);
+                    $(".branch-dropdown-menu li:last-child").data("stockID", item.StockID);
+                });
+            default:
         }
     }
 
@@ -154,17 +170,10 @@
                 <td class="disabled-cell"> ${item.itemName} </td>
                 <td class="no-padding-cell width-180">
                     <div class="dropdown">
-                        <div class="hover-pointer branch-dropdown-cell" data-toggle="dropdown">
+                        <div class="hover-pointer branch-dropdown-cell branch-dropdown">
                             <div class="detail-tbl-branch-dropbox"> Chi nhánh Cầu Giấy </div>
                             <div class="icon-in-input" tabindex="0"> <i class="fa fa-caret-down"></i></div>
                         </div>
-                        <ul class="dropdown-menu">
-                            <li><a href="#"> <span> = </span> : Bằng </a></li>
-                            <li><a href="#"> <span> > </span>: Lớn hơn</a></li>
-                            <li><a href="#"> <span> >= </span> : Lớn hơn hoặc bằng </a></li>
-                            <li><a href="#"> <span> < </span> : Nhỏ hơn</a></li>
-                            <li><a href="#"> <span> <= </span> : Nhỏ hơn hoặc bằng</a></li>
-                        </ul>
                     </div>
                 </td>
                 <td class="disabled-cell width-90"> ${item.countUnit} </td>

@@ -17,29 +17,37 @@ $(document).ready(function () {
         focus: function () {
             var divWrapInput = $(this).closest('.div-wrap-input');
             $(divWrapInput).css("border-color", "dodgerblue");
-        },
+        }
+    });
+
+    $(".required-input").on({
         keyup: function (e) {
-            if (e.keyCode !== 9) {
-                if ($(this).hasClass('required-input')) {
-                    var inputValue = $(this).val().trim();
-                    var divWrapInput = $(this).closest('.div-wrap-input');
-                    var currentWidth = $(divWrapInput).outerWidth();
-                    if (inputValue === '') {
-                        if (!$(divWrapInput).next().hasClass('exclamation-icon')) {
-                            var exclamationIcon = `<div class="exclamation-icon"></div>`;
-                            $(divWrapInput).css("width", currentWidth - 26 + 'px');
-                            $(divWrapInput).after(exclamationIcon);
-                            showTooltip($(divWrapInput).next());
-                        }
-                    } else {
-                        $(divWrapInput).next().remove();
-                        $(divWrapInput).css("width", currentWidth + 26 + 'px');
+            var inputValue = $(this).val().trim();
+            var divWrapInput = $(this).closest('.div-wrap-input');
+            var currentWidth = $(divWrapInput).outerWidth();
+            if (e.keyCode === 8 || e.keyCode === 46) {
+                if (inputValue === '') {
+                    if (!$(divWrapInput).next().hasClass('exclamation-icon')) {
+                        var exclamationIcon = `<div class="exclamation-icon"></div>`;
+                        $(divWrapInput).css("width", currentWidth - 26 + 'px');
+                        $(divWrapInput).after(exclamationIcon);
+                        showTooltip($(divWrapInput).next());
                     }
+                }
+            } else {
+                if (inputValue !== '') {
+                    $(divWrapInput).next().remove();
+                    $(divWrapInput).css("width", currentWidth + 26 + 'px');
                 }
             }
         }
+    })
 
-    });
+    $(".input-combobox").on({
+        keydown: function (event) {
+            changeSelectRowByArrow(this, event);
+        }
+    })
 
 
     // Tăng giảm giá trị input khi click vào nút mũi tên tăng giảm
@@ -81,13 +89,15 @@ $(document).ready(function () {
             } else {
                 $(divWrapInput).css("border-color", "#ddd");
             }
+            $('.dropdown-content').removeClass("show");
         }
+
     })
 
     $(document).on("keypress", ".positive-num-input", validateNumberInput);
-    //$(document).on("keyup", ".positive-num-input", displayCustomNumber);
-    //$(document).on("focusout", ".positive-num-input", checkNegativeNumber);
-    //$(document).on("focus", ".positive-num-input", selectAllValue(this));
+    $(document).on("keyup", ".positive-num-input", displayCustomNumber);
+    $(document).on("focusout", ".positive-num-input", checkNegativeNumber);
+    $(document).on("focus", "input", selectAllValue);
 
     /**
     * Ẩn combobox menu khi click ra vùng ngoài
@@ -103,7 +113,17 @@ $(document).ready(function () {
         }
     });
 
+    //Ẩn dropdown menu khi click ra vùng ngoài
 
+    $(document).click(function (e) {
+        var container = $(".branch-dropdown");
+        if (!container.is(e.target) && container.has(e.target).length === 0) {
+            $(".branch-dropdown-menu").css("display","none");
+        }
+    });
+
+
+    //Gán sự kiện click cho đối tượng được ấn enter
     $(document).keydown(function (e) {
         even = e || window.event;
         if (e.keyCode === 13) {
@@ -114,7 +134,29 @@ $(document).ready(function () {
 
 });
 
+
+//Hiển thị số định dạng tiền
+//Createby NMDuy 16/08/2019
+
+function displayCustomNumber() {
+    var value = $(this).val();
+    if (value) {
+        $(this).val(formatNumberToMoney(value));
+    }
+}
+
+//Gán giá trị cho ô input khi focusout
+//Createby NMDuy 16/08/2019
+
+function checkNegativeNumber() {
+    var value = $(this).val();
+    if (value < 0 || value == '' || value.includes('-')) {
+        $(this).val(0);
+    }
+}
+
 // Kiểm tra ký tự hợp lệ khi nhập ô input số
+//Createby NMDuy 16/08/2019
 
 function validateNumberInput(event) {
     var key = window.event ? event.keyCode : event.which;
@@ -134,9 +176,58 @@ function validateNumberInput(event) {
     }
 }
 
-function selectAllValue(inputElement) {
-    $(inputElement).select();
+//Chọn tất cả giá trị trong ô input khi focus
+//Createby NMDuy 16/08/2019
+
+function selectAllValue() {
+    $(this).select();
 }
+
+//Xử lý ấn mũi tên lên xuống input combobox 
+
+function changeSelectRowByArrow(inputElement, event) {
+    var keyCode = event.keyCode;
+    var comboboxName = $(inputElement).attr("comboboxName");
+    var dropdownContent = $('.dropdown-content[comboboxName=' + comboboxName + ']');
+    var tbodyDropdown = dropdownContent.find('.tbody-dropdown');
+    var comboboxData = $('.' + comboboxName + '-combobox-data');
+    var selectedRow = $('.' + comboboxName + '-combobox-data>.selected-row');
+    var indexSelectedRow = selectedRow.index();
+
+    if (keyCode === 38) {
+        if (dropdownContent.hasClass("show")) {
+            selectedRow.removeClass("selected-row");
+            if (selectedRow.prev().length === 0) {
+                comboboxData.children(":last").addClass("selected-row");
+            } else {
+                selectedRow.prev().addClass("selected-row");
+            }
+
+        } else {
+            dropdownContent.addClass("show");
+        }
+            
+    } else if (keyCode === 40) {
+        if (dropdownContent.hasClass("show")) {
+            selectedRow.removeClass("selected-row");
+            if (selectedRow.next().length === 0) {
+                comboboxData.children(":first").addClass("selected-row");
+            } else {
+                var currentScroll = $(tbodyDropdown).scrollTop();
+
+                $(tbodyDropdown).scrollTop(currentScroll+33);
+                selectedRow.next().addClass("selected-row");
+            }
+
+        } else {
+            dropdownContent.addClass("show");
+        }
+
+    } else if (keyCode === 13) {
+
+    }
+}
+
 
 /**
  * Hàm hiển thị tooltip

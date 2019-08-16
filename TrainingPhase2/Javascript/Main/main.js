@@ -28,6 +28,8 @@ class MainJS {
 
         $(document).on("click", ".product-combobox-data>tr", this.onSelectProductItem.bind(this));
 
+        $(document).on("click", ".branch-dropdown", this.showBranchDropdown);
+
         $(document).on("click", ".object-combobox-data>tr", this.onSelectObject);
 
         $(document).on("focus", ".item-code-input", this.focusOnItemCodeInput);
@@ -35,6 +37,7 @@ class MainJS {
         $(document).on("focus", ".end-tab", this.onFocusEndtab);
         $(document).on("focus", ".start-tab", this.onFocusStarttab);
         $(document).on("click", ".garbage-icon", this.onDeleteItemDetailRow);
+        $(document).on("click", ".save-btn", this.saveRef.bind(this));
 
     }
 
@@ -43,6 +46,9 @@ class MainJS {
     }
 
     showOutwardRefDialog() {
+        this.DialogOutwardRef.open();
+        $('.object-code-input').focus();
+
         var currentDate = getCurrentDate();
         var currentTime = getCurrentTime();
         var _this = this;
@@ -52,20 +58,54 @@ class MainJS {
         $('.outward-date').val(currentDate);
         $('.outward-time').val(currentTime);
 
+        $('.outward-detail-table').html('');
+        this.DataBinderJS.appendEmptyRowToOutwardDetailTable();
+
+
+
+
         var objUrl = "/accountobject";
-        this.AjaxJS.get(objUrl, false, function (response) {
+        this.AjaxJS.get(objUrl, true, function (response) {
             if (response.Success) {
-                _this.DataBinderJS.bindingComboboxData("object", response.Data);
+                _this.DataBinderJS.bindComboboxData("object", response.Data);
             }
         });
 
+        var itemUrl = "/item";
+        this.AjaxJS.get(itemUrl, true, function (response) {
+            if (response.Success) {
+                console.log(response.Data);
+                _this.DataBinderJS.bindComboboxData("product", response.Data);
+            }
+        });
 
-        
+        var itemUrl = "/stock";
+        this.AjaxJS.get(itemUrl, true, function (response) {
+            if (response.Success) {
+                console.log(response.Data);
+                _this.DataBinderJS.bindDropdownMenu("branch", response.Data);
+            }
+        });
+    }
 
-        $('.outward-detail-table').html('');
-        this.DataBinderJS.appendEmptyRowToOutwardDetailTable();
-        this.DialogOutwardRef.open();
-        $('.staff-code-input').focus();
+    showBranchDropdown() {
+        var parentDiv = $(this).parent();
+        var parentDivPosition = $(parentDiv).offset();
+
+        if ($(this).hasClass("branch-dropdown-cell")) {
+            $('.branch-dropdown-menu').css({
+                'top': parentDivPosition.top + 28,
+            });
+        } else {
+            $('.branch-dropdown-menu').css({
+                'top': parentDivPosition.top + 34,
+            });
+        }
+        $('.branch-dropdown-menu').css({
+            'left': parentDivPosition.left,
+            'display': 'unset',
+            'width': $(parentDiv).outerWidth()
+        });
 
     }
 
@@ -100,6 +140,7 @@ class MainJS {
 
     onSelectProductItem(sender) {
         var item = sender.currentTarget;
+        console.log(item);
         var product = {
             itemCode: $(item).attr("itemCode"),
             itemName: $(item).attr("itemName"),
@@ -113,7 +154,14 @@ class MainJS {
     } 
 
     onSelectObject() {
-        console.log(this);
+        var objectCode = $(this).attr("objectCode");
+        var objectName = $(this).attr("objectName");
+        $(".object-code-input").val(objectCode);
+        $(".staff-code-name").val(objectName);
+    }
+
+    saveRef() {
+
     }
 
     /**
@@ -125,8 +173,6 @@ class MainJS {
         $(this).siblings().addClass('show');
     }
 
-    /**
-     * */
     onFocusEndtab() {
         $('.outward-detail-table tr:first-child  td:first-child input').focus();
     }

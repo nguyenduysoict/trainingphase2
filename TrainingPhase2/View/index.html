@@ -274,7 +274,7 @@
                                 <img src="/Contents/Icons/ajax-loader.gif" />
                             </div>
                         </div>
-                        
+
 
 
                         <div class="master-table-footer">
@@ -383,7 +383,7 @@
                         Sửa
                     </span>
                 </button>
-                <button class="toolbar-item">
+                <button class="toolbar-item save-btn">
                     <div class="common-icon btn-save-icon">
                     </div>
                     <span class="toolbar-btn-lbl">
@@ -437,15 +437,10 @@
                     <div class="common-icon radio-btn-false outward-purpose-radio-btn"> </div>
                     <div class="radio-label"> Điều chuyển đến cửa hàng khác </div>
                     <div class="dropdown">
-                        <div class="bts-dropdown hover-pointer branch-dropdown-dialog" type="button" data-toggle="dropdown">
+                        <div class="bts-dropdown hover-pointer branch-dropdown-dialog branch-dropdown">
                             <div class="dropdown-text"> Chi nhánh Bưởi </div>
                             <div> <i class="fa fa-caret-down"></i></div>
                         </div>
-                        <ul class="dropdown-menu">
-                            <li><a href="#">HTML</a></li>
-                            <li><a href="#">CSS</a></li>
-                            <li><a href="#">JavaScript</a></li>
-                        </ul>
                     </div>
                 </div>
                 <div class="outward-form">
@@ -455,11 +450,11 @@
                         </div>
                         <div class="start-tab" tabindex="0"></div>
                         <div class="grid-form-container">
-                            <div class="grid-form-item"><span>Nhân viên</span></div>
+                            <div class="grid-form-item"><span>Đối tượng</span></div>
                             <div class="grid-form-item multi-input-grid">
                                 <div style="width: 200px; display: flex">
                                     <div class="div-wrap-input form-input-1 dropdown-div inner-form-input" tabindex="-1" style="outline: none">
-                                        <input type="text" class="non-border-filter-input input-combobox required-input staff-code-input" tabindex="0" />
+                                        <input type="text" class="non-border-filter-input input-combobox required-input object-code-input" tabindex="0" comboboxName="object" />
                                         <div class="icon-in-input arrow-down-dropbox-icon" comboboxName="object"></div>
                                         <div class="icon-in-input quick-search-icon btn-search-object"></div>
                                         <div class="dropdown-content object" comboboxName="object">
@@ -487,20 +482,20 @@
                                     </div>
                                 </div>
                                 <div class="div-wrap-input form-input-5">
-                                    <input type="text" class="non-border-filter-input required-input" tabindex="0" />
+                                    <input type="text" class="non-border-filter-input required-input object-name-input" tabindex="0" />
                                 </div>
 
                             </div>
                             <div class="grid-form-item"><span>Người giao</span></div>
                             <div class="grid-form-item">
                                 <div class="div-wrap-input">
-                                    <input type="text" class="non-border-filter-input" tabindex="0" />
+                                    <input type="text" class="non-border-filter-input shipman-input" tabindex="0" />
                                 </div>
                             </div>
                             <div class="grid-form-item"><span>Diễn giải</span></div>
                             <div class="grid-form-item">
                                 <div class="div-wrap-input">
-                                    <input type="text" class="non-border-filter-input" tabindex="0" />
+                                    <input type="text" class="non-border-filter-input description" tabindex="0" />
                                 </div>
                             </div>
                         </div>
@@ -520,14 +515,14 @@
                             <div class="grid-form-item"><span>Ngày xuất</span></div>
                             <div class="grid-form-item">
                                 <div class="div-wrap-input">
-                                    <input type="text" class="non-border-filter-input outward-date date-picker-input" tabindex="0"/>
+                                    <input type="text" class="non-border-filter-input outward-date date-picker-input" tabindex="0" />
                                     <div class="common-icon calendar-icon"> </div>
                                 </div>
                             </div>
                             <div class="grid-form-item"><span>Giờ xuất</span></div>
                             <div class="grid-form-item">
                                 <div class="div-wrap-input">
-                                    <input type="text" class="non-border-filter-input outward-time time-picker-input" tabindex="0"/>
+                                    <input type="text" class="non-border-filter-input outward-time time-picker-input" tabindex="0" />
                                     <div class="common-icon hour-icon"> </div>
                                 </div>
                             </div>
@@ -545,8 +540,8 @@
                                     <th>Tên hàng hóa</th>
                                     <th class="width-180">Kho</th>
                                     <th class="width-90">Đơn vị tính</th>
-                                    <th class="width-100">Số lượng</th>
-                                    <th class="width-90">Đơn giá</th>
+                                    <th class="width-100">Đơn giá</th>
+                                    <th class="width-90">Số lượng</th>
                                     <th class="width-100">Thành tiền</th>
                                     <th class="width-40"></th>
                                 </tr>
@@ -598,6 +593,9 @@
             </div>
         </div>
     </div>
+
+    <ul class="branch-dropdown-menu">
+    </ul>
     <!--<div class="dialogSelectObject">
         <div class="main-dialog-content">
             <div class="dialog-header-filter">
