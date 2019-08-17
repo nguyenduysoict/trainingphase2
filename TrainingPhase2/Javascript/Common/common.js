@@ -43,26 +43,6 @@ $(document).ready(function () {
         }
     })
 
-    $(".input-combobox").on({
-        keydown: function (event) {
-            changeSelectRowByArrow(this, event);
-        }
-    })
-
-
-    // Tăng giảm giá trị input khi click vào nút mũi tên tăng giảm
-    $(document).on("click", ".amount-arrow", function () {
-        var numberInputNearby = $(this).parent().siblings();
-        var inputValue = parseInt($(numberInputNearby).val(), 10);
-        if ($(this).hasClass("arrow-up")) {
-            $(numberInputNearby).val(inputValue + 1);
-        } else {
-            if (inputValue > 0) {
-                $(numberInputNearby).val(inputValue - 1);
-            }
-        }
-    })
-
     $('input').blur(function (e) {
         var divWrapInput = this.closest('.div-wrap-input');
         var inputValue = $(this).val().trim();
@@ -91,7 +71,29 @@ $(document).ready(function () {
             }
             $('.dropdown-content').removeClass("show");
         }
+    })
 
+    $(".input-combobox").on({
+        keydown: function (event) {
+            changeSelectRowByArrow(this, event);
+        },
+        keyup: function (event) {
+            filterComboboxData(this, event);
+        }
+    })
+
+
+    // Tăng giảm giá trị input khi click vào nút mũi tên tăng giảm
+    $(document).on("click", ".amount-arrow", function () {
+        var numberInputNearby = $(this).parent().siblings();
+        var inputValue = parseInt($(numberInputNearby).val(), 10);
+        if ($(this).hasClass("arrow-up")) {
+            $(numberInputNearby).val(inputValue + 1);
+        } else {
+            if (inputValue > 0) {
+                $(numberInputNearby).val(inputValue - 1);
+            }
+        }
     })
 
     $(document).on("keypress", ".positive-num-input", validateNumberInput);
@@ -192,39 +194,91 @@ function changeSelectRowByArrow(inputElement, event) {
     var tbodyDropdown = dropdownContent.find('.tbody-dropdown');
     var comboboxData = $('.' + comboboxName + '-combobox-data');
     var selectedRow = $('.' + comboboxName + '-combobox-data>.selected-row');
-    var indexSelectedRow = selectedRow.index();
+    if (selectedRow.length !== 0) {
+        var currentScroll = $(tbodyDropdown).scrollTop();
+        var tbodyOffsetTop = tbodyDropdown.offset().top;
+        var selectedRowOffsetTop = selectedRow.offset().top;
 
-    if (keyCode === 38) {
-        if (dropdownContent.hasClass("show")) {
-            selectedRow.removeClass("selected-row");
-            if (selectedRow.prev().length === 0) {
-                comboboxData.children(":last").addClass("selected-row");
+        if (keyCode === 38) {
+            if (dropdownContent.hasClass("show")) {
+                selectedRow.removeClass("selected-row");
+                var prevRow = selectedRow.prevAll(".display-table-row:first");
+                if (prevRow.length === 0) {
+                    comboboxData.find(".display-table-row:last").addClass("selected-row");
+                    var rowNum = comboboxData.children().length;
+                    $(tbodyDropdown).scrollTop((rowNum * 33) - 200);
+                } else {
+                    if (selectedRowOffsetTop - 33 < tbodyOffsetTop) {
+                        $(tbodyDropdown).scrollTop(currentScroll - 33);
+                    }
+                    prevRow.addClass("selected-row");
+                }
+
             } else {
-                selectedRow.prev().addClass("selected-row");
+                dropdownContent.addClass("show");
             }
 
-        } else {
-            dropdownContent.addClass("show");
-        }
-            
-    } else if (keyCode === 40) {
-        if (dropdownContent.hasClass("show")) {
-            selectedRow.removeClass("selected-row");
-            if (selectedRow.next().length === 0) {
-                comboboxData.children(":first").addClass("selected-row");
-            } else {
-                var currentScroll = $(tbodyDropdown).scrollTop();
+        } else if (keyCode === 40) {
+            if (dropdownContent.hasClass("show")) {
+                selectedRow.removeClass("selected-row");
+                var nextRow = selectedRow.nextAll(".display-table-row:first");
+                if (nextRow.length === 0) {
+                    comboboxData.find(".display-table-row:first").addClass("selected-row");
+                    $(tbodyDropdown).scrollTop(0);
+                } else {
+                    if (selectedRowOffsetTop + 33 > tbodyOffsetTop + 167) {
+                        $(tbodyDropdown).scrollTop(currentScroll + 33);
+                    }
+                    nextRow.addClass("selected-row");
+                }
 
-                $(tbodyDropdown).scrollTop(currentScroll+33);
-                selectedRow.next().addClass("selected-row");
+            } else {
+                dropdownContent.addClass("show");
             }
 
-        } else {
-            dropdownContent.addClass("show");
+        } else if (keyCode === 13) {
+            selectedRow.trigger("click");
+        } 
+
+    }
+}
+
+
+//Hàm lọc dữ liệu dropdown menu
+function filterComboboxData(inputElement, event) {
+    var keyCode = event.keyCode;
+    if (keyCode !== 38 && keyCode !== 40 && keyCode !== 13) {
+        var inputValue = $(inputElement).val();
+        var comboboxName = $(inputElement).attr("comboboxName");
+        var dropdownContent = $('.dropdown-content[comboboxName=' + comboboxName + ']');
+        var tbodyDropdown = dropdownContent.find('.tbody-dropdown');
+        var comboboxData = $('.' + comboboxName + '-combobox-data');
+        var rowNum = comboboxData.children().length;
+        dropdownContent.addClass("show");
+
+        if (comboboxName === "object" || comboboxName === "product") {
+            var filterArr = [0, 1];
         }
 
-    } else if (keyCode === 13) {
+        for (let i = 0; i < rowNum; i++) {
+            var currentRow = comboboxData.children()[i];
+            for (let j = 0; j < filterArr.length; j++) {
+                if ($(currentRow).children()[j].textContent.toLowerCase().includes(inputValue)) {
+                    $(currentRow).addClass("display-table-row");
+                    break;
+                } else {
+                    $(currentRow).removeClass("display-table-row");
+                }
+            }
+        }
 
+        comboboxData.children().removeClass("selected-row");
+        if (comboboxData.find(".display-table-row:first").length === 0) {
+            dropdownContent.removeClass("show");
+        } else {
+            comboboxData.find(".display-table-row:first").addClass("selected-row");
+            $(tbodyDropdown).scrollTop(0);
+        }
     }
 }
 

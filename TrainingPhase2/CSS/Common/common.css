@@ -435,6 +435,14 @@ tbody tr:hover {
     overflow-y: scroll
 }
 
+.combobox-row {
+    display:none;
+}
+
+.display-table-row{
+    display: table-row;
+}
+
 .div-on-combobox-tbl-scroll{
     width: 18px;
     border-left: 1px solid #ddd;

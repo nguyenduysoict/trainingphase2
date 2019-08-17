@@ -21,9 +21,6 @@ class MainJS {
     InitEvents() {
         //this.getOutwardRef();
         $(document).on("click", "#btnAdd", this.showOutwardRefDialog.bind(this));
-        $(document).on("click", ".btn-search-object", this.showObjectSelectDialog.bind(this));
-        $(document).on("click", ".item-quick-search", this.showItemSelectDialog.bind(this));
-
         $(document).on("click", ".arrow-down-dropbox-icon", this.showComboBox);
 
         $(document).on("click", ".product-combobox-data>tr", this.onSelectProductItem.bind(this));
@@ -109,13 +106,6 @@ class MainJS {
 
     }
 
-    showObjectSelectDialog() {
-        this.DialogSelectObject.open();
-    }
-    showItemSelectDialog() {
-        this.DialogSelectItem.open();
-    }
-
     showComboBox() {
         var comboboxName = $(this).attr("comboboxName");
         var relativeParent = this.closest('.dropdown-div');
@@ -138,6 +128,8 @@ class MainJS {
         $(relativeParent).find('input').focus();
     }
 
+
+
     onSelectProductItem(sender) {
         var item = sender.currentTarget;
         console.log(item);
@@ -157,7 +149,7 @@ class MainJS {
         var objectCode = $(this).attr("objectCode");
         var objectName = $(this).attr("objectName");
         $(".object-code-input").val(objectCode);
-        $(".staff-code-name").val(objectName);
+        $(".object-code-name").val(objectName);
     }
 
     saveRef() {

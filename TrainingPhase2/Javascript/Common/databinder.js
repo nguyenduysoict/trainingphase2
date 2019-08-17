@@ -91,7 +91,7 @@
                 });
                 $(".object-combobox-data").html('');
                 $.each(comboboxData, function (index, item) {
-                    var row = `<tr objectCode="${item.AccountObjectCode}" objectName="${item.AccountObjectName}"> <td width="130px">${item.AccountObjectCode}</td> <td width="250px" class="center-td">${item.AccountObjectName}</td> <td width="150px">${item.TypeName}</td></tr >`;
+                    var row = `<tr class="display-table-row combobox-row" objectCode="${item.AccountObjectCode}" objectName="${item.AccountObjectName}"> <td width="130px">${item.AccountObjectCode}</td> <td width="250px" class="center-td">${item.AccountObjectName}</td> <td width="150px">${item.TypeName}</td></tr >`;
                     $(".object-combobox-data").append(row);
                     $(".object-combobox-data tr:last-child").data("objID", item.AccountObjectID)
                 });
@@ -101,7 +101,7 @@
             case "product":
                 $(".product-combobox-data").html('');
                 $.each(comboboxData, function (index, item) {
-                    var row = `<tr itemCode="${item.SKUCode}" itemName="${item.ItemName}" countUnit="${item.UnitName}" unitPrice="${item.UnitPrice}">
+                    var row = `<tr class="display-table-row" itemCode="${item.SKUCode}" itemName="${item.ItemName}" countUnit="${item.UnitName}" unitPrice="${item.UnitPrice}">
                         <td width="130px">${item.SKUCode}</td> <td width="250px" class="center-td">${item.ItemName}</td>
                      </tr >`;
                     $(".product-combobox-data").append(row);
