@@ -14,8 +14,13 @@ $('.date-picker-input').datepicker({
     onSelect: function (dateText) {
         var date = $(this).val();
         $(this).val(formatDate(date));
+        $(this).trigger("blur");
     }
 });
+
+
+//Hiển thị datepickere khi click icon calendar
+
 
 $('.calendar-icon').click(function () {
     $(this).siblings().focus();

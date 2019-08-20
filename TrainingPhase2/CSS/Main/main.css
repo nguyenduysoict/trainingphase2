@@ -243,9 +243,13 @@
     height: 33px;
 }
 
-.detail-table-form-footer td{
-    height: 33px;
-}
+    .detail-table-form-footer tr{
+        pointer-events: none;
+    }
+
+    .detail-table-form-footer td {
+        height: 33px;
+    }
 
 .no-padding-cell{
     padding: 0!important;

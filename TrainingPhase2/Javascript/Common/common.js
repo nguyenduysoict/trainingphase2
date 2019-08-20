@@ -55,6 +55,7 @@ $(document).ready(function () {
                     if (!$(divWrapInput).next().hasClass('exclamation-icon')) {
                         $(divWrapInput).css("width", currentWidth - 26 + 'px');
                         $(divWrapInput).after(exclamationIcon);
+                        showTooltip($(divWrapInput).next());
                     } else {
                         hideTooltip($(divWrapInput).next());
                     }
@@ -77,8 +78,8 @@ $(document).ready(function () {
         keydown: function (event) {
             changeSelectRowByArrow(this, event);
         },
-        keyup: function (event) {
-            filterComboboxData(this, event);
+        keyup: function () {
+            filterComboboxData(this);
         }
     })
 
@@ -152,7 +153,7 @@ function displayCustomNumber() {
 
 function checkNegativeNumber() {
     var value = $(this).val();
-    if (value < 0 || value == '' || value.includes('-')) {
+    if (value < 0 || value === '' || value.includes('-')) {
         $(this).val(0);
     }
 }
@@ -245,8 +246,8 @@ function changeSelectRowByArrow(inputElement, event) {
 
 
 //Hàm lọc dữ liệu dropdown menu
-function filterComboboxData(inputElement, event) {
-    var keyCode = event.keyCode;
+function filterComboboxData(inputElement) {
+    var keyCode = window.event ? event.keyCode : event.which;
     if (keyCode !== 38 && keyCode !== 40 && keyCode !== 13) {
         var inputValue = $(inputElement).val();
         var comboboxName = $(inputElement).attr("comboboxName");
@@ -452,7 +453,7 @@ function checkEqualDate(stringDateA, stringDateB){
     var monthB = stringDateB.getMonth();
     var yearA = stringDateA.getFullYear();
     var yearB = stringDateB.getFullYear();
-    if(dateA == dateB && monthA == monthB && yearA == yearB){
+    if(dateA === dateB && monthA === monthB && yearA === yearB){
         return true;
     } else {
         return false;
@@ -481,6 +482,20 @@ function convertToISODate(date) {
 
 function formatMoneyToNumber(stringNumber){
     return parseInt(stringNumber.split('.').join(''));
+}
+
+/**
+ * Sinh ngày chứng từ dựa vào ngày và giờ chứng từ
+ */
+
+function generateRefDate() {
+    var refDate = $('.outward-date').val();
+    refDate = convertToISODate(refDate);
+    var refTime = $('.outward-time').val();
+    refTime = refTime.split(":");
+    refDate.setHours(refTime[0]);
+    refDate.setMinutes(refTime[1]);
+    return refDate.toJSON();
 }
 
 /**

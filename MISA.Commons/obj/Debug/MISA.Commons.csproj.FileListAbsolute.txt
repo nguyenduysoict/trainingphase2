@@ -4,3 +4,9 @@ D:\nmduy\trainingphase2\MISA.Commons\obj\Debug\MISA.Commons.csproj.CoreCompileIn
 D:\nmduy\trainingphase2\MISA.Commons\obj\Debug\MISA.Commons.dll
 D:\nmduy\trainingphase2\MISA.Commons\obj\Debug\MISA.Commons.pdb
 D:\nmduy\trainingphase2\MISA.Commons\obj\Debug\MISA.Commons.csprojResolveAssemblyReference.cache
+C:\Users\nmduy\Desktop\trainingphase2-master\MISA.Commons\bin\Debug\MISA.Commons.dll
+C:\Users\nmduy\Desktop\trainingphase2-master\MISA.Commons\bin\Debug\MISA.Commons.pdb
+C:\Users\nmduy\Desktop\trainingphase2-master\MISA.Commons\obj\Debug\MISA.Commons.csprojAssemblyReference.cache
+C:\Users\nmduy\Desktop\trainingphase2-master\MISA.Commons\obj\Debug\MISA.Commons.csproj.CoreCompileInputs.cache
+C:\Users\nmduy\Desktop\trainingphase2-master\MISA.Commons\obj\Debug\MISA.Commons.dll
+C:\Users\nmduy\Desktop\trainingphase2-master\MISA.Commons\obj\Debug\MISA.Commons.pdb

@@ -5,5 +5,7 @@
     DuplicateOutwardRefDialogTitle : "Nhân bản phiếu xuất kho",
     SelectObject : "Chọn đối tượng",
     SelectItem : "Chọn hàng hóa",
-    FieldCannotEmpty : "Trường này không được để trống!"
+    FieldCannotEmpty: "Trường này không được để trống!",
+    MShopKeeper: "MShopKeeper",
+    MustHaveAtLeastOneDetail: "Bạn phải chọn ít nhất 1 hàng hóa. Vui lòng kiểm tra lại."
 }

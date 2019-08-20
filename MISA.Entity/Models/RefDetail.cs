@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MISA.Entity
 {
-    class RefDetail: Base
+    public class RefDetail: Base
     {
         public Guid RefDetailID { get; set; }
         public Guid RefID { get; set; }

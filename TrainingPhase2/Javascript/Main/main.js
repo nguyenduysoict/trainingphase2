@@ -1,6 +1,7 @@
 ﻿$(document).ready(function () {
     // Khởi tạo đối tượng MainJS xử lý nghiệp vụ
     mainJS = new MainJS();
+
 });
 
 /**
@@ -12,14 +13,16 @@ class MainJS {
     constructor() {
         this.AjaxJS = new AjaxJS();
         this.DialogOutwardRef = new Dialog(Resource.AddNewOtherOutwardRefDialogTitle, 1000, 700, "dialogOutwardRef");
+        this.DialogNotification = new Dialog(Resource.MShopKeeper, 400, 156, "dialogNotification");
         this.DataBinderJS = new DataBinderJS();
-        this.InitEvents();
         this.refNo = '';
+        this.InitEvents();
         this.objectComboboxData = [];
     }
 
     InitEvents() {
         //this.getOutwardRef();
+        this.refNo = this.AjaxJS.getRefNo();
         $(document).on("click", "#btnAdd", this.showOutwardRefDialog.bind(this));
         $(document).on("click", ".arrow-down-dropbox-icon", this.showComboBox);
 
@@ -30,11 +33,12 @@ class MainJS {
         $(document).on("click", ".object-combobox-data>tr", this.onSelectObject);
 
         $(document).on("focus", ".item-code-input", this.focusOnItemCodeInput);
+        $(document).on("click", ".branch-dropdown-menu li", this.onSelectBranch);
 
         $(document).on("focus", ".end-tab", this.onFocusEndtab);
         $(document).on("focus", ".start-tab", this.onFocusStarttab);
         $(document).on("click", ".garbage-icon", this.onDeleteItemDetailRow);
-        $(document).on("click", ".save-btn", this.saveRef.bind(this));
+        $(document).on("click", ".save-btn", this.onClickSaveRefBtn.bind(this));
 
     }
 
@@ -49,17 +53,12 @@ class MainJS {
         var currentDate = getCurrentDate();
         var currentTime = getCurrentTime();
         var _this = this;
-        this.refNo = this.AjaxJS.getRefNo();
-
         $('.outward-ref-no').val(this.refNo);
         $('.outward-date').val(currentDate);
         $('.outward-time').val(currentTime);
 
         $('.outward-detail-table').html('');
         this.DataBinderJS.appendEmptyRowToOutwardDetailTable();
-
-
-
 
         var objUrl = "/accountobject";
         this.AjaxJS.get(objUrl, true, function (response) {
@@ -85,9 +84,15 @@ class MainJS {
         });
     }
 
+    /**
+     * Hiển thị danh sách kho
+     */
+
     showBranchDropdown() {
         var parentDiv = $(this).parent();
         var parentDivPosition = $(parentDiv).offset();
+
+        $('.branch-dropdown-menu').data("target", this.firstElementChild);
 
         if ($(this).hasClass("branch-dropdown-cell")) {
             $('.branch-dropdown-menu').css({
@@ -105,6 +110,10 @@ class MainJS {
         });
 
     }
+
+    /**
+     * Hiển thị combobox
+     */
 
     showComboBox() {
         var comboboxName = $(this).attr("comboboxName");
@@ -128,38 +137,135 @@ class MainJS {
         $(relativeParent).find('input').focus();
     }
 
-
+    /**
+     * Chọn hàng hóa trong combobox hàng hóa
+     * @param {any} sender
+     */
 
     onSelectProductItem(sender) {
         var item = sender.currentTarget;
-        console.log(item);
-        var product = {
-            itemCode: $(item).attr("itemCode"),
-            itemName: $(item).attr("itemName"),
-            countUnit: $(item).attr("countUnit"),
-            unitPrice: $(item).attr("unitPrice")
-        };
-        var lastRowIndex = $('.outward-detail-table').children().length;
-        $('.outward-detail-table').children()[lastRowIndex - 1].remove();
-        this.DataBinderJS.appendDataRowToOutwardDetailTable(product);
-        this.DataBinderJS.appendEmptyRowToOutwardDetailTable();
-    } 
+        var recordCount = parseInt($(".record-count").html());
+        $(".record-count").html(recordCount + 1);
+        this.DataBinderJS.appendDataRowToOutwardDetailTable(item);
+        this.calculateSumAmount();
+    }
+
+    /**
+     * Tính toán tổng tiền trong bảng chi tiết
+     */
+
+    calculateSumAmount() {
+        var sumAmount = 0;
+        var rowCount = $('.outward-detail-table tr').length;
+
+        for (var i = 0; i < rowCount-1; i++) {
+            var sumAmountItem = $('.outward-detail-table .item-sum-amount')[i];
+            var sumAmountItemValue = $(sumAmountItem).val();
+            console.log(sumAmountItem);
+            sumAmount += formatMoneyToNumber(sumAmountItemValue);
+        }
+
+        sumAmount = formatNumberToMoney(sumAmount);
+        $('.total-sum-amount').html(sumAmount);
+    }
+
+
+    /**
+     * Chọn đối tượng trên combobox đối tượng
+     */
 
     onSelectObject() {
         var objectCode = $(this).attr("objectCode");
         var objectName = $(this).attr("objectName");
         $(".object-code-input").val(objectCode);
-        $(".object-code-name").val(objectName);
+        $(".object-code-input").data("AccountObjectID", $(this).data("AccountObjectID"));
+        $(".object-name-input").val(objectName);
+        $(".object-code-input").trigger("blur");
     }
 
-    saveRef() {
+    /**
+     * Lựa chọn chi nhánh 
+     */
 
+    onSelectBranch() {
+        var targetElement = $(this).parent().data("target");
+        $(targetElement).data("StockID", $(this).data("StockID"));
+        $(targetElement).html($(this).html());
+    }
+
+    /**
+     * Bắt sự kiện click vào nút lưu trên dialog
+     * */
+    onClickSaveRefBtn() {
+        if ($(".outward-detail-table tr").length === 1) {
+            this.showNotificationDialog(notifyType.MissingDetail);
+        } else {
+            this.saveRef();
+        }
+    }
+
+    /**Thực hiện lưu chứng từ
+     * */
+
+    saveRef() {
+        var Ref = {
+            RefDate: generateRefDate(),
+            RefNo: $('.outward-ref-no').val(),
+            RefTypeID: 3,
+            AccountObjectID: $('.object-code-input').data('AccountObjectID'),
+            JournalMemo: $('.description').val(),
+            TotalAmount: formatMoneyToNumber($('.total-sum-amount').html())
+        };
+
+        console.log(Ref);
+
+        var RefDetailArr = [];
+
+        var recordCount = $(".outward-detail-table tr").length;
+
+        for (var i = 0; i < recordCount - 1; i++) {
+            var rowItem = $(".outward-detail-table tr")[i];
+            var itemUnitPrice = formatMoneyToNumber($(rowItem).find(".item-unit-price").val());
+            var RefDetail = {
+                ItemID: $(rowItem).data("ItemID"),
+                UnitID: $(rowItem).data("UnitID"),
+                UnitPrice: itemUnitPrice,
+                StockID: $(rowItem).find(".item-branch").data("StockID"),
+                Quantity: parseInt($(rowItem).find(".item-quantity").val())
+            }
+            RefDetailArr.push(RefDetail);
+        }
+
+        var RefSaveData = {
+            Ref: Ref,
+            RefDetail: RefDetailArr
+        }
+
+        debugger
+        var url = "/ref";
+        this.AjaxJS.post(url, true, RefSaveData, function (response) {
+            if (response.Success) {
+                console.log(response.Data);
+            }
+
+        })
     }
 
     /**
      * Hiển thị icon khi click vào ô mã sản phẩm trong bảng chọn mặt hàng
      * * @param {any} sender
      */
+
+    showNotificationDialog(type) {
+        switch (type) {
+            case notifyType.MissingDetail:
+                $(".notify-dialog-content").html(Resource.MustHaveAtLeastOneDetail);
+                var dialogIcon = `<div class="popup-warning-icon popup-icon"></div>`;
+                $(".notify-dialog-icon").html(dialogIcon);
+                break;
+        }
+        this.DialogNotification.open();
+    }
 
     focusOnItemCodeInput() {
         $(this).siblings().addClass('show');
@@ -174,6 +280,8 @@ class MainJS {
     }
 
     onDeleteItemDetailRow() {
+        var recordCount = $(".record-count").val();
+        $(".record-count").val(recordCount - 1);
         $(this).parent().parent().remove();
         $('.outward-detail-table tr:last-child  td:first-child input').focus();
     }

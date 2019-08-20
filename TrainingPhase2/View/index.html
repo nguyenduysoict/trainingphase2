@@ -449,12 +449,12 @@
                             THÔNG TIN CHUNG
                         </div>
                         <div class="start-tab" tabindex="0"></div>
-                        <div class="grid-form-container">
+                        <div class="grid-form-container general-information-grid">
                             <div class="grid-form-item"><span>Đối tượng</span></div>
                             <div class="grid-form-item multi-input-grid">
                                 <div style="width: 200px; display: flex">
                                     <div class="div-wrap-input form-input-1 dropdown-div inner-form-input" tabindex="-1" style="outline: none">
-                                        <input type="text" class="non-border-filter-input input-combobox required-input object-code-input" tabindex="0" comboboxName="object" />
+                                        <input type="text" class="non-border-filter-input input-combobox object-code-input" tabindex="0" comboboxName="object" />
                                         <div class="icon-in-input arrow-down-dropbox-icon" comboboxName="object"></div>
                                         <div class="icon-in-input quick-search-icon btn-search-object"></div>
                                         <div class="dropdown-content object" comboboxName="object">
@@ -482,7 +482,7 @@
                                     </div>
                                 </div>
                                 <div class="div-wrap-input form-input-5">
-                                    <input type="text" class="non-border-filter-input required-input object-name-input" tabindex="0" />
+                                    <input type="text" class="non-border-filter-input object-name-input" tabindex="0" />
                                 </div>
 
                             </div>
@@ -505,24 +505,24 @@
                             CHỨNG TỪ
                         </div>
 
-                        <div class="grid-form-container">
+                        <div class="grid-form-container ref-grid">
                             <div class="grid-form-item"><span>Số phiếu xuất</span></div>
                             <div class="grid-form-item">
                                 <div class="div-wrap-input">
-                                    <input type="text" class="non-border-filter-input outward-ref-no" tabindex="0" />
+                                    <input type="text" class="non-border-filter-input outward-ref-no required-input" tabindex="0" />
                                 </div>
                             </div>
                             <div class="grid-form-item"><span>Ngày xuất</span></div>
                             <div class="grid-form-item">
                                 <div class="div-wrap-input">
-                                    <input type="text" class="non-border-filter-input outward-date date-picker-input" tabindex="0" />
+                                    <input type="text" class="non-border-filter-input outward-date date-picker-input required-input" tabindex="0" />
                                     <div class="common-icon calendar-icon"> </div>
                                 </div>
                             </div>
                             <div class="grid-form-item"><span>Giờ xuất</span></div>
                             <div class="grid-form-item">
                                 <div class="div-wrap-input">
-                                    <input type="text" class="non-border-filter-input outward-time time-picker-input" tabindex="0" />
+                                    <input type="text" class="non-border-filter-input outward-time time-picker-input required-input" tabindex="0" />
                                     <div class="common-icon hour-icon"> </div>
                                 </div>
                             </div>
@@ -556,13 +556,13 @@
                     <div class="detail-table-form-footer">
                         <table class="table">
                             <tr>
-                                <td class="width-150 "></td>
+                                <td class="width-150 "> Số dòng = <span class="record-count"> 0 </span></td>
                                 <td class=""></td>
                                 <td class="width-180 "></td>
                                 <td class="width-90 "></td>
                                 <td class="width-100 "></td>
                                 <td class="width-90 "></td>
-                                <td class="width-100 "></td>
+                                <td class="width-100 text-align-right"> <span class="total-sum-amount"></span> </td>
                                 <td class="width-40 "></td>
                             </tr>
                         </table>
@@ -596,6 +596,25 @@
 
     <ul class="branch-dropdown-menu">
     </ul>
+
+    <div class="dialogNotification">
+        <div class="notification-dialog">
+            <div class="notify-dialog-wrapper">
+                <div class="notify-dialog-icon">
+                </div>
+                <div class="notify-dialog-content">
+                </div>
+            </div>
+            <div class="notify-bottom-buttons">
+                <div class="custom-btn custom-btn-blue-back">
+                    <div class="common-icon btn-agree-icon"> </div>
+                    <span>Đóng</span>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
     <!--<div class="dialogSelectObject">
         <div class="main-dialog-content">
             <div class="dialog-header-filter">
@@ -786,6 +805,7 @@
     <script src="../Javascript/Library/bootstrap.min.js"></script>
     <script src="../Javascript/Library/jquery.maskedinput.js"></script>
     <script src="../Javascript/Resources/resource.js"></script>
+    <script src="../Javascript/Common/enumeration.js"></script>
     <script src="../Javascript/Common/common.js"></script>
     <script src="../Javascript/Common/ajax.js"></script>
     <script src="../Javascript/Common/dialog.js"></script>

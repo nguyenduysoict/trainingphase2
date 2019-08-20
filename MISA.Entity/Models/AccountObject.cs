@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MISA.Entity
 {
-    class AccountObject: Base
+    public class AccountObject: Base
     {
         public Guid AccountObjectID { get; set; }
         public string AccountObjectCode  { get; set; }

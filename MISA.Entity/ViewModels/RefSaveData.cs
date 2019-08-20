@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace MISA.Entity
 {
-    public class RefSaveInfo
+    public class RefSaveData
     {
-    
+        public Ref Ref { get; set; }
+        public RefDetail[] RefDetail { get; set; }
     }
 }

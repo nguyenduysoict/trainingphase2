@@ -230,6 +230,7 @@ tbody tr:hover {
     align-items: center;
     border: 1px solid #ddd;
     border-radius: 3px;
+    width: 100%;
 }
 
     .div-wrap-input input {
@@ -254,6 +255,7 @@ tbody tr:hover {
     border-radius: 3px;
     display: flex;
     align-items: center;
+    width: max-content;
 }
 
 .custom-btn:hover{
@@ -453,19 +455,18 @@ tbody tr:hover {
 }
 
 
-    .exclamation-icon .custom-tooltip {
-        display: none;
-        width: 220px;
-        background-color: #dc3545;
-        color: #fff;
-        text-align: center;
-        border-radius: 6px;
-        padding: 5px 0;
-        position: absolute;
-        z-index: 1;
-        left: px;
-        top: 30px;
-    }
+.exclamation-icon .custom-tooltip {
+    display: none;
+    width: 220px;
+    background-color: #dc3545;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    top: 30px;
+}
 
 
 .amount-arrow {
@@ -481,15 +482,24 @@ tbody tr:hover {
 
 .grid-form-container {
     display: grid;
-    grid-template-columns: 120px calc(100% - 120px);
     grid-row-gap: 8px;
     grid-column-gap: 8px;
+}
+
+.general-information-grid {
+    grid-template-columns: 100px 595px;
+}
+
+.ref-grid {
+    grid-template-columns: 100px 150px;
 }
 
 .grid-form-item {
     align-self: center;
     padding: 0 10px;
+    display: flex;
 }
+
 .multi-input-grid{
     display: flex;
 }
@@ -520,3 +530,51 @@ tbody tr:hover {
             color: white;
             
         }
+
+.notification-dialog {
+    height: 100%;
+}
+
+.notify-dialog-wrapper {
+    padding: 8px;
+    display: flex;
+    border-bottom: 1px solid #ddd;
+    height: 60%;
+}
+
+.notify-dialog-icon {
+    align-self: center;
+    margin: 0 5px;
+}
+
+.notify-dialog-content{
+    margin: auto;
+}
+
+.notify-bottom-buttons {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 8px;
+}
+
+.popup-icon {
+    background: url(/Contents/Icons/icon-popup.png) no-repeat;
+    width: 41px;
+    height: 40px;
+}
+
+.popup-warning-icon{
+    background-position: -57px -4px;
+}
+
+.popup-question-icon {
+    background-position: -169px -3px;
+}
+
+.popup-deny-icon {
+    background-position: -114px -3px;
+}
+
+.popup-information-icon {
+    background-position: -4px -3px;
+}

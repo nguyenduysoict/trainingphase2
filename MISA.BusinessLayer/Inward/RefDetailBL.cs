@@ -11,10 +11,22 @@ namespace MISA.BusinessLayer
 {
     public class RefDetailBL
     {
+        #region properties
+        private RefDetailDL refDetailDL;
+        #endregion
+
+        public RefDetailBL()
+        {
+            refDetailDL = new RefDetailDL();
+        }
         public IEnumerable<RefDetailViewModel> GetRefDetailById(Guid id)
         {
-            RefDetailDL refDetailDL = new RefDetailDL();
             return refDetailDL.GetRefDetailById(id);
+        }
+
+        public int InsertRefDetail(RefDetail refDetail)
+        {
+            return refDetailDL.InsertRefDetail(refDetail);
         }
     }
 }

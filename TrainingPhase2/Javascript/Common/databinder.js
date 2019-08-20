@@ -53,7 +53,7 @@
                         <td class="text-align-right">${item.sumMoney}</td>
                     </tr>`;
             $('.export-detail-table').append(row);
-        })
+        });
     }
 
     /**
@@ -93,7 +93,7 @@
                 $.each(comboboxData, function (index, item) {
                     var row = `<tr class="display-table-row combobox-row" objectCode="${item.AccountObjectCode}" objectName="${item.AccountObjectName}"> <td width="130px">${item.AccountObjectCode}</td> <td width="250px" class="center-td">${item.AccountObjectName}</td> <td width="150px">${item.TypeName}</td></tr >`;
                     $(".object-combobox-data").append(row);
-                    $(".object-combobox-data tr:last-child").data("objID", item.AccountObjectID)
+                    $(".object-combobox-data tr:last-child").data("AccountObjectID", item.AccountObjectID);
                 });
                 $(".object-combobox-data").children().first().addClass('selected-row');
                 break;
@@ -105,8 +105,8 @@
                         <td width="130px">${item.SKUCode}</td> <td width="250px" class="center-td">${item.ItemName}</td>
                      </tr >`;
                     $(".product-combobox-data").append(row);
-                    $(".product-combobox-data tr:last-child").data("itemID", item.ItemID)
-                    $(".product-combobox-data tr:last-child").data("unitID", item.UnitID)
+                    $(".product-combobox-data tr:last-child").data("ItemID", item.ItemID);
+                    $(".product-combobox-data tr:last-child").data("UnitID", item.UnitID);
 
                 });
                 $(".product-combobox-data").children().first().addClass('selected-row');
@@ -122,9 +122,8 @@
                 $.each(data, function (index, item) {
                     var row = `<li>${item.StockName}</li>`;
                     $(".branch-dropdown-menu").append(row);
-                    $(".branch-dropdown-menu li:last-child").data("stockID", item.StockID);
+                    $(".branch-dropdown-menu li:last-child").data("StockID", item.StockID);
                 });
-            default:
         }
     }
 
@@ -154,12 +153,21 @@
     }
 
     appendDataRowToOutwardDetailTable(item) {
+        var SKUCode = $(item).attr("itemCode");
+        var ItemName = $(item).attr("itemName");
+        var CountUnit = $(item).attr("countUnit");
+        var UnitID = $(item).data("UnitID");
+        var ItemID = $(item).data("ItemID");
+        var UnitPrice = $(item).attr("unitPrice");
+        UnitPrice = Math.floor(UnitPrice);
+        UnitPrice = formatNumberToMoney(UnitPrice);
+
         var row =
             `<tr>
                 <td class="no-padding-cell width-150">
                     <div class="dropdown-div">
                         <div class="div-wrap-input-no-border">
-                            <input type="text" class="non-border-filter-input item-code-input" name="name" value="${item.itemCode}" tabindex="0" />
+                            <input type="text" class="non-border-filter-input item-code-input" value="${SKUCode}" tabindex="0" />
                             <div class="icon-in-input item-code-icon arrow-down-dropbox-icon" comboboxName="product" style="display:none">
                             </div>
                             <div class="icon-in-input item-code-icon quick-search-icon" style="display:none">
@@ -167,30 +175,32 @@
                         </div>
                     </div>
                 </td>
-                <td class="disabled-cell"> ${item.itemName} </td>
+                <td class="disabled-cell"> ${ItemName} </td>
                 <td class="no-padding-cell width-180">
                     <div class="dropdown">
                         <div class="hover-pointer branch-dropdown-cell branch-dropdown">
-                            <div class="detail-tbl-branch-dropbox"> Chi nhánh Cầu Giấy </div>
+                            <div class="detail-tbl-branch-dropbox item-branch"> Kho Cầu Giấy </div>
                             <div class="icon-in-input" tabindex="0"> <i class="fa fa-caret-down"></i></div>
                         </div>
                     </div>
                 </td>
-                <td class="disabled-cell width-90"> ${item.countUnit} </td>
-                <td class="no-padding-cell width-100"> <input type="text" class="positive-num-input text-align-right non-border-filter-input" tabindex="0" value="${item.unitPrice}" /> </td>
+                <td class="disabled-cell width-90"> ${CountUnit} </td>
+                <td class="no-padding-cell width-100"> <input type="text" class="positive-num-input text-align-right non-border-filter-input item-unit-price" tabindex="0" value="${UnitPrice}" /> </td>
                 <td class="no-padding-cell width-90">
                     <div style="display: flex">
-                        <input type="text" class="positive-num-input text-align-right non-border-filter-input" value="1" tabindex="0" />
+                        <input type="text" class="positive-num-input text-align-right non-border-filter-input item-quantity" value="1" tabindex="0" />
                         <div class="up-down-arrow"> <div class="amount-arrow arrow-up"></div> <div class="amount-arrow arrow-down"></div> </div>
                     </div>
                 </td>
-                <td class="no-padding-cell width-100"> <input type="text" class="positive-num-input text-align-right non-border-filter-input" value="${item.unitPrice}" tabindex="0" /> </td>
+                <td class="no-padding-cell width-100"> <input type="text" class="positive-num-input text-align-right non-border-filter-input item-sum-amount" value="${UnitPrice}" tabindex="0" /> </td>
                 <td class="no-padding-cell width-40">
                     <div class="garbage-icon common-icon" tabindex="0"></div>
                 </td>
             </tr>`;
-        $('.outward-detail-table').append(row);
-
+        $('.outward-detail-table tr:last-child').before(row);
+        $('.outward-detail-table tr:last-child').prev().data("UnitID", UnitID);
+        $('.outward-detail-table tr:last-child').prev().data("ItemID", ItemID);
+        $('.outward-detail-table tr').find(".item-branch").data("StockID", "d9f483f9-2efb-fd3b-9fee-14c18560182c");
 
     }
 }

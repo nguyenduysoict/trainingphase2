@@ -41,6 +41,22 @@
         });
     }
 
+    post(url, async, params ,callback) {
+        $.ajax({
+            method: "POST",
+            url: url,
+            async: async,
+            data: params,
+            datatype: JSON.stringify(),
+            success: function (response) {
+                callback(response)
+            },
+            fail: function (err) {
+                console.log(err);
+            }
+        });
+    }
+
 
 
     //Lấy dữ liệu đối tượng

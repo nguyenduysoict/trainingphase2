@@ -53,20 +53,25 @@ namespace TrainingPhase2.Controllers
         }
 
         [Route("")]
-        public AjaxResult Post([FromBody]Ref @ref)
+        public AjaxResult Post([FromBody]RefSaveData refSaveData)
         {
             var result = new AjaxResult();
             try
             {
                 var refBL = new RefBL();
-                result.Data = refBL.AddNewRef(@ref);
-                result.Success = true;
+                if(refBL.AddNewRef(refSaveData) == 1)
+                {
+                    result.Data = refBL.AddNewRef(refSaveData);
+                    result.Success = true;
+                } else
+                {
+                    result.Success = false;
+                }
             }
             catch (Exception ex)
             {
                 result.Success = false;
                 result.Data = ex;
-                throw;
             }
             return result;
         }

@@ -19,15 +19,24 @@ namespace MISA.DataLayer
             return refs;
         }
 
-        public string GetRefID(string refCode)
+        public string CheckExistedRef(string refNo)
         {
             using(DataAccess dataAccess = new DataAccess())
             {
                 var param = new Hashtable();
-                param.Add("RefID", refCode);
-            }
+                param.Add("RefNo", refNo);
+                var data = dataAccess.ExecuteScalar("Proc_GetRefByRefNo", param);
+                string result;
 
-            return "";
+                if(data == null)
+                {
+                    result = "";
+                } else
+                {
+                    result = data.ToString();
+                }
+                return result;
+            }
         }
 
         public IEnumerable<Ref> GetRefById(Guid id)
@@ -38,9 +47,8 @@ namespace MISA.DataLayer
             return @ref;
         }
 
-        public int AddNewRef(Ref @ref)
+        public string AddNewRef(Ref @ref)
         {
-            int result = 0;
             string connectionString = @"Data Source=DATABASE\SQL2014;Initial Catalog=MISA.Phase2;Integrated Security=True";
             SqlConnection sqlConnection = new SqlConnection(connectionString);
             SqlCommand sqlCommand = sqlConnection.CreateCommand();
@@ -68,9 +76,16 @@ namespace MISA.DataLayer
                 }
             }
 
-            result = sqlCommand.ExecuteNonQuery();
+            var result = sqlCommand.ExecuteScalar();
+            if(result == null)
+            {
+                result = "";
+            } else
+            {
+                result = result.ToString();
+            };
 
-            return result;
+            return result.ToString();
         }
 
         public int UpdateRef(Ref @ref)

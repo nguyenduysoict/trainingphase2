@@ -16,5 +16,13 @@ namespace MISA.DataLayer
             IEnumerable<RefDetailViewModel> refDetails = this.GetDataById<RefDetailViewModel>(tableName, columnName, id);
             return refDetails;
         }
+
+        public int InsertRefDetail(RefDetail refDetail)
+        {
+            var storedProcedure = "Proc_InsertRefDetail";
+            var result = -1;
+            result = this.InsertEntity<RefDetail>(storedProcedure, refDetail);
+            return result;
+        }
     }
 }

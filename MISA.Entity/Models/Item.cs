@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MISA.Entity
 {
-    class Item:Base
+    public class Item:Base
     {
         public Guid ItemID { get; set; }
         public string SKUCode { get; set; }

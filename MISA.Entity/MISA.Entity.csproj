@@ -57,7 +57,7 @@
     <Compile Include="ViewModels\AccountObjectViewModel.cs" />
     <Compile Include="ViewModels\ItemsViewModel.cs" />
     <Compile Include="ViewModels\RefDetailViewModel.cs" />
-    <Compile Include="ViewModels\RefSaveInfo.cs" />
+    <Compile Include="ViewModels\RefSaveData.cs" />
     <Compile Include="ViewModels\RefViewModel.cs" />
     <Compile Include="ViewModels\StockViewModel.cs" />
   </ItemGroup>

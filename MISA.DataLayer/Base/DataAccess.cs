@@ -101,6 +101,25 @@ namespace MISA.DataLayer
             
         }
 
+        public SqlCommand SetParamsToSqlCommand<T>(string storeProcedure, T entity)
+        {
+            sqlCommand.CommandText = storeProcedure;
+            SqlCommandBuilder.DeriveParameters(sqlCommand);
+            var sqlParameters = sqlCommand.Parameters;
+
+            for (int i = 1; i < sqlParameters.Count; i++)
+            {
+                var parameterName = sqlParameters[i].ParameterName.Replace("@", string.Empty);
+                var property = entity.GetType().GetProperty(parameterName);
+                if (property != null)
+                {
+                    sqlParameters[i].Value = property.GetValue(entity) ?? DBNull.Value;
+                }
+            }
+
+            return sqlCommand;
+        }
+
         /// <summary>
         /// Đóng kết nối cơ sở dữ liệu khi sử dụng using
         /// </summary>

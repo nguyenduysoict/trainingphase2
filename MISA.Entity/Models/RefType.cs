@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MISA.Entity
 {
-    class RefType:Base
+    public class RefType:Base
     {
         public int RefTypeID { get; set; }
         public string RefTypeName { get; set; }
