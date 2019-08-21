@@ -113,7 +113,6 @@ namespace MISA.DataLayer
                 catch (Exception e)
                 {
                     sqlTransaction.Rollback();
-                    throw;
                 }
                 return result;
             }

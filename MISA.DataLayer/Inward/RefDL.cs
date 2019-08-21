@@ -12,6 +12,10 @@ namespace MISA.DataLayer
 {
     public class RefDL:BaseDL
     {
+        /// <summary>
+        /// Lấy danh sách chứng từ
+        /// </summary>
+        /// <returns></returns>
         public IEnumerable<RefViewModel> GetRefs()
         {
             var tableName = "View_Ref";
@@ -19,6 +23,11 @@ namespace MISA.DataLayer
             return refs;
         }
 
+        /// <summary>
+        /// Kiểm tra chứng từ có trong database
+        /// </summary>
+        /// <param name="refNo"></param>
+        /// <returns></returns>
         public string CheckExistedRef(string refNo)
         {
             using(DataAccess dataAccess = new DataAccess())
@@ -39,6 +48,12 @@ namespace MISA.DataLayer
             }
         }
 
+        /// <summary>
+        /// Lấy chứng từ theo id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+
         public IEnumerable<Ref> GetRefById(Guid id)
         {
             var tableName = "Ref";
@@ -47,45 +62,39 @@ namespace MISA.DataLayer
             return @ref;
         }
 
-        public string AddNewRef(Ref @ref)
+        /// <summary>
+        /// Thêm mới chứng từ vào database
+        /// </summary>
+        /// <param name="ref"></param>
+        /// <returns></returns>
+
+        public int InsertRef(Ref @ref) {
+            var result = -1;
+            var storedProcedure = "Proc_InsertRef";
+            result = this.InsertEntity<Ref>(storedProcedure, @ref);
+            return result;
+        }
+
+        /// <summary>
+        /// Sinh số chứng từ
+        /// </summary>
+        /// <returns></returns>
+        public string GetRefNo()
         {
-            string connectionString = @"Data Source=DATABASE\SQL2014;Initial Catalog=MISA.Phase2;Integrated Security=True";
-            SqlConnection sqlConnection = new SqlConnection(connectionString);
-            SqlCommand sqlCommand = sqlConnection.CreateCommand();
-            sqlCommand.CommandType = CommandType.StoredProcedure;
-            sqlCommand.CommandText = "[dbo].[Proc_InsertRef]";
-            sqlConnection.Open();
-
-            //sqlCommand.Parameters.AddWithValue("@RefNo", @ref.RefNo);
-            //sqlCommand.Parameters.AddWithValue("@RefDate", @ref.RefDate);
-            //sqlCommand.Parameters.AddWithValue("@RefTypeID", @ref.RefTypeID);
-            //sqlCommand.Parameters.AddWithValue("@TotalAmount", @ref.TotalAmount);
-            //sqlCommand.Parameters.AddWithValue("@JournalMemo", @ref.JournalMemo);
-            //sqlCommand.Parameters.AddWithValue("@AccountObjectID", @ref.AccountObjectID);
-
-            SqlCommandBuilder.DeriveParameters(sqlCommand);
-            var sqlParameter = sqlCommand.Parameters;
-
-            for (int i = 1; i < sqlParameter.Count; i++)
+            using(DataAccess dataAccess = new DataAccess())
             {
-                var parameterName = sqlParameter[i].ParameterName.Replace("@", string.Empty);
-                var property = @ref.GetType().GetProperty(parameterName);
-                if(property != null)
+                var storedProcedure = "Proc_GetRefNo";
+                var result = dataAccess.ExecuteScalar(storedProcedure);
+                string data;
+                if (result == null)
                 {
-                    sqlParameter[i].Value = property.GetValue(@ref) ?? DBNull.Value;
+                    data = "";
+                } else
+                {
+                    data = result.ToString();
                 }
+                return data;
             }
-
-            var result = sqlCommand.ExecuteScalar();
-            if(result == null)
-            {
-                result = "";
-            } else
-            {
-                result = result.ToString();
-            };
-
-            return result.ToString();
         }
 
         public int UpdateRef(Ref @ref)

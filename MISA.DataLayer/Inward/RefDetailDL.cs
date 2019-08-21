@@ -13,16 +13,13 @@ namespace MISA.DataLayer
         {
             var tableName = "View_RefDetail";
             var columnName = "RefID";
-            IEnumerable<RefDetailViewModel> refDetails = this.GetDataById<RefDetailViewModel>(tableName, columnName, id);
-            return refDetails;
+            return GetDataById<RefDetailViewModel>(tableName, columnName, id);
         }
 
         public int InsertRefDetail(RefDetail refDetail)
         {
             var storedProcedure = "Proc_InsertRefDetail";
-            var result = -1;
-            result = this.InsertEntity<RefDetail>(storedProcedure, refDetail);
-            return result;
+            return InsertEntity<RefDetail>(storedProcedure, refDetail);
         }
     }
 }

@@ -290,10 +290,13 @@ function filterComboboxData(inputElement) {
  */
 
 function showTooltip(exclamationElement) {
-    var tooltipContent = Resource.FieldCannotEmpty;
-    var tooltipElement = `<div class="custom-tooltip"> ${tooltipContent} </div>`;
-    $(exclamationElement).append(tooltipElement);
-    $(exclamationElement).children().css('display', 'unset');
+    var tooltipElement = Resource.FieldCannotEmptyTooltip;
+    var iconPosition = $(exclamationElement).offset();
+    $('.custom-tooltip').css({
+        'display': 'unset',
+        'top': iconPosition.top + 31,
+        'left': iconPosition.left - 60
+    });
 }
 
 /**
@@ -302,8 +305,9 @@ function showTooltip(exclamationElement) {
  */
 
 function hideTooltip(exclamationElement) {
-    $(exclamationElement).html('');
-    $(exclamationElement).children().css('display', 'none');
+    $('.custom-tooltip').css({
+        'display': 'none'
+    });
 }
 
 
@@ -496,6 +500,23 @@ function generateRefDate() {
     refDate.setHours(refTime[0]);
     refDate.setMinutes(refTime[1]);
     return refDate.toJSON();
+}
+
+/**
+ * Tách ngày và giờ từ định dạng giờ chuẩn
+ */
+
+function splitDateAndTime(date) {
+    var date = new Date(date);
+    var refDate = formatDate(date);
+    var refHour = date.getHours();
+    var refMinute = date.getMinutes();
+    var refTime = refHour + ':' + refMinute;
+    var result = {
+        refDate: refDate,
+        refTime: refTime
+    }
+    return result;
 }
 
 /**

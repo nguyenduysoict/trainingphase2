@@ -14,6 +14,10 @@ namespace TrainingPhase2.Controllers
     [RoutePrefix("ref")]
     public class RefController : ApiController
     {
+        /// <summary>
+        /// Lấy danh sách chứng từ
+        /// </summary>
+        /// <returns></returns>
         [Route("")]
         public AjaxResult Get()
         {
@@ -33,6 +37,31 @@ namespace TrainingPhase2.Controllers
             
         }
 
+        [Route("refno")]
+        public AjaxResult GetRefNo()
+        {
+            var result = new AjaxResult();
+            try
+            {
+                var refBL = new RefBL();
+                result.Success = true;
+                result.Data = refBL.GetRefNo();
+            }
+            catch (Exception ex)
+            {
+                result.Success = false;
+                result.Data = ex;
+            }
+            return result;
+            
+        }
+
+        /// <summary>
+        /// Lấy chứng từ theo id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+
         [Route("{id}")]
         public AjaxResult Get(Guid id)
         {
@@ -51,7 +80,11 @@ namespace TrainingPhase2.Controllers
             }
             return result;
         }
-
+        /// <summary>
+        /// Nhận dữ liệu chứng từ gửi từ client
+        /// </summary>
+        /// <param name="refSaveData"></param>
+        /// <returns></returns>
         [Route("")]
         public AjaxResult Post([FromBody]RefSaveData refSaveData)
         {
@@ -59,14 +92,8 @@ namespace TrainingPhase2.Controllers
             try
             {
                 var refBL = new RefBL();
-                if(refBL.AddNewRef(refSaveData) == 1)
-                {
-                    result.Data = refBL.AddNewRef(refSaveData);
-                    result.Success = true;
-                } else
-                {
-                    result.Success = false;
-                }
+                refBL.InsertRef(refSaveData);
+                result.Success = true;
             }
             catch (Exception ex)
             {
@@ -75,6 +102,11 @@ namespace TrainingPhase2.Controllers
             }
             return result;
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="ref"></param>
+        /// <returns></returns>
 
         [Route("")]
         public AjaxResult Put([FromBody]Ref @ref)

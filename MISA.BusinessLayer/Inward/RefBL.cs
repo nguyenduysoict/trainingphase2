@@ -41,32 +41,42 @@ namespace MISA.BusinessLayer
         }
 
         /// <summary>
+        /// Sinh số chứng từ mới
+        /// </summary>
+        /// <returns></returns>
+        public string GetRefNo()
+        {
+            return refDL.GetRefNo();
+        }
+
+        /// <summary>
         /// Thêm mới phiếu thu
         /// </summary>
         /// <param name="refSaveData"></param>
         /// <returns></returns>
-        public int AddNewRef(RefSaveData refSaveData)
+        public int InsertRef(RefSaveData refSaveData)
         {
             var refNo = refSaveData.Ref.RefNo;
-            var result = -1;
+            var result = 0;
             if(refDL.CheckExistedRef(refNo) == "")
             {
-                var newRefID = refDL.AddNewRef(refSaveData.Ref);
-                if(newRefID == "")
-                {
-                    return -1;
-                } else
+                var refID = Guid.NewGuid();
+                refSaveData.Ref.RefID = refID;
+                if(refDL.InsertRef(refSaveData.Ref) == 1)
                 {
                     var refDetailDL = new RefDetailDL();
                     for (int i = 0; i < refSaveData.RefDetail.Length; i++)
                     {
-                        refSaveData.RefDetail[i].RefID = Guid.Parse(newRefID);
+                        refSaveData.RefDetail[i].RefID = refID;
                         result += refDetailDL.InsertRefDetail(refSaveData.RefDetail[i]);
                     }
+                } else
+                {
+                    return 0;
                 }
             } else
             {
-                return -1;
+                return 0;
             }
             return result;
             

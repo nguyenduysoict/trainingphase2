@@ -258,21 +258,10 @@
                         </div>
 
                         <div class="div-wrap-master-tbl" style="border-top: 1px solid #ddd">
-                            <!--<table class="table">
-                                <tbody>
-                                    <tr>
-                                        <td class="column-1-master-tbl"> 1 </td>
-                                        <td class="column-2-master-tbl"> 1 </td>
-                                        <td class="column-3-master-tbl"> 1 </td>
-                                        <td class="column-4-master-tbl"> 1 </td>
-                                        <td class="column-5-master-tbl"> 1 </td>
-                                        <td class="column-6-master-tbl"> 1 </td>
-                                    </tr>
-                                </tbody>
-                            </table>-->
-                            <div class="loading-icon">
-                                <img src="/Contents/Icons/ajax-loader.gif" />
-                            </div>
+                            <table class="table">
+                                <tbody class="outward-master-table"></tbody>
+                            </table>
+
                         </div>
 
 
@@ -327,7 +316,6 @@
                                 <tr>
                                     <th>
                                         <span> Mã hàng hóa </span>
-
                                     </th>
                                     <th>Tên hàng hóa</th>
                                     <th>Kho</th>
@@ -337,7 +325,7 @@
                                     <th>Thành tiền</th>
                                 </tr>
                             </thead>
-                            <tbody></tbody>
+                            <tbody class="ref-detail-table"></tbody>
                         </table>
                     </div>
                 </div>
@@ -458,25 +446,23 @@
                                         <div class="icon-in-input arrow-down-dropbox-icon" comboboxName="object"></div>
                                         <div class="icon-in-input quick-search-icon btn-search-object"></div>
                                         <div class="dropdown-content object" comboboxName="object">
-                                            <div>
-                                                <div class="thead-dropdown">
-                                                    <div class="width-130 dropdown-column-name">
-                                                        Mã
-                                                    </div>
-                                                    <div class="width-250 dropdown-column-name">
-                                                        Tên
-                                                    </div>
-                                                    <div class="width-150 dropdown-column-name">
-                                                        Loại
-                                                    </div>
-                                                    <div class="div-on-combobox-tbl-scroll">
-                                                    </div>
+                                            <div class="thead-dropdown">
+                                                <div class="width-130 dropdown-column-name">
+                                                    Mã
                                                 </div>
-                                                <div class="tbody-dropdown">
-                                                    <table class="table">
-                                                        <tbody class="object-combobox-data"></tbody>
-                                                    </table>
+                                                <div class="width-250 dropdown-column-name">
+                                                    Tên
                                                 </div>
+                                                <div class="width-150 dropdown-column-name">
+                                                    Loại
+                                                </div>
+                                                <div class="div-upper-scroll">
+                                                </div>
+                                            </div>
+                                            <div class="tbody-dropdown">
+                                                <table class="table">
+                                                    <tbody class="object-combobox-data"></tbody>
+                                                </table>
                                             </div>
                                         </div>
                                     </div>
@@ -594,8 +580,8 @@
         </div>
     </div>
 
-    <ul class="branch-dropdown-menu">
-    </ul>
+    <ul class="branch-dropdown-menu"></ul>
+    <div class="custom-tooltip"> Trường này <br> không được để trống!</div>
 
     <div class="dialogNotification">
         <div class="notification-dialog">
@@ -809,6 +795,7 @@
     <script src="../Javascript/Common/common.js"></script>
     <script src="../Javascript/Common/ajax.js"></script>
     <script src="../Javascript/Common/dialog.js"></script>
+    <script src="../Javascript/Common/drawer.js"></script>
     <script src="../Javascript/Common/databinder.js"></script>
     <script src="../Javascript/Common/calendardisplay.js"></script>
     <script src="../Javascript/Main/main.js"></script>

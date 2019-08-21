@@ -1,7 +1,6 @@
 ﻿$(document).ready(function () {
     // Khởi tạo đối tượng MainJS xử lý nghiệp vụ
     mainJS = new MainJS();
-
 });
 
 /**
@@ -15,14 +14,16 @@ class MainJS {
         this.DialogOutwardRef = new Dialog(Resource.AddNewOtherOutwardRefDialogTitle, 1000, 700, "dialogOutwardRef");
         this.DialogNotification = new Dialog(Resource.MShopKeeper, 400, 156, "dialogNotification");
         this.DataBinderJS = new DataBinderJS();
+        this.DrawerJS = new DrawerJS();
         this.refNo = '';
+        this.loadingIcon = Resource.LoadingIcon;
         this.InitEvents();
         this.objectComboboxData = [];
     }
 
     InitEvents() {
-        //this.getOutwardRef();
-        this.refNo = this.AjaxJS.getRefNo();
+        this.getOutwardRefs();
+        this.DrawerJS.drawComboboxData('test', 0);
         $(document).on("click", "#btnAdd", this.showOutwardRefDialog.bind(this));
         $(document).on("click", ".arrow-down-dropbox-icon", this.showComboBox);
 
@@ -31,6 +32,8 @@ class MainJS {
         $(document).on("click", ".branch-dropdown", this.showBranchDropdown);
 
         $(document).on("click", ".object-combobox-data>tr", this.onSelectObject);
+
+        $(document).on("click", ".outward-master-table>tr", this.onSelectRef.bind(this));
 
         $(document).on("focus", ".item-code-input", this.focusOnItemCodeInput);
         $(document).on("click", ".branch-dropdown-menu li", this.onSelectBranch);
@@ -42,24 +45,37 @@ class MainJS {
 
     }
 
-    getOutwardRef() {
-        this.AjaxJS.getOutwardRefData();
+    getOutwardRefs() {
+        var _this = this;
+        var url = "/ref";
+        this.AjaxJS.get(url, true, function (response) {
+            if (response.Success) {
+                _this.DataBinderJS.bindDataToMasterTable(response.Data);
+            }
+        });
     }
 
     showOutwardRefDialog() {
         this.DialogOutwardRef.open();
         $('.object-code-input').focus();
+        var url = '/ref/refno';
+        this.refNo = this.AjaxJS.get(url, true, function (response) {
+            if (response.Success) {
+                $('.outward-ref-no').val(response.Data);
+            }
+        });
 
         var currentDate = getCurrentDate();
         var currentTime = getCurrentTime();
         var _this = this;
-        $('.outward-ref-no').val(this.refNo);
         $('.outward-date').val(currentDate);
         $('.outward-time').val(currentTime);
 
         $('.outward-detail-table').html('');
         this.DataBinderJS.appendEmptyRowToOutwardDetailTable();
 
+
+        $(".object-combobox-data").html(this.loadingIcon);
         var objUrl = "/accountobject";
         this.AjaxJS.get(objUrl, true, function (response) {
             if (response.Success) {
@@ -67,10 +83,10 @@ class MainJS {
             }
         });
 
+        $(".product-combobox-data").html(this.loadingIcon);
         var itemUrl = "/item";
         this.AjaxJS.get(itemUrl, true, function (response) {
             if (response.Success) {
-                console.log(response.Data);
                 _this.DataBinderJS.bindComboboxData("product", response.Data);
             }
         });
@@ -78,7 +94,6 @@ class MainJS {
         var itemUrl = "/stock";
         this.AjaxJS.get(itemUrl, true, function (response) {
             if (response.Success) {
-                console.log(response.Data);
                 _this.DataBinderJS.bindDropdownMenu("branch", response.Data);
             }
         });
@@ -150,6 +165,26 @@ class MainJS {
         this.calculateSumAmount();
     }
 
+
+    /**
+     * Click chọn một chứng từ trên bảng master
+     * @param {any} sender
+     */
+
+    onSelectRef(sender) {
+        var ref = sender.currentTarget;
+        var _this = this;
+        $('.outward-master-table tr').removeClass("selected-row");
+        $(ref).addClass("selected-row");
+        var refID = $(ref).data("RefID");
+        var url = "/refdetail/" + refID;
+        this.AjaxJS.get(url, false, function (response) {
+            if (response.Success) {
+                _this.DataBinderJS.bindDataToRefDetailTable(response.Data);
+            }
+        })
+    }
+
     /**
      * Tính toán tổng tiền trong bảng chi tiết
      */
@@ -208,6 +243,7 @@ class MainJS {
      * */
 
     saveRef() {
+        var _this = this;
         var Ref = {
             RefDate: generateRefDate(),
             RefNo: $('.outward-ref-no').val(),
@@ -216,8 +252,6 @@ class MainJS {
             JournalMemo: $('.description').val(),
             TotalAmount: formatMoneyToNumber($('.total-sum-amount').html())
         };
-
-        console.log(Ref);
 
         var RefDetailArr = [];
 
@@ -241,14 +275,17 @@ class MainJS {
             RefDetail: RefDetailArr
         }
 
-        debugger
+        console.log(RefSaveData);
+
         var url = "/ref";
         this.AjaxJS.post(url, true, RefSaveData, function (response) {
             if (response.Success) {
                 console.log(response.Data);
+                _this.DialogOutwardRef.close();
             }
 
-        })
+        });
+        this.getOutwardRefs();
     }
 
     /**

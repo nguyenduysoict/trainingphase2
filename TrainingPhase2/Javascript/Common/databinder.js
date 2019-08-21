@@ -7,32 +7,27 @@
      * @param {any} data : mảng các phiếu xuất kho
      * Createby NMDuy 25/07/2019
      */
-    bindDatatoExportMasterTable(data) {
-        $(".export-master-table").html("");
-        for (let i = 0; i < data.length; i++) {
-            if (i % 2 == 0) {
-                var row = `<tr class="f5f5f5-background" id="${data[i].id}">
-                            <td class="text-align-center width-170">${data[i].receiptDate}</td>
-                            <td class=" width-230 receipt-number-cell">${data[i].receiptNumber}</td>
-                            <td class=" width-250">${data[i].objectName}</td>
-                            <td class=" width-170 text-align-right">${data[i].sumMoney}</td>
-                            <td class="">${data[i].exportExplain}</td>
-                            <td class=" width-368">${data[i].receiptType}</td>
+    bindDataToMasterTable(data) {
+        console.log(data);
+        $('.outward-master-table').html('');
+        $.each(data, function (index, item) {
+            var data = splitDateAndTime(item.RefDate);
+            var row = `
+                        <tr>
+                            <td class="column-1-master-tbl"> ${data.refDate} </td>
+                            <td class="column-2-master-tbl"> ${item.RefNo} </td>
+                            <td class="column-3-master-tbl"> ${item.AccountObjectName} </td>
+                            <td class="column-4-master-tbl"> ${item.TotalAmount} </td>
+                            <td class="column-5-master-tbl"> ${item.JournalMemo} </td>
+                            <td class="column-6-master-tbl"> ${item.RefTypeName} </td>
                         </tr>`;
-            } else {
-                var row = `<tr id="${data[i].id}">
-                            <td class="text-align-center width-170">${data[i].receiptDate}</td>
-                            <td class=" width-230 receipt-number-cell">${data[i].receiptNumber}</td>
-                            <td class=" width-250">${data[i].objectName}</td>
-                            <td class=" width-170 text-align-right">${data[i].sumMoney}</td>
-                            <td class="">${data[i].exportExplain}</td>
-                            <td class=" width-368">${data[i].receiptType}</td>
-                        </tr>`;
-            }
-            $('.export-master-table').append(row);
-        }
+            $('.outward-master-table').append(row);
+            $('.outward-master-table tr:last-child').data('RefID', item.RefID);
+            $('.outward-master-table tr:last-child').data('RefTime', data.refTime);
+            $('.outward-master-table tr:last-child').data('AccountObjectID', item.AccountObjectID);
+        })
 
-        $("#sumMoneyMasterTable").html("53.000.000");
+        
     }
 
     /**
@@ -41,18 +36,20 @@
      * Createby NMDuy 25/07/2019
      */
 
-    bindDetailExportReceiptData(data) {
+    bindDataToRefDetailTable(data) {
+        console.log(data);
+        $('.ref-detail-table').html('');
         $.each(data, function (index, item) {
             var row = `<tr>
-                        <td>${item.itemCode}</td>
-                        <td>${item.itemName}</td>
-                        <td>${item.storePlace}</td>
-                        <td>${item.countUnit}</td>
-                        <td class="text-align-right">${item.unitPrice}</td>
-                        <td class="text-align-right">${item.amount}</td>
-                        <td class="text-align-right">${item.sumMoney}</td>
+                        <td>${item.SKUCode}</td>
+                        <td>${item.ItemName}</td>
+                        <td>${item.StockName}</td>
+                        <td>${item.UnitName}</td>
+                        <td class="text-align-right">${item.UnitPrice}</td>
+                        <td class="text-align-right">${item.Quantity}</td>
+                        <td class="text-align-right">${item.UnitPrice}</td>
                     </tr>`;
-            $('.export-detail-table').append(row);
+            $('.ref-detail-table').append(row);
         });
     }
 

@@ -9,7 +9,7 @@ using MISA.BusinessLayer;
 
 namespace TrainingPhase2.Controllers
 {
-    [RoutePrefix("RefDetail")]
+    [RoutePrefix("refdetail")]
     public class RefDetailController : ApiController
     {
         [Route("")]
